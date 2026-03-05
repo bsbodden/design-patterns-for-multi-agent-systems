@@ -1,0 +1,8 @@
+demo:
+  auto-run: false
+
+logging:
+  level:
+    root: WARN
+    com.redis.demos.smarttriage: INFO
+    org.testcontainers: INFO

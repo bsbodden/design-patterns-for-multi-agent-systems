@@ -1,0 +1,30 @@
+[
+  {
+    "text": "Late delivery resolution strategy for São Paulo region achieves 87% customer satisfaction recovery when proactive outreach is combined with a 5% credit offer within 48 hours of the delay being detected. Waiting for the customer to complain first reduces recovery to 61%. Best practice: monitor deliveries approaching estimated date and trigger proactive notification.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["delivery", "resolution-strategy", "sao-paulo", "customer-satisfaction"],
+    "entities": ["sao-paulo"]
+  },
+  {
+    "text": "Seller performance thresholds: On-time delivery rate below 70% triggers a warning notification. Below 60% triggers mandatory quality review and temporary reduction in listing visibility. Below 50% results in suspension pending improvement plan. Sellers in review must achieve 75%+ on-time rate for 30 consecutive days to return to good standing.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["seller-performance", "thresholds", "quality-standards"],
+    "entities": []
+  },
+  {
+    "text": "Customer retention insight: Customers who file 3+ complaints within 90 days have a 3x higher churn rate than the platform average. However, customers whose complaints are resolved with a personalized response (referencing their history) and proactive compensation have a 72% retention rate vs 44% for generic responses. Key factors: speed of resolution, acknowledgment of past issues, and tangible compensation.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["customer-retention", "churn-risk", "complaint-resolution"],
+    "entities": []
+  },
+  {
+    "text": "Escalation criteria for customer support: Escalate to supervisor when ANY of: (1) customer has filed 3+ complaints in 90 days, (2) order value exceeds R$500, (3) seller is a repeat offender with 3+ complaints against them, (4) customer explicitly requests supervisor/manager, (5) issue involves safety or legal concerns. Supervisor has authority to offer up to 100% refund + R$100 store credit without further approval.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["escalation", "criteria", "supervisor-policy"],
+    "entities": []
+  }
+]

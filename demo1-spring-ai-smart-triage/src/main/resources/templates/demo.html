@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      th:replace="~{layout :: layout('Customer Intake — Spring AI', ~{::content})}">
+<body>
+<div th:fragment="content" class="demo-container">
+    <!-- Chat Panel -->
+    <div class="chat-panel">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <span class="chat-title">Customer Issue</span>
+                <span class="chat-badge">E-Commerce Intake</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="clearChat()">Clear</button>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="system-message">
+                <div class="message-content">
+                    Welcome to the E-Commerce Customer Intake demo. Use the hotkey buttons above to
+                    run pre-built scenarios, or type a customer complaint below. Click <strong>Run Demo</strong>
+                    to see all 3 patterns in action: Routing, Tool Use, and Evaluator-Optimizer.
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-form">
+            <div class="chat-input-wrapper">
+                <textarea id="chat-input"
+                          placeholder="Enter a customer complaint (e.g., 'My order ORD_A1B2C3 is late...')"
+                          rows="1"
+                          onkeydown="handleKeyDown(event)"></textarea>
+                <button class="btn btn-primary send-btn" id="send-btn" onclick="sendFromInput()">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline Log Panel -->
+    <div class="pipeline-panel">
+        <div class="pipeline-header">
+            <h3>Pipeline Log</h3>
+            <button class="btn btn-secondary btn-sm" onclick="clearLog()">Clear</button>
+        </div>
+
+        <div class="pipeline-log" id="pipeline-log">
+            <p class="log-placeholder">Pipeline events will appear here as queries are processed.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

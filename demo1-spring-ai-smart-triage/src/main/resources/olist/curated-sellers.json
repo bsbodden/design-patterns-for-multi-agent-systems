@@ -1,0 +1,969 @@
+[
+  {
+    "sellerId": "seller_42",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "avgRating": 2.3,
+    "onTimePct": 60.0,
+    "totalOrders": 234,
+    "delayAvgDays": 5.8,
+    "returnRate": 12.5,
+    "revenueTotal": 185400.0,
+    "categories": [
+      "electronics",
+      "home_garden"
+    ]
+  },
+  {
+    "sellerId": "seller_7",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "avgRating": 4.8,
+    "onTimePct": 98.0,
+    "totalOrders": 312,
+    "delayAvgDays": 0.3,
+    "returnRate": 1.2,
+    "revenueTotal": 287600.0,
+    "categories": [
+      "health_beauty",
+      "sports_leisure"
+    ]
+  },
+  {
+    "sellerId": "seller_15",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "avgRating": 3.9,
+    "onTimePct": 85.0,
+    "totalOrders": 156,
+    "delayAvgDays": 2.1,
+    "returnRate": 4.3,
+    "revenueTotal": 98200.0,
+    "categories": [
+      "furniture_decor",
+      "home_garden"
+    ]
+  },
+  {
+    "sellerId": "seller_23",
+    "city": "Curitiba",
+    "state": "PR",
+    "avgRating": 4.2,
+    "onTimePct": 91.0,
+    "totalOrders": 89,
+    "delayAvgDays": 1.4,
+    "returnRate": 3.1,
+    "revenueTotal": 67500.0,
+    "categories": [
+      "computers_accessories",
+      "electronics"
+    ]
+  },
+  {
+    "sellerId": "seller_31",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "avgRating": 3.5,
+    "onTimePct": 78.0,
+    "totalOrders": 201,
+    "delayAvgDays": 3.2,
+    "returnRate": 6.8,
+    "revenueTotal": 134800.0,
+    "categories": [
+      "electronics",
+      "telephony"
+    ]
+  },
+  {
+    "sellerId": "seller_9",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "avgRating": 4.5,
+    "onTimePct": 95.0,
+    "totalOrders": 178,
+    "delayAvgDays": 0.6,
+    "returnRate": 2.0,
+    "revenueTotal": 156300.0,
+    "categories": [
+      "fashion_bags_accessories",
+      "fashion_shoes"
+    ]
+  },
+  {
+    "sellerId": "seller_18",
+    "city": "Campinas",
+    "state": "SP",
+    "avgRating": 2.8,
+    "onTimePct": 65.0,
+    "totalOrders": 145,
+    "delayAvgDays": 4.9,
+    "returnRate": 9.7,
+    "revenueTotal": 78900.0,
+    "categories": [
+      "electronics",
+      "computers_accessories"
+    ]
+  },
+  {
+    "sellerId": "seller_5",
+    "city": "Salvador",
+    "state": "BA",
+    "avgRating": 4.1,
+    "onTimePct": 88.0,
+    "totalOrders": 67,
+    "delayAvgDays": 1.8,
+    "returnRate": 3.5,
+    "revenueTotal": 45200.0,
+    "categories": [
+      "bed_bath_table",
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_11",
+    "city": "Recife",
+    "state": "PE",
+    "avgRating": 3.7,
+    "onTimePct": 82.0,
+    "totalOrders": 93,
+    "delayAvgDays": 2.5,
+    "returnRate": 5.1,
+    "revenueTotal": 61400.0,
+    "categories": [
+      "watches_gifts",
+      "cool_stuff"
+    ]
+  },
+  {
+    "sellerId": "seller_27",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 4.6,
+    "onTimePct": 96.0,
+    "totalOrders": 54,
+    "delayAvgDays": 0.4,
+    "returnRate": 1.5,
+    "revenueTotal": 38700.0,
+    "categories": [
+      "sports_leisure",
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_33",
+    "city": "Brasilia",
+    "state": "DF",
+    "avgRating": 3.2,
+    "onTimePct": 72.0,
+    "totalOrders": 112,
+    "delayAvgDays": 3.8,
+    "returnRate": 7.2,
+    "revenueTotal": 82100.0,
+    "categories": [
+      "telephony",
+      "electronics"
+    ]
+  },
+  {
+    "sellerId": "seller_44",
+    "city": "Manaus",
+    "state": "AM",
+    "avgRating": 3.0,
+    "onTimePct": 68.0,
+    "totalOrders": 76,
+    "delayAvgDays": 4.2,
+    "returnRate": 8.3,
+    "revenueTotal": 52600.0,
+    "categories": [
+      "electronics",
+      "audio"
+    ]
+  },
+  {
+    "sellerId": "seller_50",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "avgRating": 4.6,
+    "onTimePct": 94.3,
+    "totalOrders": 294,
+    "delayAvgDays": 0.6,
+    "returnRate": 1.9,
+    "revenueTotal": 153453.42,
+    "categories": [
+      "baby"
+    ]
+  },
+  {
+    "sellerId": "seller_51",
+    "city": "Campinas",
+    "state": "SP",
+    "avgRating": 4.5,
+    "onTimePct": 96.6,
+    "totalOrders": 294,
+    "delayAvgDays": 0.5,
+    "returnRate": 1.9,
+    "revenueTotal": 210350.33,
+    "categories": [
+      "watches_gifts",
+      "cool_stuff"
+    ]
+  },
+  {
+    "sellerId": "seller_52",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "avgRating": 2.6,
+    "onTimePct": 67.6,
+    "totalOrders": 187,
+    "delayAvgDays": 3.7,
+    "returnRate": 6.1,
+    "revenueTotal": 139175.28,
+    "categories": [
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_53",
+    "city": "Joinville",
+    "state": "SC",
+    "avgRating": 3.0,
+    "onTimePct": 74.5,
+    "totalOrders": 208,
+    "delayAvgDays": 4.8,
+    "returnRate": 7.7,
+    "revenueTotal": 109680.62,
+    "categories": [
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_54",
+    "city": "Blumenau",
+    "state": "SC",
+    "avgRating": 3.8,
+    "onTimePct": 75.6,
+    "totalOrders": 55,
+    "delayAvgDays": 2.0,
+    "returnRate": 3.9,
+    "revenueTotal": 139242.92,
+    "categories": [
+      "computers_accessories"
+    ]
+  },
+  {
+    "sellerId": "seller_55",
+    "city": "Manaus",
+    "state": "AM",
+    "avgRating": 3.5,
+    "onTimePct": 79.8,
+    "totalOrders": 51,
+    "delayAvgDays": 1.9,
+    "returnRate": 3.8,
+    "revenueTotal": 65556.85,
+    "categories": [
+      "sports_leisure",
+      "pet_shop",
+      "watches_gifts"
+    ]
+  },
+  {
+    "sellerId": "seller_56",
+    "city": "Salvador",
+    "state": "BA",
+    "avgRating": 4.4,
+    "onTimePct": 91.9,
+    "totalOrders": 43,
+    "delayAvgDays": 0.8,
+    "returnRate": 2.3,
+    "revenueTotal": 283715.57,
+    "categories": [
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_57",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "avgRating": 3.9,
+    "onTimePct": 94.4,
+    "totalOrders": 270,
+    "delayAvgDays": 1.8,
+    "returnRate": 2.3,
+    "revenueTotal": 100059.26,
+    "categories": [
+      "cool_stuff",
+      "fashion_bags_accessories"
+    ]
+  },
+  {
+    "sellerId": "seller_58",
+    "city": "Curitiba",
+    "state": "PR",
+    "avgRating": 2.9,
+    "onTimePct": 73.4,
+    "totalOrders": 200,
+    "delayAvgDays": 4.1,
+    "returnRate": 7.9,
+    "revenueTotal": 183238.94,
+    "categories": [
+      "fashion_bags_accessories"
+    ]
+  },
+  {
+    "sellerId": "seller_59",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "avgRating": 3.2,
+    "onTimePct": 62.8,
+    "totalOrders": 47,
+    "delayAvgDays": 3.4,
+    "returnRate": 8.4,
+    "revenueTotal": 189898.88,
+    "categories": [
+      "garden_tools",
+      "cool_stuff"
+    ]
+  },
+  {
+    "sellerId": "seller_60",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "avgRating": 3.3,
+    "onTimePct": 86.5,
+    "totalOrders": 189,
+    "delayAvgDays": 3.0,
+    "returnRate": 5.3,
+    "revenueTotal": 157820.19,
+    "categories": [
+      "audio"
+    ]
+  },
+  {
+    "sellerId": "seller_61",
+    "city": "Manaus",
+    "state": "AM",
+    "avgRating": 4.8,
+    "onTimePct": 97.3,
+    "totalOrders": 274,
+    "delayAvgDays": 0.8,
+    "returnRate": 2.0,
+    "revenueTotal": 296167.58,
+    "categories": [
+      "audio"
+    ]
+  },
+  {
+    "sellerId": "seller_62",
+    "city": "Belem",
+    "state": "PA",
+    "avgRating": 3.3,
+    "onTimePct": 84.9,
+    "totalOrders": 286,
+    "delayAvgDays": 2.6,
+    "returnRate": 5.3,
+    "revenueTotal": 120213.06,
+    "categories": [
+      "perfumery"
+    ]
+  },
+  {
+    "sellerId": "seller_63",
+    "city": "Campinas",
+    "state": "SP",
+    "avgRating": 4.6,
+    "onTimePct": 98.9,
+    "totalOrders": 138,
+    "delayAvgDays": 0.7,
+    "returnRate": 1.0,
+    "revenueTotal": 287447.91,
+    "categories": [
+      "furniture_decor",
+      "perfumery",
+      "housewares"
+    ]
+  },
+  {
+    "sellerId": "seller_64",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "avgRating": 4.7,
+    "onTimePct": 96.3,
+    "totalOrders": 231,
+    "delayAvgDays": 0.3,
+    "returnRate": 2.2,
+    "revenueTotal": 266790.17,
+    "categories": [
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_65",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "avgRating": 2.8,
+    "onTimePct": 72.1,
+    "totalOrders": 246,
+    "delayAvgDays": 3.9,
+    "returnRate": 9.5,
+    "revenueTotal": 86397.09,
+    "categories": [
+      "watches_gifts"
+    ]
+  },
+  {
+    "sellerId": "seller_66",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 4.7,
+    "onTimePct": 96.5,
+    "totalOrders": 45,
+    "delayAvgDays": 0.1,
+    "returnRate": 1.9,
+    "revenueTotal": 317842.8,
+    "categories": [
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_67",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 4.5,
+    "onTimePct": 97.0,
+    "totalOrders": 257,
+    "delayAvgDays": 0.2,
+    "returnRate": 0.8,
+    "revenueTotal": 284548.98,
+    "categories": [
+      "housewares"
+    ]
+  },
+  {
+    "sellerId": "seller_68",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "avgRating": 4.8,
+    "onTimePct": 95.1,
+    "totalOrders": 42,
+    "delayAvgDays": 0.4,
+    "returnRate": 2.2,
+    "revenueTotal": 257592.62,
+    "categories": [
+      "computers_accessories",
+      "health_beauty",
+      "garden_tools"
+    ]
+  },
+  {
+    "sellerId": "seller_69",
+    "city": "Sorocaba",
+    "state": "SP",
+    "avgRating": 3.9,
+    "onTimePct": 89.5,
+    "totalOrders": 142,
+    "delayAvgDays": 1.1,
+    "returnRate": 2.2,
+    "revenueTotal": 284727.56,
+    "categories": [
+      "cool_stuff"
+    ]
+  },
+  {
+    "sellerId": "seller_70",
+    "city": "Sorocaba",
+    "state": "SP",
+    "avgRating": 5.0,
+    "onTimePct": 98.0,
+    "totalOrders": 136,
+    "delayAvgDays": 0.8,
+    "returnRate": 2.4,
+    "revenueTotal": 175117.98,
+    "categories": [
+      "stationery"
+    ]
+  },
+  {
+    "sellerId": "seller_71",
+    "city": "Uberlandia",
+    "state": "MG",
+    "avgRating": 3.2,
+    "onTimePct": 63.0,
+    "totalOrders": 247,
+    "delayAvgDays": 3.0,
+    "returnRate": 7.0,
+    "revenueTotal": 235036.25,
+    "categories": [
+      "stationery",
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_72",
+    "city": "Goiania",
+    "state": "GO",
+    "avgRating": 4.0,
+    "onTimePct": 94.7,
+    "totalOrders": 175,
+    "delayAvgDays": 1.4,
+    "returnRate": 2.9,
+    "revenueTotal": 208620.38,
+    "categories": [
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_73",
+    "city": "Belem",
+    "state": "PA",
+    "avgRating": 2.2,
+    "onTimePct": 46.1,
+    "totalOrders": 50,
+    "delayAvgDays": 6.0,
+    "returnRate": 16.5,
+    "revenueTotal": 50761.45,
+    "categories": [
+      "furniture_decor",
+      "watches_gifts",
+      "garden_tools"
+    ]
+  },
+  {
+    "sellerId": "seller_74",
+    "city": "Curitiba",
+    "state": "PR",
+    "avgRating": 3.2,
+    "onTimePct": 76.1,
+    "totalOrders": 176,
+    "delayAvgDays": 2.8,
+    "returnRate": 4.7,
+    "revenueTotal": 91153.22,
+    "categories": [
+      "bed_bath_table",
+      "toys"
+    ]
+  },
+  {
+    "sellerId": "seller_75",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "avgRating": 4.8,
+    "onTimePct": 95.7,
+    "totalOrders": 19,
+    "delayAvgDays": 0.8,
+    "returnRate": 2.4,
+    "revenueTotal": 348672.79,
+    "categories": [
+      "perfumery",
+      "baby"
+    ]
+  },
+  {
+    "sellerId": "seller_76",
+    "city": "Osasco",
+    "state": "SP",
+    "avgRating": 3.6,
+    "onTimePct": 76.7,
+    "totalOrders": 140,
+    "delayAvgDays": 2.2,
+    "returnRate": 3.2,
+    "revenueTotal": 158982.75,
+    "categories": [
+      "audio",
+      "sports_leisure"
+    ]
+  },
+  {
+    "sellerId": "seller_77",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "avgRating": 4.0,
+    "onTimePct": 83.5,
+    "totalOrders": 168,
+    "delayAvgDays": 1.5,
+    "returnRate": 5.5,
+    "revenueTotal": 49245.75,
+    "categories": [
+      "computers_accessories",
+      "fashion_bags_accessories",
+      "telephony"
+    ]
+  },
+  {
+    "sellerId": "seller_78",
+    "city": "Sorocaba",
+    "state": "SP",
+    "avgRating": 2.6,
+    "onTimePct": 65.1,
+    "totalOrders": 150,
+    "delayAvgDays": 3.5,
+    "returnRate": 6.7,
+    "revenueTotal": 41381.48,
+    "categories": [
+      "housewares",
+      "telephony",
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_79",
+    "city": "Olinda",
+    "state": "PE",
+    "avgRating": 2.5,
+    "onTimePct": 66.0,
+    "totalOrders": 97,
+    "delayAvgDays": 3.3,
+    "returnRate": 9.9,
+    "revenueTotal": 200708.33,
+    "categories": [
+      "cool_stuff",
+      "pet_shop",
+      "stationery"
+    ]
+  },
+  {
+    "sellerId": "seller_80",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "avgRating": 4.9,
+    "onTimePct": 98.4,
+    "totalOrders": 297,
+    "delayAvgDays": 0.5,
+    "returnRate": 2.2,
+    "revenueTotal": 53331.48,
+    "categories": [
+      "stationery"
+    ]
+  },
+  {
+    "sellerId": "seller_81",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "avgRating": 4.5,
+    "onTimePct": 94.7,
+    "totalOrders": 142,
+    "delayAvgDays": 0.6,
+    "returnRate": 2.4,
+    "revenueTotal": 310605.8,
+    "categories": [
+      "computers_accessories",
+      "auto",
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_82",
+    "city": "Recife",
+    "state": "PE",
+    "avgRating": 2.5,
+    "onTimePct": 63.5,
+    "totalOrders": 105,
+    "delayAvgDays": 4.9,
+    "returnRate": 9.6,
+    "revenueTotal": 260431.92,
+    "categories": [
+      "electronics",
+      "sports_leisure"
+    ]
+  },
+  {
+    "sellerId": "seller_83",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 2.8,
+    "onTimePct": 72.1,
+    "totalOrders": 96,
+    "delayAvgDays": 4.8,
+    "returnRate": 6.2,
+    "revenueTotal": 301921.71,
+    "categories": [
+      "computers_accessories",
+      "garden_tools",
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_84",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "avgRating": 4.4,
+    "onTimePct": 88.5,
+    "totalOrders": 129,
+    "delayAvgDays": 1.7,
+    "returnRate": 3.7,
+    "revenueTotal": 145478.43,
+    "categories": [
+      "bed_bath_table"
+    ]
+  },
+  {
+    "sellerId": "seller_85",
+    "city": "Maringa",
+    "state": "PR",
+    "avgRating": 3.3,
+    "onTimePct": 65.0,
+    "totalOrders": 289,
+    "delayAvgDays": 4.6,
+    "returnRate": 7.0,
+    "revenueTotal": 308193.06,
+    "categories": [
+      "electronics",
+      "computers_accessories"
+    ]
+  },
+  {
+    "sellerId": "seller_86",
+    "city": "Londrina",
+    "state": "PR",
+    "avgRating": 4.5,
+    "onTimePct": 87.7,
+    "totalOrders": 175,
+    "delayAvgDays": 0.7,
+    "returnRate": 2.6,
+    "revenueTotal": 49319.57,
+    "categories": [
+      "perfumery",
+      "food_drink"
+    ]
+  },
+  {
+    "sellerId": "seller_87",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "avgRating": 4.3,
+    "onTimePct": 85.0,
+    "totalOrders": 115,
+    "delayAvgDays": 1.9,
+    "returnRate": 2.8,
+    "revenueTotal": 332617.33,
+    "categories": [
+      "stationery",
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_88",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 3.7,
+    "onTimePct": 76.6,
+    "totalOrders": 224,
+    "delayAvgDays": 3.3,
+    "returnRate": 4.5,
+    "revenueTotal": 198500.24,
+    "categories": [
+      "garden_tools",
+      "audio"
+    ]
+  },
+  {
+    "sellerId": "seller_89",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "avgRating": 4.5,
+    "onTimePct": 91.8,
+    "totalOrders": 169,
+    "delayAvgDays": 1.9,
+    "returnRate": 3.0,
+    "revenueTotal": 113317.48,
+    "categories": [
+      "pet_shop",
+      "electronics"
+    ]
+  },
+  {
+    "sellerId": "seller_90",
+    "city": "Uberlandia",
+    "state": "MG",
+    "avgRating": 4.2,
+    "onTimePct": 91.5,
+    "totalOrders": 124,
+    "delayAvgDays": 1.2,
+    "returnRate": 2.6,
+    "revenueTotal": 106487.38,
+    "categories": [
+      "housewares",
+      "sports_leisure",
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_91",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 5.0,
+    "onTimePct": 94.4,
+    "totalOrders": 90,
+    "delayAvgDays": 0.3,
+    "returnRate": 2.1,
+    "revenueTotal": 93246.46,
+    "categories": [
+      "health_beauty"
+    ]
+  },
+  {
+    "sellerId": "seller_92",
+    "city": "Fortaleza",
+    "state": "CE",
+    "avgRating": 3.8,
+    "onTimePct": 80.9,
+    "totalOrders": 211,
+    "delayAvgDays": 3.3,
+    "returnRate": 4.7,
+    "revenueTotal": 60174.26,
+    "categories": [
+      "garden_tools",
+      "watches_gifts"
+    ]
+  },
+  {
+    "sellerId": "seller_93",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "avgRating": 3.2,
+    "onTimePct": 75.9,
+    "totalOrders": 280,
+    "delayAvgDays": 4.9,
+    "returnRate": 6.1,
+    "revenueTotal": 94727.42,
+    "categories": [
+      "health_beauty",
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_94",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "avgRating": 3.8,
+    "onTimePct": 83.7,
+    "totalOrders": 241,
+    "delayAvgDays": 3.5,
+    "returnRate": 4.8,
+    "revenueTotal": 161610.63,
+    "categories": [
+      "food_drink",
+      "stationery",
+      "pet_shop"
+    ]
+  },
+  {
+    "sellerId": "seller_95",
+    "city": "Petropolis",
+    "state": "RJ",
+    "avgRating": 2.9,
+    "onTimePct": 64.7,
+    "totalOrders": 281,
+    "delayAvgDays": 3.6,
+    "returnRate": 8.2,
+    "revenueTotal": 159556.68,
+    "categories": [
+      "watches_gifts",
+      "telephony"
+    ]
+  },
+  {
+    "sellerId": "seller_96",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "avgRating": 4.0,
+    "onTimePct": 93.9,
+    "totalOrders": 211,
+    "delayAvgDays": 0.6,
+    "returnRate": 1.9,
+    "revenueTotal": 151055.08,
+    "categories": [
+      "fashion_bags_accessories",
+      "bed_bath_table",
+      "furniture_decor"
+    ]
+  },
+  {
+    "sellerId": "seller_97",
+    "city": "Florianopolis",
+    "state": "SC",
+    "avgRating": 3.5,
+    "onTimePct": 77.7,
+    "totalOrders": 25,
+    "delayAvgDays": 2.3,
+    "returnRate": 5.7,
+    "revenueTotal": 330532.16,
+    "categories": [
+      "garden_tools",
+      "housewares",
+      "electronics"
+    ]
+  },
+  {
+    "sellerId": "seller_98",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "avgRating": 3.2,
+    "onTimePct": 77.2,
+    "totalOrders": 294,
+    "delayAvgDays": 4.0,
+    "returnRate": 8.7,
+    "revenueTotal": 102798.01,
+    "categories": [
+      "watches_gifts",
+      "housewares",
+      "perfumery"
+    ]
+  },
+  {
+    "sellerId": "seller_99",
+    "city": "Goiania",
+    "state": "GO",
+    "avgRating": 4.6,
+    "onTimePct": 97.1,
+    "totalOrders": 254,
+    "delayAvgDays": 0.4,
+    "returnRate": 0.8,
+    "revenueTotal": 191602.03,
+    "categories": [
+      "perfumery"
+    ]
+  },
+  {
+    "sellerId": "seller_100",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "avgRating": 3.7,
+    "onTimePct": 76.1,
+    "totalOrders": 108,
+    "delayAvgDays": 2.4,
+    "returnRate": 5.6,
+    "revenueTotal": 138895.31,
+    "categories": [
+      "telephony"
+    ]
+  },
+  {
+    "sellerId": "seller_101",
+    "city": "Uberlandia",
+    "state": "MG",
+    "avgRating": 3.5,
+    "onTimePct": 86.4,
+    "totalOrders": 230,
+    "delayAvgDays": 2.1,
+    "returnRate": 5.9,
+    "revenueTotal": 16590.32,
+    "categories": [
+      "furniture_decor",
+      "housewares"
+    ]
+  },
+  {
+    "sellerId": "seller_102",
+    "city": "Guarulhos",
+    "state": "SP",
+    "avgRating": 2.0,
+    "onTimePct": 58.0,
+    "totalOrders": 30,
+    "delayAvgDays": 7.1,
+    "returnRate": 14.5,
+    "revenueTotal": 295337.81,
+    "categories": [
+      "bed_bath_table"
+    ]
+  }
+]

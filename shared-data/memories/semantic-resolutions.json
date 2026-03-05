@@ -1,0 +1,72 @@
+[
+  {
+    "text": "Late delivery resolution for São Paulo region: For delays >7 days, standard protocol is 15% refund + priority shipping on next order. This approach yields 87% customer satisfaction recovery rate.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["delivery_delay", "são_paulo", "resolution"],
+    "entities": ["são_paulo_region"]
+  },
+  {
+    "text": "Product quality mismatch resolution: When product does not match listing description, offer full return with prepaid shipping label + full refund OR replacement with expedited shipping. Document seller for quality review.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["product_quality", "mismatch", "resolution"],
+    "entities": []
+  },
+  {
+    "text": "Payment dispute resolution: For credit card disputes, initiate chargeback reversal within 48 hours. For boleto overpayments, process refund to customer's bank account within 5 business days.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["payment", "refund", "dispute"],
+    "entities": []
+  },
+  {
+    "text": "Repeat offender seller protocol: When a seller has >30% late delivery rate AND avg rating <3.0, flag for marketplace review. Offer affected customers 20% discount on next purchase from alternative seller.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["seller_management", "repeat_offender", "escalation"],
+    "entities": []
+  },
+  {
+    "text": "Customer retention for multi-complaint customers: If customer has >2 complaints in 6 months, assign dedicated support agent and offer loyalty credit of R$50. Retention rate improves 34% with this approach.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["customer_retention", "multi_complaint", "loyalty"],
+    "entities": []
+  },
+  {
+    "text": "Electronics category quality benchmark: Electronics products should maintain >3.5 avg review score. Categories below 3.0 trigger automatic seller quality audit. Current electronics avg: 2.9 (below threshold).",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["electronics", "quality_benchmark", "category_management"],
+    "entities": ["electronics_category"]
+  },
+  {
+    "text": "Regional delivery expectations: São Paulo metro delivers in 3-5 days. Rio metro in 4-6 days. Northeast region 7-12 days. North region (Manaus) 10-15 days. Set customer expectations accordingly.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["delivery", "regional", "expectations"],
+    "entities": []
+  },
+  {
+    "text": "Holiday season compensation policy: During November-January peak season, increase delay tolerance by 2 days before triggering compensation. However, maintain full compensation for delays >7 days regardless of season.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["holiday", "compensation", "policy"],
+    "entities": []
+  },
+  {
+    "text": "Defective product return process: Customer initiates return via portal. Seller must respond within 48 hours. If seller does not respond, marketplace auto-approves return and debits seller account.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["return", "defective", "process"],
+    "entities": []
+  },
+  {
+    "text": "Customer communication best practices: Always acknowledge the issue first, then provide specific timeline for resolution. Include order number in all communications. Follow up within 24 hours of resolution.",
+    "memoryType": "semantic",
+    "userId": "system",
+    "topics": ["communication", "best_practices", "customer_service"],
+    "entities": []
+  }
+]

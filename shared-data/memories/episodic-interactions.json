@@ -1,0 +1,72 @@
+[
+  {
+    "text": "2018-01-15: Order ORD_D4E5F6, customer cust_1234 reported delivery 7 days late. Seller seller_42 (São Paulo). Screen was cracked on arrival. Offered full refund + R$30 store credit. Customer accepted.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_42", "damaged_product"],
+    "entities": ["cust_1234", "seller_42", "ORD_D4E5F6"]
+  },
+  {
+    "text": "2017-10-18: Order ORD_G7H8I9, customer cust_1234 third complaint about seller_42. Product arrived 6 days late and damaged. Customer noted 'third time with this seller'. Escalated to seller management team.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_42", "repeat_complaint", "escalation"],
+    "entities": ["cust_1234", "seller_42", "ORD_G7H8I9"]
+  },
+  {
+    "text": "2017-10-25: Order ORD_O4P5Q6, customer cust_0123 reported product description mismatch — ordered 128GB received 64GB. 8 days late. Processed full refund and reported seller_42 to quality team.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["product_mismatch", "seller_42", "refund"],
+    "entities": ["cust_0123", "seller_42", "ORD_O4P5Q6"]
+  },
+  {
+    "text": "2017-11-05: Order ORD_LATE01, customer cust_3456 complained about seller_42 being 9 days late. Customer stated 'worst seller ever'. Offered 15% refund per SOP. Customer demanded full refund, which was granted.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_42", "full_refund"],
+    "entities": ["cust_3456", "seller_42", "ORD_LATE01"]
+  },
+  {
+    "text": "2018-01-04: Order ORD_K1L2M3, customer cust_3456 received two broken items from seller_42, both a week late. Worst case this quarter. Full refund processed, seller_42 received final warning.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "product_quality", "seller_42", "multi_issue"],
+    "entities": ["cust_3456", "seller_42", "ORD_K1L2M3"]
+  },
+  {
+    "text": "2017-11-15: Order ORD_LATE02, customer cust_2345 complained 7 days late delivery from seller_42. Standard 15% refund applied. Customer satisfied with resolution.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_42", "standard_resolution"],
+    "entities": ["cust_2345", "seller_42", "ORD_LATE02"]
+  },
+  {
+    "text": "2017-10-28: Order ORD_T1U2V3, customer cust_2345 reported 6-day delay from seller_42. Offered 10% refund. Customer left 1-star review despite resolution.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_42", "negative_review"],
+    "entities": ["cust_2345", "seller_42", "ORD_T1U2V3"]
+  },
+  {
+    "text": "2017-11-22: Order ORD_W4X5Y6, customer cust_2345 reported defective product from seller_18 (Campinas). 7 days late. Return processed successfully. Seller_18 flagged for quality review.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "product_defective", "seller_18", "return"],
+    "entities": ["cust_2345", "seller_18", "ORD_W4X5Y6"]
+  },
+  {
+    "text": "2017-10-09: Order ORD_GOOD01, positive interaction — seller_7 delivered 3 days early. Customer cust_5678 left glowing 5-star review. Seller_7 maintains 98% on-time rate.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["positive_experience", "seller_7", "early_delivery"],
+    "entities": ["cust_5678", "seller_7", "ORD_GOOD01"]
+  },
+  {
+    "text": "2017-12-24: Order ORD_LATE04, customer cust_6789 extremely upset — gift arrived 7 days late, after Christmas. Full refund + R$50 store credit. Seller_33 (Brasília) flagged for holiday season reliability.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery_delay", "seller_33", "holiday", "full_refund"],
+    "entities": ["cust_6789", "seller_33", "ORD_LATE04"]
+  }
+]

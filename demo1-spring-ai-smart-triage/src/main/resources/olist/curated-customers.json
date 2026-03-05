@@ -1,0 +1,2402 @@
+[
+  {
+    "customerId": "cust_1234",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 9,
+    "avgReviewScore": 2.9,
+    "totalSpent": 2126.32
+  },
+  {
+    "customerId": "cust_5678",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 5,
+    "avgReviewScore": 4.4,
+    "totalSpent": 917.58
+  },
+  {
+    "customerId": "cust_9012",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 4,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1016.15
+  },
+  {
+    "customerId": "cust_3456",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 7,
+    "avgReviewScore": 3.4,
+    "totalSpent": 1879.88
+  },
+  {
+    "customerId": "cust_7890",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 3,
+    "avgReviewScore": 3.7,
+    "totalSpent": 876.05
+  },
+  {
+    "customerId": "cust_2345",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 6,
+    "avgReviewScore": 2.3,
+    "totalSpent": 902.6
+  },
+  {
+    "customerId": "cust_6789",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 4,
+    "avgReviewScore": 3.8,
+    "totalSpent": 1000.61
+  },
+  {
+    "customerId": "cust_0123",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 1.5,
+    "totalSpent": 970.7
+  },
+  {
+    "customerId": "cust_4567",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 3,
+    "avgReviewScore": 2.0,
+    "totalSpent": 742.02
+  },
+  {
+    "customerId": "cust_8901",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 9,
+    "avgReviewScore": 3.2,
+    "totalSpent": 2647.28
+  },
+  {
+    "customerId": "cust_0100",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.0,
+    "totalSpent": 600.96
+  },
+  {
+    "customerId": "cust_0101",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 3.6,
+    "totalSpent": 3752.23
+  },
+  {
+    "customerId": "cust_0102",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 760.21
+  },
+  {
+    "customerId": "cust_0103",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 6,
+    "avgReviewScore": 2.8,
+    "totalSpent": 4710.28
+  },
+  {
+    "customerId": "cust_0104",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 3.0,
+    "totalSpent": 595.04
+  },
+  {
+    "customerId": "cust_0105",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 3.0,
+    "totalSpent": 687.47
+  },
+  {
+    "customerId": "cust_0106",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 171.49
+  },
+  {
+    "customerId": "cust_0107",
+    "city": "Olinda",
+    "state": "PE",
+    "orderCount": 3,
+    "avgReviewScore": 4.4,
+    "totalSpent": 3551.18
+  },
+  {
+    "customerId": "cust_0108",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 1.7,
+    "totalSpent": 865.18
+  },
+  {
+    "customerId": "cust_0109",
+    "city": "Manaus",
+    "state": "AM",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 716.15
+  },
+  {
+    "customerId": "cust_0110",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 491.3
+  },
+  {
+    "customerId": "cust_0111",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 2.1,
+    "totalSpent": 1099.99
+  },
+  {
+    "customerId": "cust_0112",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 789.77
+  },
+  {
+    "customerId": "cust_0113",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 427.87
+  },
+  {
+    "customerId": "cust_0114",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 206.69
+  },
+  {
+    "customerId": "cust_0115",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 631.04
+  },
+  {
+    "customerId": "cust_0116",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 319.4
+  },
+  {
+    "customerId": "cust_0117",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 2.8,
+    "totalSpent": 1149.35
+  },
+  {
+    "customerId": "cust_0118",
+    "city": "Vitoria",
+    "state": "ES",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 459.07
+  },
+  {
+    "customerId": "cust_0119",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 907.32
+  },
+  {
+    "customerId": "cust_0120",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 1.9,
+    "totalSpent": 4348.88
+  },
+  {
+    "customerId": "cust_0121",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.7,
+    "totalSpent": 1323.75
+  },
+  {
+    "customerId": "cust_0122",
+    "city": "Nova Iguacu",
+    "state": "RJ",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 118.71
+  },
+  {
+    "customerId": "cust_0124",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 415.88
+  },
+  {
+    "customerId": "cust_0125",
+    "city": "Niteroi",
+    "state": "RJ",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 360.72
+  },
+  {
+    "customerId": "cust_0126",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 259.67
+  },
+  {
+    "customerId": "cust_0127",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 104.24
+  },
+  {
+    "customerId": "cust_0128",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.3,
+    "totalSpent": 1091.68
+  },
+  {
+    "customerId": "cust_0129",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 344.63
+  },
+  {
+    "customerId": "cust_0130",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 942.76
+  },
+  {
+    "customerId": "cust_0131",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 88.77
+  },
+  {
+    "customerId": "cust_0132",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 349.94
+  },
+  {
+    "customerId": "cust_0133",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.7,
+    "totalSpent": 4141.82
+  },
+  {
+    "customerId": "cust_0134",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.4,
+    "totalSpent": 4609.9
+  },
+  {
+    "customerId": "cust_0135",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.8,
+    "totalSpent": 2527.34
+  },
+  {
+    "customerId": "cust_0136",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 4,
+    "avgReviewScore": 4.0,
+    "totalSpent": 1627.83
+  },
+  {
+    "customerId": "cust_0137",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 7,
+    "avgReviewScore": 4.4,
+    "totalSpent": 2897.24
+  },
+  {
+    "customerId": "cust_0138",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 6,
+    "avgReviewScore": 3.2,
+    "totalSpent": 2341.8
+  },
+  {
+    "customerId": "cust_0139",
+    "city": "Nova Iguacu",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 942.5
+  },
+  {
+    "customerId": "cust_0140",
+    "city": "Olinda",
+    "state": "PE",
+    "orderCount": 2,
+    "avgReviewScore": 1.8,
+    "totalSpent": 1772.41
+  },
+  {
+    "customerId": "cust_0141",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.0,
+    "totalSpent": 801.51
+  },
+  {
+    "customerId": "cust_0142",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 771.47
+  },
+  {
+    "customerId": "cust_0143",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.2,
+    "totalSpent": 4331.31
+  },
+  {
+    "customerId": "cust_0144",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 1.8,
+    "totalSpent": 1026.12
+  },
+  {
+    "customerId": "cust_0145",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 305.48
+  },
+  {
+    "customerId": "cust_0146",
+    "city": "Maringa",
+    "state": "PR",
+    "orderCount": 4,
+    "avgReviewScore": 3.2,
+    "totalSpent": 1404.47
+  },
+  {
+    "customerId": "cust_0147",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 2.6,
+    "totalSpent": 117.69
+  },
+  {
+    "customerId": "cust_0148",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.0,
+    "totalSpent": 618.04
+  },
+  {
+    "customerId": "cust_0149",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 2106.68
+  },
+  {
+    "customerId": "cust_0150",
+    "city": "Fortaleza",
+    "state": "CE",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 820.55
+  },
+  {
+    "customerId": "cust_0151",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 1,
+    "avgReviewScore": 1.7,
+    "totalSpent": 3874.74
+  },
+  {
+    "customerId": "cust_0152",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 1019.23
+  },
+  {
+    "customerId": "cust_0153",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 413.14
+  },
+  {
+    "customerId": "cust_0154",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 3,
+    "avgReviewScore": 2.5,
+    "totalSpent": 1392.49
+  },
+  {
+    "customerId": "cust_0155",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.1,
+    "totalSpent": 3540.88
+  },
+  {
+    "customerId": "cust_0156",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 321.09
+  },
+  {
+    "customerId": "cust_0157",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 121.52
+  },
+  {
+    "customerId": "cust_0158",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 605.9
+  },
+  {
+    "customerId": "cust_0159",
+    "city": "Niteroi",
+    "state": "RJ",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 453.9
+  },
+  {
+    "customerId": "cust_0160",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 339.41
+  },
+  {
+    "customerId": "cust_0161",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 398.05
+  },
+  {
+    "customerId": "cust_0162",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 527.48
+  },
+  {
+    "customerId": "cust_0163",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "orderCount": 2,
+    "avgReviewScore": 1.8,
+    "totalSpent": 3187.05
+  },
+  {
+    "customerId": "cust_0164",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 603.84
+  },
+  {
+    "customerId": "cust_0165",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.0,
+    "totalSpent": 1208.2
+  },
+  {
+    "customerId": "cust_0166",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.8,
+    "totalSpent": 3431.52
+  },
+  {
+    "customerId": "cust_0167",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 3.1,
+    "totalSpent": 1307.19
+  },
+  {
+    "customerId": "cust_0168",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 6,
+    "avgReviewScore": 3.1,
+    "totalSpent": 1473.78
+  },
+  {
+    "customerId": "cust_0169",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.3,
+    "totalSpent": 874.41
+  },
+  {
+    "customerId": "cust_0170",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 244.65
+  },
+  {
+    "customerId": "cust_0171",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 236.33
+  },
+  {
+    "customerId": "cust_0172",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.0,
+    "totalSpent": 873.72
+  },
+  {
+    "customerId": "cust_0173",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 429.4
+  },
+  {
+    "customerId": "cust_0174",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 4.0,
+    "totalSpent": 3312.95
+  },
+  {
+    "customerId": "cust_0175",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 753.86
+  },
+  {
+    "customerId": "cust_0176",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 0.0,
+    "totalSpent": 533.58
+  },
+  {
+    "customerId": "cust_0177",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 4.6,
+    "totalSpent": 1860.99
+  },
+  {
+    "customerId": "cust_0178",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 235.42
+  },
+  {
+    "customerId": "cust_0179",
+    "city": "Fortaleza",
+    "state": "CE",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 400.58
+  },
+  {
+    "customerId": "cust_0180",
+    "city": "Manaus",
+    "state": "AM",
+    "orderCount": 2,
+    "avgReviewScore": 1.5,
+    "totalSpent": 841.66
+  },
+  {
+    "customerId": "cust_0181",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "orderCount": 2,
+    "avgReviewScore": 1.5,
+    "totalSpent": 1080.43
+  },
+  {
+    "customerId": "cust_0182",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.9,
+    "totalSpent": 3378.09
+  },
+  {
+    "customerId": "cust_0183",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 7,
+    "avgReviewScore": 1.9,
+    "totalSpent": 1207.42
+  },
+  {
+    "customerId": "cust_0184",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 7,
+    "avgReviewScore": 2.6,
+    "totalSpent": 3069.91
+  },
+  {
+    "customerId": "cust_0185",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.0,
+    "totalSpent": 3263.74
+  },
+  {
+    "customerId": "cust_0186",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 335.34
+  },
+  {
+    "customerId": "cust_0187",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 585.21
+  },
+  {
+    "customerId": "cust_0188",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 453.85
+  },
+  {
+    "customerId": "cust_0189",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 7,
+    "avgReviewScore": 2.5,
+    "totalSpent": 3466.89
+  },
+  {
+    "customerId": "cust_0190",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 455.5
+  },
+  {
+    "customerId": "cust_0191",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 396.81
+  },
+  {
+    "customerId": "cust_0192",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 7,
+    "avgReviewScore": 4.4,
+    "totalSpent": 503.78
+  },
+  {
+    "customerId": "cust_0193",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 1.6,
+    "totalSpent": 3944.63
+  },
+  {
+    "customerId": "cust_0194",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 4,
+    "avgReviewScore": 2.2,
+    "totalSpent": 4157.6
+  },
+  {
+    "customerId": "cust_0195",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 333.78
+  },
+  {
+    "customerId": "cust_0196",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 8,
+    "avgReviewScore": 3.4,
+    "totalSpent": 4002.64
+  },
+  {
+    "customerId": "cust_0197",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.6,
+    "totalSpent": 3960.42
+  },
+  {
+    "customerId": "cust_0198",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 596.39
+  },
+  {
+    "customerId": "cust_0199",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 191.0
+  },
+  {
+    "customerId": "cust_0200",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 2,
+    "avgReviewScore": 2.3,
+    "totalSpent": 3094.78
+  },
+  {
+    "customerId": "cust_0201",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 3.2,
+    "totalSpent": 2038.01
+  },
+  {
+    "customerId": "cust_0202",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 698.81
+  },
+  {
+    "customerId": "cust_0203",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.5,
+    "totalSpent": 3575.16
+  },
+  {
+    "customerId": "cust_0204",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 2,
+    "avgReviewScore": 3.1,
+    "totalSpent": 3046.86
+  },
+  {
+    "customerId": "cust_0205",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.3,
+    "totalSpent": 1289.81
+  },
+  {
+    "customerId": "cust_0206",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 6,
+    "avgReviewScore": 2.9,
+    "totalSpent": 4145.73
+  },
+  {
+    "customerId": "cust_0207",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 193.28
+  },
+  {
+    "customerId": "cust_0208",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 3,
+    "avgReviewScore": 3.2,
+    "totalSpent": 501.56
+  },
+  {
+    "customerId": "cust_0209",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 299.29
+  },
+  {
+    "customerId": "cust_0210",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 826.18
+  },
+  {
+    "customerId": "cust_0211",
+    "city": "Joinville",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 40.1
+  },
+  {
+    "customerId": "cust_0212",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 3.8,
+    "totalSpent": 1995.6
+  },
+  {
+    "customerId": "cust_0213",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 236.31
+  },
+  {
+    "customerId": "cust_0214",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 84.74
+  },
+  {
+    "customerId": "cust_0215",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.9,
+    "totalSpent": 193.32
+  },
+  {
+    "customerId": "cust_0216",
+    "city": "Maringa",
+    "state": "PR",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 603.0
+  },
+  {
+    "customerId": "cust_0217",
+    "city": "Niteroi",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 2.0,
+    "totalSpent": 3184.2
+  },
+  {
+    "customerId": "cust_0218",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 897.58
+  },
+  {
+    "customerId": "cust_0219",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 280.43
+  },
+  {
+    "customerId": "cust_0220",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.5,
+    "totalSpent": 3326.6
+  },
+  {
+    "customerId": "cust_0221",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 2,
+    "avgReviewScore": 2.3,
+    "totalSpent": 2586.11
+  },
+  {
+    "customerId": "cust_0222",
+    "city": "Joinville",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 3.9,
+    "totalSpent": 2458.83
+  },
+  {
+    "customerId": "cust_0223",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 755.93
+  },
+  {
+    "customerId": "cust_0224",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 4,
+    "avgReviewScore": 2.5,
+    "totalSpent": 643.92
+  },
+  {
+    "customerId": "cust_0225",
+    "city": "Goiania",
+    "state": "GO",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 389.95
+  },
+  {
+    "customerId": "cust_0226",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 419.76
+  },
+  {
+    "customerId": "cust_0227",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 368.06
+  },
+  {
+    "customerId": "cust_0228",
+    "city": "Olinda",
+    "state": "PE",
+    "orderCount": 4,
+    "avgReviewScore": 3.0,
+    "totalSpent": 620.11
+  },
+  {
+    "customerId": "cust_0229",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.3,
+    "totalSpent": 1383.28
+  },
+  {
+    "customerId": "cust_0230",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 249.4
+  },
+  {
+    "customerId": "cust_0231",
+    "city": "Feira de Santana",
+    "state": "BA",
+    "orderCount": 4,
+    "avgReviewScore": 2.3,
+    "totalSpent": 3906.63
+  },
+  {
+    "customerId": "cust_0232",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 556.27
+  },
+  {
+    "customerId": "cust_0233",
+    "city": "Joinville",
+    "state": "SC",
+    "orderCount": 7,
+    "avgReviewScore": 3.8,
+    "totalSpent": 781.06
+  },
+  {
+    "customerId": "cust_0234",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 3807.8
+  },
+  {
+    "customerId": "cust_0235",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 2918.37
+  },
+  {
+    "customerId": "cust_0236",
+    "city": "Pelotas",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 516.78
+  },
+  {
+    "customerId": "cust_0237",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 84.78
+  },
+  {
+    "customerId": "cust_0238",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.3,
+    "totalSpent": 866.25
+  },
+  {
+    "customerId": "cust_0239",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 217.34
+  },
+  {
+    "customerId": "cust_0240",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1058.13
+  },
+  {
+    "customerId": "cust_0241",
+    "city": "Fortaleza",
+    "state": "CE",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 59.93
+  },
+  {
+    "customerId": "cust_0242",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 3.8,
+    "totalSpent": 243.75
+  },
+  {
+    "customerId": "cust_0243",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 2,
+    "avgReviewScore": 3.6,
+    "totalSpent": 1851.29
+  },
+  {
+    "customerId": "cust_0244",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 352.21
+  },
+  {
+    "customerId": "cust_0245",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 410.35
+  },
+  {
+    "customerId": "cust_0246",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 304.58
+  },
+  {
+    "customerId": "cust_0247",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 165.39
+  },
+  {
+    "customerId": "cust_0248",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 4,
+    "avgReviewScore": 2.0,
+    "totalSpent": 890.64
+  },
+  {
+    "customerId": "cust_0249",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 69.98
+  },
+  {
+    "customerId": "cust_0250",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.3,
+    "totalSpent": 1254.37
+  },
+  {
+    "customerId": "cust_0251",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 3,
+    "avgReviewScore": 2.3,
+    "totalSpent": 1521.82
+  },
+  {
+    "customerId": "cust_0252",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 3.7,
+    "totalSpent": 3006.37
+  },
+  {
+    "customerId": "cust_0253",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 159.31
+  },
+  {
+    "customerId": "cust_0254",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 3.0,
+    "totalSpent": 276.99
+  },
+  {
+    "customerId": "cust_0255",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 2.3,
+    "totalSpent": 1076.25
+  },
+  {
+    "customerId": "cust_0256",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 510.07
+  },
+  {
+    "customerId": "cust_0257",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 852.19
+  },
+  {
+    "customerId": "cust_0258",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 434.3
+  },
+  {
+    "customerId": "cust_0259",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 4.5,
+    "totalSpent": 4263.27
+  },
+  {
+    "customerId": "cust_0260",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 1.0,
+    "totalSpent": 1386.24
+  },
+  {
+    "customerId": "cust_0261",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 179.44
+  },
+  {
+    "customerId": "cust_0262",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 895.75
+  },
+  {
+    "customerId": "cust_0263",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 3.8,
+    "totalSpent": 3967.33
+  },
+  {
+    "customerId": "cust_0264",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 2.0,
+    "totalSpent": 3542.4
+  },
+  {
+    "customerId": "cust_0265",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 585.83
+  },
+  {
+    "customerId": "cust_0266",
+    "city": "Niteroi",
+    "state": "RJ",
+    "orderCount": 4,
+    "avgReviewScore": 3.3,
+    "totalSpent": 600.37
+  },
+  {
+    "customerId": "cust_0267",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 557.15
+  },
+  {
+    "customerId": "cust_0268",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 652.78
+  },
+  {
+    "customerId": "cust_0269",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 966.66
+  },
+  {
+    "customerId": "cust_0270",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 523.11
+  },
+  {
+    "customerId": "cust_0271",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 235.58
+  },
+  {
+    "customerId": "cust_0272",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 78.58
+  },
+  {
+    "customerId": "cust_0273",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 285.83
+  },
+  {
+    "customerId": "cust_0274",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 2.8,
+    "totalSpent": 1941.43
+  },
+  {
+    "customerId": "cust_0275",
+    "city": "Manaus",
+    "state": "AM",
+    "orderCount": 2,
+    "avgReviewScore": 2.1,
+    "totalSpent": 717.52
+  },
+  {
+    "customerId": "cust_0276",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.2,
+    "totalSpent": 257.43
+  },
+  {
+    "customerId": "cust_0277",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 342.87
+  },
+  {
+    "customerId": "cust_0278",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 377.77
+  },
+  {
+    "customerId": "cust_0279",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 715.84
+  },
+  {
+    "customerId": "cust_0280",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 3.2,
+    "totalSpent": 4625.34
+  },
+  {
+    "customerId": "cust_0281",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 565.84
+  },
+  {
+    "customerId": "cust_0282",
+    "city": "Nova Iguacu",
+    "state": "RJ",
+    "orderCount": 3,
+    "avgReviewScore": 1.0,
+    "totalSpent": 1257.95
+  },
+  {
+    "customerId": "cust_0283",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 4,
+    "avgReviewScore": 2.1,
+    "totalSpent": 2247.35
+  },
+  {
+    "customerId": "cust_0284",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 574.92
+  },
+  {
+    "customerId": "cust_0285",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.3,
+    "totalSpent": 3413.08
+  },
+  {
+    "customerId": "cust_0286",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.7,
+    "totalSpent": 3903.65
+  },
+  {
+    "customerId": "cust_0287",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 7,
+    "avgReviewScore": 1.6,
+    "totalSpent": 809.52
+  },
+  {
+    "customerId": "cust_0288",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 659.76
+  },
+  {
+    "customerId": "cust_0289",
+    "city": "Vitoria",
+    "state": "ES",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1000.1
+  },
+  {
+    "customerId": "cust_0290",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 517.47
+  },
+  {
+    "customerId": "cust_0291",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 4,
+    "avgReviewScore": 2.3,
+    "totalSpent": 3078.79
+  },
+  {
+    "customerId": "cust_0292",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 3.1,
+    "totalSpent": 4498.46
+  },
+  {
+    "customerId": "cust_0293",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 2,
+    "avgReviewScore": 1.5,
+    "totalSpent": 497.77
+  },
+  {
+    "customerId": "cust_0294",
+    "city": "Joinville",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 495.35
+  },
+  {
+    "customerId": "cust_0295",
+    "city": "Petropolis",
+    "state": "RJ",
+    "orderCount": 6,
+    "avgReviewScore": 3.7,
+    "totalSpent": 3978.8
+  },
+  {
+    "customerId": "cust_0296",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 553.72
+  },
+  {
+    "customerId": "cust_0297",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 546.55
+  },
+  {
+    "customerId": "cust_0298",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 790.3
+  },
+  {
+    "customerId": "cust_0299",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 1,
+    "avgReviewScore": 4.9,
+    "totalSpent": 3229.58
+  },
+  {
+    "customerId": "cust_0300",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 2,
+    "avgReviewScore": 1.9,
+    "totalSpent": 4153.82
+  },
+  {
+    "customerId": "cust_0301",
+    "city": "Nova Iguacu",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 427.97
+  },
+  {
+    "customerId": "cust_0302",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 348.91
+  },
+  {
+    "customerId": "cust_0303",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 289.89
+  },
+  {
+    "customerId": "cust_0304",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 139.44
+  },
+  {
+    "customerId": "cust_0305",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 518.17
+  },
+  {
+    "customerId": "cust_0306",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 742.32
+  },
+  {
+    "customerId": "cust_0307",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 115.87
+  },
+  {
+    "customerId": "cust_0308",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.8,
+    "totalSpent": 346.57
+  },
+  {
+    "customerId": "cust_0309",
+    "city": "Brasilia",
+    "state": "DF",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 474.45
+  },
+  {
+    "customerId": "cust_0310",
+    "city": "Pelotas",
+    "state": "RS",
+    "orderCount": 5,
+    "avgReviewScore": 4.9,
+    "totalSpent": 697.29
+  },
+  {
+    "customerId": "cust_0311",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 1079.45
+  },
+  {
+    "customerId": "cust_0312",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 830.89
+  },
+  {
+    "customerId": "cust_0313",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.7,
+    "totalSpent": 1084.54
+  },
+  {
+    "customerId": "cust_0314",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 2,
+    "avgReviewScore": 3.3,
+    "totalSpent": 2518.86
+  },
+  {
+    "customerId": "cust_0315",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1034.61
+  },
+  {
+    "customerId": "cust_0316",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 885.8
+  },
+  {
+    "customerId": "cust_0317",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 671.01
+  },
+  {
+    "customerId": "cust_0318",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 401.6
+  },
+  {
+    "customerId": "cust_0319",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 95.18
+  },
+  {
+    "customerId": "cust_0320",
+    "city": "Maringa",
+    "state": "PR",
+    "orderCount": 3,
+    "avgReviewScore": 3.6,
+    "totalSpent": 686.88
+  },
+  {
+    "customerId": "cust_0321",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 4.0,
+    "totalSpent": 1430.4
+  },
+  {
+    "customerId": "cust_0322",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 6,
+    "avgReviewScore": 1.7,
+    "totalSpent": 2070.13
+  },
+  {
+    "customerId": "cust_0323",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 684.87
+  },
+  {
+    "customerId": "cust_0324",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 5.0,
+    "totalSpent": 836.27
+  },
+  {
+    "customerId": "cust_0325",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 3.3,
+    "totalSpent": 2474.74
+  },
+  {
+    "customerId": "cust_0326",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 534.89
+  },
+  {
+    "customerId": "cust_0327",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 4,
+    "avgReviewScore": 4.0,
+    "totalSpent": 3455.82
+  },
+  {
+    "customerId": "cust_0328",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 1.5,
+    "totalSpent": 761.92
+  },
+  {
+    "customerId": "cust_0329",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 2.1,
+    "totalSpent": 3163.67
+  },
+  {
+    "customerId": "cust_0330",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 786.68
+  },
+  {
+    "customerId": "cust_0331",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1163.6
+  },
+  {
+    "customerId": "cust_0332",
+    "city": "Belem",
+    "state": "PA",
+    "orderCount": 6,
+    "avgReviewScore": 4.6,
+    "totalSpent": 3692.39
+  },
+  {
+    "customerId": "cust_0333",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 240.16
+  },
+  {
+    "customerId": "cust_0334",
+    "city": "Fortaleza",
+    "state": "CE",
+    "orderCount": 1,
+    "avgReviewScore": 0.0,
+    "totalSpent": 580.84
+  },
+  {
+    "customerId": "cust_0335",
+    "city": "Florianopolis",
+    "state": "SC",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 546.02
+  },
+  {
+    "customerId": "cust_0336",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 226.64
+  },
+  {
+    "customerId": "cust_0337",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 5.0,
+    "totalSpent": 1316.97
+  },
+  {
+    "customerId": "cust_0338",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 218.6
+  },
+  {
+    "customerId": "cust_0339",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 112.87
+  },
+  {
+    "customerId": "cust_0340",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.0,
+    "totalSpent": 523.35
+  },
+  {
+    "customerId": "cust_0341",
+    "city": "Londrina",
+    "state": "PR",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 438.71
+  },
+  {
+    "customerId": "cust_0342",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 3.5,
+    "totalSpent": 1429.97
+  },
+  {
+    "customerId": "cust_0343",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 555.67
+  },
+  {
+    "customerId": "cust_0344",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 1.3,
+    "totalSpent": 1234.45
+  },
+  {
+    "customerId": "cust_0345",
+    "city": "Fortaleza",
+    "state": "CE",
+    "orderCount": 4,
+    "avgReviewScore": 2.5,
+    "totalSpent": 1462.81
+  },
+  {
+    "customerId": "cust_0346",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 6,
+    "avgReviewScore": 4.5,
+    "totalSpent": 1632.05
+  },
+  {
+    "customerId": "cust_0347",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.6,
+    "totalSpent": 920.15
+  },
+  {
+    "customerId": "cust_0348",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 803.34
+  },
+  {
+    "customerId": "cust_0349",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "orderCount": 1,
+    "avgReviewScore": 3.5,
+    "totalSpent": 581.14
+  },
+  {
+    "customerId": "cust_0350",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 541.4
+  },
+  {
+    "customerId": "cust_0351",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 182.54
+  },
+  {
+    "customerId": "cust_0352",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 625.33
+  },
+  {
+    "customerId": "cust_0353",
+    "city": "Nova Iguacu",
+    "state": "RJ",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 513.73
+  },
+  {
+    "customerId": "cust_0354",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 2.0,
+    "totalSpent": 1651.83
+  },
+  {
+    "customerId": "cust_0355",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 3.2,
+    "totalSpent": 1791.87
+  },
+  {
+    "customerId": "cust_0356",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 3,
+    "avgReviewScore": 2.4,
+    "totalSpent": 1829.78
+  },
+  {
+    "customerId": "cust_0357",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 4.5,
+    "totalSpent": 682.87
+  },
+  {
+    "customerId": "cust_0358",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "orderCount": 2,
+    "avgReviewScore": 1.0,
+    "totalSpent": 840.61
+  },
+  {
+    "customerId": "cust_0359",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 185.9
+  },
+  {
+    "customerId": "cust_0360",
+    "city": "Blumenau",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 3.1,
+    "totalSpent": 2710.71
+  },
+  {
+    "customerId": "cust_0361",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 3,
+    "avgReviewScore": 3.6,
+    "totalSpent": 3947.48
+  },
+  {
+    "customerId": "cust_0362",
+    "city": "Vitoria",
+    "state": "ES",
+    "orderCount": 4,
+    "avgReviewScore": 1.8,
+    "totalSpent": 2842.64
+  },
+  {
+    "customerId": "cust_0363",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 371.1
+  },
+  {
+    "customerId": "cust_0364",
+    "city": "Sao Bernardo do Campo",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 120.46
+  },
+  {
+    "customerId": "cust_0365",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.3,
+    "totalSpent": 721.22
+  },
+  {
+    "customerId": "cust_0366",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 517.38
+  },
+  {
+    "customerId": "cust_0367",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 4.1,
+    "totalSpent": 2912.64
+  },
+  {
+    "customerId": "cust_0368",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 3.4,
+    "totalSpent": 348.27
+  },
+  {
+    "customerId": "cust_0369",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 803.05
+  },
+  {
+    "customerId": "cust_0370",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 8,
+    "avgReviewScore": 3.8,
+    "totalSpent": 2130.79
+  },
+  {
+    "customerId": "cust_0371",
+    "city": "Salvador",
+    "state": "BA",
+    "orderCount": 1,
+    "avgReviewScore": 5.0,
+    "totalSpent": 377.53
+  },
+  {
+    "customerId": "cust_0372",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "orderCount": 2,
+    "avgReviewScore": 3.5,
+    "totalSpent": 746.02
+  },
+  {
+    "customerId": "cust_0373",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 4.1,
+    "totalSpent": 4893.53
+  },
+  {
+    "customerId": "cust_0374",
+    "city": "Manaus",
+    "state": "AM",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 288.63
+  },
+  {
+    "customerId": "cust_0375",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 604.18
+  },
+  {
+    "customerId": "cust_0376",
+    "city": "Sorocaba",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1036.93
+  },
+  {
+    "customerId": "cust_0377",
+    "city": "Campinas",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.1,
+    "totalSpent": 3376.52
+  },
+  {
+    "customerId": "cust_0378",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 672.12
+  },
+  {
+    "customerId": "cust_0379",
+    "city": "Osasco",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 582.5
+  },
+  {
+    "customerId": "cust_0380",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 3,
+    "avgReviewScore": 3.3,
+    "totalSpent": 945.59
+  },
+  {
+    "customerId": "cust_0381",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 2.8,
+    "totalSpent": 1325.64
+  },
+  {
+    "customerId": "cust_0382",
+    "city": "Joinville",
+    "state": "SC",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 793.53
+  },
+  {
+    "customerId": "cust_0383",
+    "city": "Recife",
+    "state": "PE",
+    "orderCount": 2,
+    "avgReviewScore": 2.5,
+    "totalSpent": 930.85
+  },
+  {
+    "customerId": "cust_0384",
+    "city": "Curitiba",
+    "state": "PR",
+    "orderCount": 5,
+    "avgReviewScore": 3.2,
+    "totalSpent": 974.54
+  },
+  {
+    "customerId": "cust_0385",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 4,
+    "avgReviewScore": 3.0,
+    "totalSpent": 1464.96
+  },
+  {
+    "customerId": "cust_0386",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 2,
+    "avgReviewScore": 3.0,
+    "totalSpent": 555.98
+  },
+  {
+    "customerId": "cust_0387",
+    "city": "Ribeirao Preto",
+    "state": "SP",
+    "orderCount": 5,
+    "avgReviewScore": 1.7,
+    "totalSpent": 1916.98
+  },
+  {
+    "customerId": "cust_0388",
+    "city": "Santos",
+    "state": "SP",
+    "orderCount": 1,
+    "avgReviewScore": 4.2,
+    "totalSpent": 3635.31
+  },
+  {
+    "customerId": "cust_0389",
+    "city": "Uberlandia",
+    "state": "MG",
+    "orderCount": 1,
+    "avgReviewScore": 1.0,
+    "totalSpent": 591.39
+  },
+  {
+    "customerId": "cust_0390",
+    "city": "Guarulhos",
+    "state": "SP",
+    "orderCount": 7,
+    "avgReviewScore": 1.9,
+    "totalSpent": 4997.88
+  }
+]

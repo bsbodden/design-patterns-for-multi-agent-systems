@@ -1,0 +1,85 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+/target/
+redis-om-spring/target/
+/data
+
+### VS Code ###
+.vscode/
+
+### Eclipse ###
+bin/
+tmp/
+/.apt_generated_tests/
+.settings/
+.project
+
+### IDEA ###
+.idea
+.run/*
+
+### Mac ###
+**/.DS_Store
+redis-om-spring/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+redis-om-spring/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+# spelling
+*.dic
+/demos/roms-vss/src/main/resources/static/product-images/
+/CLAUDE.md
+docs/node_modules/
+docs/node/
+docs/build/
+
+# Generated Javadoc documentation (build artifacts)
+docs/content/modules/ROOT/attachments/javadoc/
+docs/content/modules/ROOT/assets/javadoc/
+
+**/.claude/settings.local.json
+/out/
+build/
+.gradle/
+compile_debug.log
+docs/.cache/*
+reports/*
+### Security - API Keys and Secrets ###
+# Never commit API keys, tokens, or credentials
+*.env
+.env
+.env.*
+!.env.example
+config.properties
+secrets.properties
+application-local.properties
+application-secrets.yml
+credentials.json
+api-keys.txt
+
+# Notebook environment files
+notebooks/.env
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Don't commit JAR files to notebooks directory
+notebooks/*.jar
+notebooks/schema.yaml
+notebooks/*_test.ipynb
+notebooks/*_output.ipynb
+
+spotbugs-output.txt
+
+# Demos
+demos/rag-multimodal/src/main/resources/application.properties

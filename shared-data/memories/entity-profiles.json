@@ -1,0 +1,58 @@
+[
+  {
+    "text": "SELLER PROFILE: seller_42 (São Paulo, SP)\nCategory: Electronics, Home & Garden\nTotal Orders: 234 | On-Time: 60% | Avg Rating: 2.3/5\nKnown Issues: Chronic late delivery (40% >5 days late)\nStatus: Under performance review since Q3 2017\nCustomer complaints: 47 (delivery: 31, quality: 12, communication: 4)\nRevenue impact: R$34,200 in refunds issued\nAction: Final warning issued Jan 2018. Next violation triggers suspension.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller_profile", "problem_seller", "são_paulo"],
+    "entities": ["seller_42"]
+  },
+  {
+    "text": "SELLER PROFILE: seller_7 (Rio de Janeiro, RJ)\nCategory: Health & Beauty, Sports & Leisure\nTotal Orders: 312 | On-Time: 98% | Avg Rating: 4.8/5\nKnown Issues: None\nStatus: Gold Tier Seller since Q2 2017\nCustomer complaints: 3 (all resolved same day)\nRevenue impact: R$0 in refunds (lowest on platform)\nAction: Featured seller candidate for Q1 2018 promotions.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller_profile", "top_seller", "rio_de_janeiro"],
+    "entities": ["seller_7"]
+  },
+  {
+    "text": "SELLER PROFILE: seller_18 (Campinas, SP)\nCategory: Electronics, Computers & Accessories\nTotal Orders: 145 | On-Time: 65% | Avg Rating: 2.8/5\nKnown Issues: Frequent delays, product quality concerns\nStatus: Under quality review since Nov 2017\nCustomer complaints: 28 (delivery: 18, quality: 8, communication: 2)\nRevenue impact: R$12,400 in refunds issued",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller_profile", "problem_seller", "campinas"],
+    "entities": ["seller_18"]
+  },
+  {
+    "text": "CUSTOMER PROFILE: cust_1234 (São Paulo, SP)\nTotal Orders: 9 | Avg Review Score: 2.9 | Total Spent: R$2,126.32\nComplaint History: 3 complaints (all against seller_42)\nIssues: Repeated delivery delays, damaged products\nRisk: High churn risk — frustration escalating with each order\nRecommendation: Assign dedicated support, offer loyalty credit",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["customer_profile", "high_risk", "repeat_complainant"],
+    "entities": ["cust_1234"]
+  },
+  {
+    "text": "CATEGORY PROFILE: Electronics\nTotal Products: ~2,500 | Avg Review Score: 2.9/5 (BELOW 3.5 threshold)\nReturn Rate: 12.5% (highest on platform)\nTop Issues: Description mismatch (35%), defective on arrival (25%), late delivery (20%)\nProblem Sellers: seller_42, seller_18, seller_44\nRecommendation: Mandatory quality audit for all electronics sellers with >50 orders",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["category_profile", "electronics", "quality_concern"],
+    "entities": ["electronics_category"]
+  },
+  {
+    "text": "REGION PROFILE: São Paulo State (SP)\nTotal Sellers: ~800 | Total Orders: ~35,000\nAvg Delivery Time: 4.2 days | On-Time Rate: 82%\nTop Sellers: seller_9 (95% on-time), seller_42 (60% on-time — outlier)\nKey Issue: Electronics sellers in SP have 35% late rate vs 15% platform avg\nSeasonal Pattern: December delays spike 40% due to holiday volume",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["region_profile", "são_paulo", "delivery_performance"],
+    "entities": ["são_paulo_region"]
+  },
+  {
+    "text": "SELLER PROFILE: seller_31 (Porto Alegre, RS)\nCategory: Electronics, Telephony\nTotal Orders: 201 | On-Time: 78% | Avg Rating: 3.5/5\nKnown Issues: Moderate delivery delays, occasional quality issues\nStatus: Warning issued Q4 2017\nCustomer complaints: 22 (delivery: 15, quality: 5, other: 2)",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller_profile", "moderate_risk", "porto_alegre"],
+    "entities": ["seller_31"]
+  },
+  {
+    "text": "SELLER PROFILE: seller_33 (Brasília, DF)\nCategory: Telephony, Electronics\nTotal Orders: 112 | On-Time: 72% | Avg Rating: 3.2/5\nKnown Issues: Holiday season reliability problems\nStatus: Under review for December failures\nCustomer complaints: 18 (delivery: 14, quality: 3, communication: 1)\nNotable: ORD_LATE04 arrived after Christmas, resulted in full refund + R$50 credit",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller_profile", "moderate_risk", "brasilia"],
+    "entities": ["seller_33"]
+  }
+]

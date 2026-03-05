@@ -1,0 +1,23 @@
+[
+  {
+    "text": "DELIVERY DELAY SOP: When a customer reports a late delivery, follow this decision matrix: (1) Delay < 3 days past estimate → apologize and provide updated tracking, (2) Delay 3-7 days → offer 5% credit on the order value, (3) Delay > 7 days → offer 15% refund, (4) Delay > 7 days AND seller is a repeat offender (3+ late deliveries) → offer full refund + escalate seller to review team. Always verify delivery status via tools before applying the matrix.",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["delivery", "delay", "sop", "refund-policy"],
+    "entities": []
+  },
+  {
+    "text": "PRODUCT QUALITY SOP: When a customer reports a product quality issue: (1) Verify product details against the listing description using product tools, (2) Check seller rating and return rate, (3) If product does not match description → offer full refund OR replacement at customer's choice, (4) If product is damaged → offer return with prepaid shipping + full refund, (5) If seller has return rate > 15% → flag seller for quality review and note in response that quality team is investigating.",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["product-quality", "returns", "sop", "refund-policy"],
+    "entities": []
+  },
+  {
+    "text": "PAYMENT AND REFUND SOP: When handling payment or refund issues: (1) Verify payment status and method via order tools, (2) For credit card payments → refund processes in 5-7 business days, (3) For boleto payments → refund via bank transfer in 10-15 business days, (4) For installment payments → remaining installments cancelled, paid installments refunded, (5) Always provide a reference number and timeline. If refund amount > R$500, require supervisor approval before confirming.",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["payment", "refund", "sop", "billing"],
+    "entities": []
+  }
+]

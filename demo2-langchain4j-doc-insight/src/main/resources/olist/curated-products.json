@@ -1,0 +1,902 @@
+[
+  {
+    "productId": "prod_elec_001",
+    "category": "electronics",
+    "weightG": 850,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_elec_002",
+    "category": "electronics",
+    "weightG": 1200,
+    "avgReviewScore": 3.1
+  },
+  {
+    "productId": "prod_elec_003",
+    "category": "electronics",
+    "weightG": 450,
+    "avgReviewScore": 2.5
+  },
+  {
+    "productId": "prod_health_001",
+    "category": "health_beauty",
+    "weightG": 320,
+    "avgReviewScore": 4.6
+  },
+  {
+    "productId": "prod_health_002",
+    "category": "health_beauty",
+    "weightG": 280,
+    "avgReviewScore": 4.4
+  },
+  {
+    "productId": "prod_furn_001",
+    "category": "furniture_decor",
+    "weightG": 5400,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_furn_002",
+    "category": "furniture_decor",
+    "weightG": 12000,
+    "avgReviewScore": 4.0
+  },
+  {
+    "productId": "prod_comp_001",
+    "category": "computers_accessories",
+    "weightG": 650,
+    "avgReviewScore": 3.4
+  },
+  {
+    "productId": "prod_fashion_001",
+    "category": "fashion_bags_accessories",
+    "weightG": 180,
+    "avgReviewScore": 4.3
+  },
+  {
+    "productId": "prod_sport_001",
+    "category": "sports_leisure",
+    "weightG": 920,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_bed_001",
+    "category": "bed_bath_table",
+    "weightG": 2800,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_watch_001",
+    "category": "watches_gifts",
+    "weightG": 150,
+    "avgReviewScore": 3.9
+  },
+  {
+    "productId": "prod_phone_001",
+    "category": "telephony",
+    "weightG": 200,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_audio_001",
+    "category": "audio",
+    "weightG": 380,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_elec_004",
+    "category": "electronics",
+    "weightG": 7896,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_elec_005",
+    "category": "electronics",
+    "weightG": 11580,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_elec_006",
+    "category": "electronics",
+    "weightG": 9095,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_elec_007",
+    "category": "electronics",
+    "weightG": 7689,
+    "avgReviewScore": 2.5
+  },
+  {
+    "productId": "prod_elec_008",
+    "category": "electronics",
+    "weightG": 4335,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_elec_009",
+    "category": "electronics",
+    "weightG": 7685,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_elec_010",
+    "category": "electronics",
+    "weightG": 7742,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_elec_011",
+    "category": "electronics",
+    "weightG": 3378,
+    "avgReviewScore": 2.6
+  },
+  {
+    "productId": "prod_heal_001",
+    "category": "health_beauty",
+    "weightG": 9266,
+    "avgReviewScore": 4.6
+  },
+  {
+    "productId": "prod_heal_002",
+    "category": "health_beauty",
+    "weightG": 12194,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_heal_003",
+    "category": "health_beauty",
+    "weightG": 4322,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_heal_004",
+    "category": "health_beauty",
+    "weightG": 9618,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_heal_005",
+    "category": "health_beauty",
+    "weightG": 6891,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_heal_006",
+    "category": "health_beauty",
+    "weightG": 3264,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_heal_007",
+    "category": "health_beauty",
+    "weightG": 6273,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_heal_008",
+    "category": "health_beauty",
+    "weightG": 4076,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_heal_009",
+    "category": "health_beauty",
+    "weightG": 10775,
+    "avgReviewScore": 4.8
+  },
+  {
+    "productId": "prod_heal_010",
+    "category": "health_beauty",
+    "weightG": 5580,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_heal_011",
+    "category": "health_beauty",
+    "weightG": 13510,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_furn_003",
+    "category": "furniture_decor",
+    "weightG": 11904,
+    "avgReviewScore": 3.9
+  },
+  {
+    "productId": "prod_furn_004",
+    "category": "furniture_decor",
+    "weightG": 8087,
+    "avgReviewScore": 3.4
+  },
+  {
+    "productId": "prod_furn_005",
+    "category": "furniture_decor",
+    "weightG": 12055,
+    "avgReviewScore": 4.4
+  },
+  {
+    "productId": "prod_furn_006",
+    "category": "furniture_decor",
+    "weightG": 2823,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_furn_007",
+    "category": "furniture_decor",
+    "weightG": 9004,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_furn_008",
+    "category": "furniture_decor",
+    "weightG": 14621,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_furn_009",
+    "category": "furniture_decor",
+    "weightG": 10565,
+    "avgReviewScore": 4.9
+  },
+  {
+    "productId": "prod_furn_010",
+    "category": "furniture_decor",
+    "weightG": 8634,
+    "avgReviewScore": 2.1
+  },
+  {
+    "productId": "prod_furn_011",
+    "category": "furniture_decor",
+    "weightG": 13922,
+    "avgReviewScore": 2.2
+  },
+  {
+    "productId": "prod_comp_002",
+    "category": "computers_accessories",
+    "weightG": 13452,
+    "avgReviewScore": 4.0
+  },
+  {
+    "productId": "prod_comp_003",
+    "category": "computers_accessories",
+    "weightG": 12572,
+    "avgReviewScore": 2.0
+  },
+  {
+    "productId": "prod_comp_004",
+    "category": "computers_accessories",
+    "weightG": 2302,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_comp_005",
+    "category": "computers_accessories",
+    "weightG": 3841,
+    "avgReviewScore": 2.2
+  },
+  {
+    "productId": "prod_comp_006",
+    "category": "computers_accessories",
+    "weightG": 2524,
+    "avgReviewScore": 2.0
+  },
+  {
+    "productId": "prod_comp_007",
+    "category": "computers_accessories",
+    "weightG": 8335,
+    "avgReviewScore": 3.4
+  },
+  {
+    "productId": "prod_comp_008",
+    "category": "computers_accessories",
+    "weightG": 1040,
+    "avgReviewScore": 3.9
+  },
+  {
+    "productId": "prod_comp_009",
+    "category": "computers_accessories",
+    "weightG": 10974,
+    "avgReviewScore": 4.8
+  },
+  {
+    "productId": "prod_comp_010",
+    "category": "computers_accessories",
+    "weightG": 7966,
+    "avgReviewScore": 4.0
+  },
+  {
+    "productId": "prod_comp_011",
+    "category": "computers_accessories",
+    "weightG": 307,
+    "avgReviewScore": 2.0
+  },
+  {
+    "productId": "prod_fash_001",
+    "category": "fashion_bags_accessories",
+    "weightG": 9088,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_fash_002",
+    "category": "fashion_bags_accessories",
+    "weightG": 324,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_fash_003",
+    "category": "fashion_bags_accessories",
+    "weightG": 4551,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_fash_004",
+    "category": "fashion_bags_accessories",
+    "weightG": 4747,
+    "avgReviewScore": 2.1
+  },
+  {
+    "productId": "prod_fash_005",
+    "category": "fashion_bags_accessories",
+    "weightG": 13372,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_fash_006",
+    "category": "fashion_bags_accessories",
+    "weightG": 7104,
+    "avgReviewScore": 4.4
+  },
+  {
+    "productId": "prod_fash_007",
+    "category": "fashion_bags_accessories",
+    "weightG": 14955,
+    "avgReviewScore": 2.5
+  },
+  {
+    "productId": "prod_fash_008",
+    "category": "fashion_bags_accessories",
+    "weightG": 1628,
+    "avgReviewScore": 3.6
+  },
+  {
+    "productId": "prod_fash_009",
+    "category": "fashion_bags_accessories",
+    "weightG": 3998,
+    "avgReviewScore": 2.6
+  },
+  {
+    "productId": "prod_fash_010",
+    "category": "fashion_bags_accessories",
+    "weightG": 8675,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_fash_011",
+    "category": "fashion_bags_accessories",
+    "weightG": 5857,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_spor_001",
+    "category": "sports_leisure",
+    "weightG": 6552,
+    "avgReviewScore": 2.2
+  },
+  {
+    "productId": "prod_spor_002",
+    "category": "sports_leisure",
+    "weightG": 6702,
+    "avgReviewScore": 3.4
+  },
+  {
+    "productId": "prod_spor_003",
+    "category": "sports_leisure",
+    "weightG": 4034,
+    "avgReviewScore": 5.0
+  },
+  {
+    "productId": "prod_spor_004",
+    "category": "sports_leisure",
+    "weightG": 3750,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_spor_005",
+    "category": "sports_leisure",
+    "weightG": 13616,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_spor_006",
+    "category": "sports_leisure",
+    "weightG": 10760,
+    "avgReviewScore": 5.0
+  },
+  {
+    "productId": "prod_spor_007",
+    "category": "sports_leisure",
+    "weightG": 10697,
+    "avgReviewScore": 4.3
+  },
+  {
+    "productId": "prod_spor_008",
+    "category": "sports_leisure",
+    "weightG": 1581,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_spor_009",
+    "category": "sports_leisure",
+    "weightG": 6229,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_spor_010",
+    "category": "sports_leisure",
+    "weightG": 969,
+    "avgReviewScore": 3.9
+  },
+  {
+    "productId": "prod_spor_011",
+    "category": "sports_leisure",
+    "weightG": 11565,
+    "avgReviewScore": 2.5
+  },
+  {
+    "productId": "prod_bed__001",
+    "category": "bed_bath_table",
+    "weightG": 8239,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_bed__002",
+    "category": "bed_bath_table",
+    "weightG": 10616,
+    "avgReviewScore": 4.4
+  },
+  {
+    "productId": "prod_bed__003",
+    "category": "bed_bath_table",
+    "weightG": 9320,
+    "avgReviewScore": 4.9
+  },
+  {
+    "productId": "prod_bed__004",
+    "category": "bed_bath_table",
+    "weightG": 1612,
+    "avgReviewScore": 4.7
+  },
+  {
+    "productId": "prod_bed__005",
+    "category": "bed_bath_table",
+    "weightG": 747,
+    "avgReviewScore": 2.7
+  },
+  {
+    "productId": "prod_bed__006",
+    "category": "bed_bath_table",
+    "weightG": 14816,
+    "avgReviewScore": 4.6
+  },
+  {
+    "productId": "prod_bed__007",
+    "category": "bed_bath_table",
+    "weightG": 14591,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_bed__008",
+    "category": "bed_bath_table",
+    "weightG": 4491,
+    "avgReviewScore": 2.1
+  },
+  {
+    "productId": "prod_bed__009",
+    "category": "bed_bath_table",
+    "weightG": 1268,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_bed__010",
+    "category": "bed_bath_table",
+    "weightG": 4643,
+    "avgReviewScore": 4.7
+  },
+  {
+    "productId": "prod_bed__011",
+    "category": "bed_bath_table",
+    "weightG": 9282,
+    "avgReviewScore": 4.0
+  },
+  {
+    "productId": "prod_watc_001",
+    "category": "watches_gifts",
+    "weightG": 2988,
+    "avgReviewScore": 4.8
+  },
+  {
+    "productId": "prod_watc_002",
+    "category": "watches_gifts",
+    "weightG": 5202,
+    "avgReviewScore": 2.0
+  },
+  {
+    "productId": "prod_watc_003",
+    "category": "watches_gifts",
+    "weightG": 3444,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_watc_004",
+    "category": "watches_gifts",
+    "weightG": 12374,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_watc_005",
+    "category": "watches_gifts",
+    "weightG": 13499,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_watc_006",
+    "category": "watches_gifts",
+    "weightG": 1310,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_watc_007",
+    "category": "watches_gifts",
+    "weightG": 9289,
+    "avgReviewScore": 2.7
+  },
+  {
+    "productId": "prod_watc_008",
+    "category": "watches_gifts",
+    "weightG": 13724,
+    "avgReviewScore": 4.5
+  },
+  {
+    "productId": "prod_watc_009",
+    "category": "watches_gifts",
+    "weightG": 11142,
+    "avgReviewScore": 4.7
+  },
+  {
+    "productId": "prod_watc_010",
+    "category": "watches_gifts",
+    "weightG": 5485,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_watc_011",
+    "category": "watches_gifts",
+    "weightG": 12169,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_tele_001",
+    "category": "telephony",
+    "weightG": 11343,
+    "avgReviewScore": 4.2
+  },
+  {
+    "productId": "prod_tele_002",
+    "category": "telephony",
+    "weightG": 8254,
+    "avgReviewScore": 4.2
+  },
+  {
+    "productId": "prod_tele_003",
+    "category": "telephony",
+    "weightG": 5716,
+    "avgReviewScore": 2.2
+  },
+  {
+    "productId": "prod_tele_004",
+    "category": "telephony",
+    "weightG": 7211,
+    "avgReviewScore": 2.7
+  },
+  {
+    "productId": "prod_tele_005",
+    "category": "telephony",
+    "weightG": 1295,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_tele_006",
+    "category": "telephony",
+    "weightG": 12649,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_tele_007",
+    "category": "telephony",
+    "weightG": 9808,
+    "avgReviewScore": 3.2
+  },
+  {
+    "productId": "prod_tele_008",
+    "category": "telephony",
+    "weightG": 12723,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_tele_009",
+    "category": "telephony",
+    "weightG": 10439,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_tele_010",
+    "category": "telephony",
+    "weightG": 7431,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_tele_011",
+    "category": "telephony",
+    "weightG": 5879,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_audi_001",
+    "category": "audio",
+    "weightG": 6200,
+    "avgReviewScore": 3.3
+  },
+  {
+    "productId": "prod_audi_002",
+    "category": "audio",
+    "weightG": 11186,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_audi_003",
+    "category": "audio",
+    "weightG": 6277,
+    "avgReviewScore": 2.3
+  },
+  {
+    "productId": "prod_audi_004",
+    "category": "audio",
+    "weightG": 10185,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_audi_005",
+    "category": "audio",
+    "weightG": 4087,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_audi_006",
+    "category": "audio",
+    "weightG": 1394,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_audi_007",
+    "category": "audio",
+    "weightG": 6275,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_audi_008",
+    "category": "audio",
+    "weightG": 10435,
+    "avgReviewScore": 2.5
+  },
+  {
+    "productId": "prod_audi_009",
+    "category": "audio",
+    "weightG": 6433,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_audi_010",
+    "category": "audio",
+    "weightG": 1795,
+    "avgReviewScore": 2.3
+  },
+  {
+    "productId": "prod_audi_011",
+    "category": "audio",
+    "weightG": 5100,
+    "avgReviewScore": 3.3
+  },
+  {
+    "productId": "prod_toys_001",
+    "category": "toys",
+    "weightG": 12523,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_toys_002",
+    "category": "toys",
+    "weightG": 2220,
+    "avgReviewScore": 2.3
+  },
+  {
+    "productId": "prod_toys_003",
+    "category": "toys",
+    "weightG": 7111,
+    "avgReviewScore": 3.3
+  },
+  {
+    "productId": "prod_toys_004",
+    "category": "toys",
+    "weightG": 9138,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_toys_005",
+    "category": "toys",
+    "weightG": 1742,
+    "avgReviewScore": 2.1
+  },
+  {
+    "productId": "prod_toys_006",
+    "category": "toys",
+    "weightG": 5848,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_toys_007",
+    "category": "toys",
+    "weightG": 9830,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_toys_008",
+    "category": "toys",
+    "weightG": 5365,
+    "avgReviewScore": 4.6
+  },
+  {
+    "productId": "prod_toys_009",
+    "category": "toys",
+    "weightG": 252,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_toys_010",
+    "category": "toys",
+    "weightG": 6403,
+    "avgReviewScore": 4.3
+  },
+  {
+    "productId": "prod_toys_011",
+    "category": "toys",
+    "weightG": 11925,
+    "avgReviewScore": 4.7
+  },
+  {
+    "productId": "prod_auto_001",
+    "category": "auto",
+    "weightG": 14880,
+    "avgReviewScore": 5.0
+  },
+  {
+    "productId": "prod_auto_002",
+    "category": "auto",
+    "weightG": 4027,
+    "avgReviewScore": 3.7
+  },
+  {
+    "productId": "prod_auto_003",
+    "category": "auto",
+    "weightG": 2828,
+    "avgReviewScore": 4.1
+  },
+  {
+    "productId": "prod_auto_004",
+    "category": "auto",
+    "weightG": 2827,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_auto_005",
+    "category": "auto",
+    "weightG": 4983,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_auto_006",
+    "category": "auto",
+    "weightG": 2440,
+    "avgReviewScore": 2.2
+  },
+  {
+    "productId": "prod_auto_007",
+    "category": "auto",
+    "weightG": 7171,
+    "avgReviewScore": 2.8
+  },
+  {
+    "productId": "prod_auto_008",
+    "category": "auto",
+    "weightG": 4961,
+    "avgReviewScore": 3.5
+  },
+  {
+    "productId": "prod_auto_009",
+    "category": "auto",
+    "weightG": 1310,
+    "avgReviewScore": 3.1
+  },
+  {
+    "productId": "prod_auto_010",
+    "category": "auto",
+    "weightG": 4090,
+    "avgReviewScore": 4.2
+  },
+  {
+    "productId": "prod_auto_011",
+    "category": "auto",
+    "weightG": 8173,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_gard_001",
+    "category": "garden_tools",
+    "weightG": 3253,
+    "avgReviewScore": 3.4
+  },
+  {
+    "productId": "prod_gard_002",
+    "category": "garden_tools",
+    "weightG": 2269,
+    "avgReviewScore": 2.9
+  },
+  {
+    "productId": "prod_gard_003",
+    "category": "garden_tools",
+    "weightG": 6533,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_gard_004",
+    "category": "garden_tools",
+    "weightG": 10211,
+    "avgReviewScore": 3.1
+  },
+  {
+    "productId": "prod_gard_005",
+    "category": "garden_tools",
+    "weightG": 14176,
+    "avgReviewScore": 3.0
+  },
+  {
+    "productId": "prod_gard_006",
+    "category": "garden_tools",
+    "weightG": 5534,
+    "avgReviewScore": 3.3
+  },
+  {
+    "productId": "prod_gard_007",
+    "category": "garden_tools",
+    "weightG": 13542,
+    "avgReviewScore": 4.6
+  },
+  {
+    "productId": "prod_gard_008",
+    "category": "garden_tools",
+    "weightG": 9788,
+    "avgReviewScore": 2.4
+  },
+  {
+    "productId": "prod_gard_009",
+    "category": "garden_tools",
+    "weightG": 5303,
+    "avgReviewScore": 3.8
+  },
+  {
+    "productId": "prod_gard_010",
+    "category": "garden_tools",
+    "weightG": 11441,
+    "avgReviewScore": 2.6
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "text": "Resolved delivery complaint for seller_42: Order was 8 days late. Offered 10% refund per policy (delay > 7 days). Customer accepted but left 2-star review. Note: seller_42 has a pattern of late deliveries — this was their 4th late delivery complaint this month.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery", "delay", "resolution", "refund"],
+    "entities": ["seller_42"]
+  },
+  {
+    "text": "Resolved product quality complaint for seller_42: Customer received electronics item that did not match listing description (wrong color and missing accessories). Issued full refund of R$189.90. Customer was satisfied with resolution. Seller was issued a formal warning about listing accuracy.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["product-quality", "returns", "resolution", "listing-mismatch"],
+    "entities": ["seller_42"]
+  },
+  {
+    "text": "Positive interaction with seller_7 order: Delivery arrived 2 days early. Customer left 5-star review praising fast shipping and accurate product description. No action needed — logged as reference for seller excellence program.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery", "positive-feedback", "on-time"],
+    "entities": ["seller_7"]
+  },
+  {
+    "text": "Escalated repeat complaint from cust_1234: This was their 3rd complaint in 2 months (2 delivery delays, 1 quality issue). Customer expressed frustration and threatened to stop using the platform. Escalated to supervisor per policy (>3 complaints). Supervisor offered R$50 store credit as retention gesture. Customer accepted.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["escalation", "repeat-complaint", "retention", "customer-satisfaction"],
+    "entities": ["cust_1234"]
+  },
+  {
+    "text": "Batch resolution for São Paulo regional delay: Logistics partner Transportadora Rápida experienced warehouse flooding, causing 3-5 day delays across 47 orders in São Paulo metro area. Proactively contacted affected customers with apology and 5% credit. 87% satisfaction recovery rate achieved.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery", "regional-delay", "batch-resolution", "logistics"],
+    "entities": ["sao-paulo", "transportadora-rapida"]
+  },
+  {
+    "text": "Electronics category return case: Customer reported product mismatch — ordered a Bluetooth speaker but received a different model. Seller seller_42 had incorrect SKU mapping. Full refund issued plus free return shipping. Seller was warned about catalog accuracy; second warning this quarter.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["product-quality", "electronics", "returns", "sku-mismatch"],
+    "entities": ["seller_42"]
+  },
+  {
+    "text": "Previous interaction for order ORD_A1B2C3: Customer inquired about delivery status 3 days ago. At that time, order was in transit with estimated arrival in 2 days. Provided tracking information and reassurance. Customer seemed satisfied with the update.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery", "status-inquiry", "follow-up"],
+    "entities": ["ORD_A1B2C3"]
+  },
+  {
+    "text": "Multi-issue resolution: Customer reported both late delivery AND product quality issue on the same order. Delivery was 5 days late and product had cosmetic damage. Applied combined resolution: full refund for the product + free shipping on next order. Customer satisfaction improved from 1-star to 4-star after resolution.",
+    "memoryType": "episodic",
+    "userId": "system",
+    "topics": ["delivery", "product-quality", "multi-issue", "resolution"],
+    "entities": []
+  }
+]

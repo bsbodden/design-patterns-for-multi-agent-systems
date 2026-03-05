@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Ops Intelligence</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* ═══════════════════════════════════════════════════
+           BASE THEME — Redis-inspired dark palette
+           ═══════════════════════════════════════════════════ */
+        :root {
+            --redis-red: #dc382c;
+            --redis-red-dark: #a32920;
+            --redis-red-light: #ff5f52;
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a26;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8892b0;
+            --text-muted: #5c6370;
+            --border-color: #2a2a3a;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --error: #e74c3c;
+            --info: #3498db;
+            --routing-color: #f39c12;
+            --tooluse-color: #c678dd;
+            --eval-color: #2ecc71;
+            --embabel-accent: #e94560;
+            --embabel-surface: #16213e;
+            --embabel-surface2: #0f3460;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark); color: var(--text-primary);
+            line-height: 1.6; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           HEADER + TAB NAVIGATION
+           ═══════════════════════════════════════════════════ */
+        .header {
+            background: var(--bg-card); border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 1.5rem; position: sticky; top: 0; z-index: 100;
+        }
+        .header-content {
+            max-width: 1600px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; gap: 1rem;
+        }
+        .logo { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+        .logo-text { font-size: 1.1rem; font-weight: 600; }
+
+        .tab-nav { display: flex; gap: 0; }
+        .tab-btn {
+            background: transparent; border: none; color: var(--text-muted);
+            padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 500;
+            cursor: pointer; border-bottom: 2px solid transparent;
+            transition: all 0.2s; font-family: inherit; display: flex;
+            align-items: center; gap: 0.5rem;
+        }
+        .tab-btn:hover { color: var(--text-primary); }
+        .tab-btn.active {
+            color: var(--redis-red); border-bottom-color: var(--redis-red);
+        }
+        .tab-btn small {
+            font-size: 0.7rem; color: var(--text-muted); opacity: 0.7;
+        }
+        .tab-btn.active small { color: var(--redis-red); opacity: 0.8; }
+
+        .header-actions { display: flex; gap: 0.4rem; align-items: center; flex-shrink: 0; }
+
+        /* Hotkey buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.7rem; border: none; border-radius: 6px;
+            font-size: 0.75rem; font-weight: 500; cursor: pointer;
+            transition: all 0.2s; font-family: inherit; white-space: nowrap;
+        }
+        .btn-hotkey {
+            background: var(--bg-card-hover); color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        .btn-hotkey:hover { border-color: var(--routing-color); color: var(--text-primary); }
+        .btn-hotkey:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-primary { background: var(--redis-red); color: white; }
+        .btn-primary:hover { background: var(--redis-red-light); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary {
+            background: var(--bg-card-hover); color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover { border-color: var(--redis-red); }
+        .btn-sm { padding: 0.3rem 0.6rem; font-size: 0.72rem; }
+
+        /* ═══════════════════════════════════════════════════
+           TAB CONTENT CONTAINERS
+           ═══════════════════════════════════════════════════ */
+        .tab-content { display: none; flex: 1; overflow: hidden; }
+        .tab-content.active { display: flex; flex-direction: column; }
+
+        /* ═══════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════ */
+        .footer {
+            background: var(--bg-card); border-top: 1px solid var(--border-color);
+            padding: 0.5rem 1.5rem; text-align: center;
+            font-size: 0.75rem; color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           TAB 0: DATA EXPLORER
+           ═══════════════════════════════════════════════════ */
+        .data-container {
+            flex: 1; display: grid; grid-template-columns: 180px 1fr 380px;
+            gap: 0.75rem; padding: 0.75rem 1.5rem; overflow: hidden;
+            max-width: 1600px; margin: 0 auto; width: 100%;
+        }
+        .data-sidebar {
+            display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .data-type-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.6rem 0.8rem; background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; cursor: pointer; font-size: 0.82rem; color: var(--text-secondary);
+            transition: all 0.2s; font-family: inherit;
+        }
+        .data-type-btn:hover { border-color: var(--redis-red); color: var(--text-primary); }
+        .data-type-btn.active { border-color: var(--redis-red); color: var(--redis-red); background: rgba(220,56,44,0.08); }
+        .data-type-count {
+            font-size: 0.68rem; font-weight: 600; background: var(--bg-card-hover);
+            padding: 0.1rem 0.4rem; border-radius: 10px; color: var(--text-muted);
+        }
+        .data-type-btn.active .data-type-count { color: var(--redis-red); background: rgba(220,56,44,0.12); }
+        .data-filter {
+            background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 0.5rem 0.7rem; font-size: 0.8rem; color: var(--text-primary);
+            font-family: inherit; outline: none; width: 100%;
+        }
+        .data-filter:focus { border-color: var(--redis-red); }
+        .data-filter::placeholder { color: var(--text-muted); }
+        .data-list-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+        }
+        .data-list { flex: 1; overflow-y: auto; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; }
+        .data-card {
+            padding: 0.5rem 0.7rem; background: var(--bg-dark); border: 1px solid var(--border-color);
+            border-radius: 6px; cursor: pointer; transition: all 0.2s; font-size: 0.78rem;
+        }
+        .data-card:hover { border-color: var(--info); background: var(--bg-card-hover); }
+        .data-card.selected { border-color: var(--redis-red); background: rgba(220,56,44,0.08); }
+        .data-card-id { font-weight: 600; color: var(--redis-red); font-family: monospace; font-size: 0.76rem; }
+        .data-card-meta { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+        .data-card-badge {
+            display: inline-block; font-size: 0.62rem; padding: 0.1rem 0.35rem;
+            border-radius: 4px; font-weight: 600; margin-left: 0.3rem;
+        }
+        .badge-late { background: rgba(231,76,60,0.2); color: var(--error); }
+        .badge-ontime { background: rgba(46,204,113,0.15); color: var(--success); }
+        .badge-shipped { background: rgba(52,152,219,0.2); color: var(--info); }
+        .badge-poor { background: rgba(231,76,60,0.2); color: var(--error); }
+        .badge-good { background: rgba(46,204,113,0.15); color: var(--success); }
+        .data-card .star-score { color: var(--warning); }
+        @keyframes glowHighlight {
+            0% { box-shadow: 0 0 5px var(--redis-red); }
+            50% { box-shadow: 0 0 15px var(--redis-red), 0 0 30px rgba(220,56,44,0.3); }
+            100% { box-shadow: 0 0 5px var(--redis-red); }
+        }
+        .data-card.highlight { animation: glowHighlight 1s ease 3; border-color: var(--redis-red); }
+
+        .data-detail-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+        }
+        .data-detail-body { flex: 1; overflow-y: auto; padding: 0.75rem; }
+        .detail-section { margin-bottom: 0.75rem; }
+        .detail-section-title { font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .detail-row { display: flex; justify-content: space-between; padding: 0.2rem 0; font-size: 0.78rem; border-bottom: 1px solid rgba(42,42,58,0.5); }
+        .detail-key { color: var(--text-secondary); }
+        .detail-value { color: var(--text-primary); font-weight: 500; text-align: right; max-width: 60%; word-break: break-word; }
+
+        /* ═══════════════════════════════════════════════════
+           TAB 1: INTAKE (Spring AI) — Chat + Pipeline
+           ═══════════════════════════════════════════════════ */
+        .intake-container {
+            flex: 1; display: grid; grid-template-columns: 1fr 380px;
+            grid-template-rows: minmax(0, 1fr);
+            gap: 1rem; padding: 0.75rem 1.5rem; overflow: hidden;
+            max-width: 1600px; margin: 0 auto; width: 100%;
+        }
+        .chat-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+        }
+        .panel-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 1rem; background: var(--bg-card-hover);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .panel-title { font-weight: 600; font-size: 0.88rem; }
+        .panel-badge {
+            font-size: 0.65rem; font-weight: 500; color: var(--redis-red);
+            background: rgba(220,56,44,0.15); padding: 0.15rem 0.5rem; border-radius: 10px;
+        }
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 1rem; display: flex;
+            flex-direction: column; gap: 0.75rem;
+        }
+        .message { display: flex; gap: 0.6rem; max-width: 85%; animation: fadeIn 0.3s ease; }
+        .message-avatar {
+            width: 28px; height: 28px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 0.65rem;
+            font-weight: 600; flex-shrink: 0; color: white;
+        }
+        .user-message { flex-direction: row-reverse; margin-left: auto; }
+        .user-message .message-avatar { background: var(--redis-red); }
+        .user-message .message-content {
+            background: var(--redis-red); color: white; border-radius: 14px 14px 4px 14px;
+        }
+        .assistant-message .message-avatar { background: var(--info); }
+        .assistant-message .message-content {
+            background: var(--bg-card-hover); border: 1px solid var(--border-color);
+            border-radius: 14px 14px 14px 4px;
+        }
+        .system-message { display: flex; justify-content: center; max-width: 100%; }
+        .system-message .message-content {
+            background: var(--bg-card-hover); border: 1px dashed var(--border-color);
+            border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.75rem;
+            color: var(--text-secondary); text-align: center; max-width: 80%;
+        }
+        .message-content {
+            padding: 0.6rem 0.85rem; font-size: 0.82rem; line-height: 1.5;
+        }
+        .message-content p { margin: 0 0 0.4rem 0; }
+        .message-content p:last-child { margin-bottom: 0; }
+        .message-content ul, .message-content ol { margin: 0.4rem 0; padding-left: 1.2rem; }
+        .message-content li { margin: 0.2rem 0; font-size: 0.8rem; }
+        .message-content h1,.message-content h2,.message-content h3 { margin: 0.6rem 0 0.3rem; font-size: 0.9rem; }
+        .message-content strong { color: var(--text-primary); }
+        .message-content a { color: var(--info); text-decoration: underline; }
+        .message-content a:hover { color: var(--redis-red-light); }
+        .typing-indicator { display: flex; gap: 4px; padding: 4px 0; }
+        .typing-indicator span {
+            width: 7px; height: 7px; background: var(--text-muted); border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+        .chat-input-form {
+            padding: 0.6rem 1rem; background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+        .chat-input-wrapper { display: flex; gap: 0.6rem; align-items: flex-end; }
+        .chat-input-wrapper textarea {
+            flex: 1; background: var(--bg-dark); border: 1px solid var(--border-color);
+            border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.82rem;
+            color: var(--text-primary); resize: none; min-height: 38px; max-height: 100px;
+            line-height: 1.4; font-family: inherit;
+        }
+        .chat-input-wrapper textarea:focus { outline: none; border-color: var(--redis-red); }
+        .chat-input-wrapper textarea::placeholder { color: var(--text-muted); }
+        .send-btn { height: 38px; padding: 0 1rem; flex-shrink: 0; }
+
+        /* Pipeline Log */
+        .pipeline-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+            min-height: 0;
+        }
+        .pipeline-log { flex: 1; overflow-y: auto; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; min-height: 0; }
+        .log-placeholder { color: var(--text-muted); font-size: 0.78rem; text-align: center; padding: 1.5rem; }
+        .log-entry {
+            background: var(--bg-dark); border: 1px solid var(--border-color);
+            border-radius: 6px; overflow: hidden; animation: fadeIn 0.3s ease;
+            flex-shrink: 0;
+        }
+        .log-entry-header {
+            display: flex; align-items: center; gap: 0.4rem;
+            padding: 0.4rem 0.6rem; font-size: 0.75rem;
+        }
+        .log-icon { font-size: 0.85rem; flex-shrink: 0; }
+        .log-label { font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; flex: 1; }
+        .log-meta { font-size: 0.68rem; color: var(--text-muted); font-family: monospace; }
+        .log-entry.routing { border-left: 3px solid var(--routing-color); }
+        .log-entry.routing .log-label { color: var(--routing-color); }
+        .log-entry.handling { border-left: 3px solid var(--tooluse-color); }
+        .log-entry.handling .log-label { color: var(--tooluse-color); }
+        .log-entry.evaluation { border-left: 3px solid var(--eval-color); }
+        .log-entry.evaluation .log-label { color: var(--eval-color); }
+        .log-entry.draft { border-left: 3px solid var(--info); }
+        .log-entry.draft .log-label { color: var(--info); }
+        .log-entry.complete { border-left: 3px solid var(--success); }
+        .log-entry.complete .log-label { color: var(--success); }
+        .log-entry.tool-call { border-left-color: var(--tooluse-color); }
+        .log-entry.status { border-left-color: var(--info); }
+        .log-entry.query-marker { border-left: 3px solid var(--redis-red); background: rgba(220,56,44,0.08); }
+        .log-entry.query-marker .log-label { color: var(--redis-red); }
+        .log-entry-body { padding: 0 0.6rem 0.4rem; font-size: 0.72rem; color: var(--text-secondary); }
+        .log-entry details { padding: 0 0.6rem 0.4rem; }
+        .log-entry details summary { font-size: 0.7rem; color: var(--text-muted); cursor: pointer; }
+        .log-entry details .detail-content {
+            margin-top: 0.2rem; padding: 0.4rem; background: var(--bg-card); border-radius: 4px;
+            font-size: 0.7rem; color: var(--text-secondary); max-height: 180px; overflow-y: auto;
+            white-space: pre-wrap; word-break: break-word; font-family: monospace;
+        }
+        .score-list { display: flex; flex-direction: column; gap: 0.25rem; padding: 0 0.6rem 0.4rem; }
+        .score-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; }
+        .score-category { width: 72px; color: var(--text-secondary); text-transform: uppercase; font-size: 0.68rem; }
+        .score-bar-container { flex: 1; height: 5px; background: var(--bg-card-hover); border-radius: 3px; overflow: hidden; }
+        .score-bar { height: 100%; border-radius: 3px; background: var(--routing-color); transition: width 0.5s; }
+        .score-bar.selected { background: var(--redis-red); }
+        .score-value { width: 32px; text-align: right; color: var(--text-muted); font-family: monospace; font-size: 0.68rem; }
+        .score-marker { color: var(--redis-red); font-weight: 700; }
+        .eval-score { display: flex; align-items: center; gap: 0.4rem; padding: 0 0.6rem 0.4rem; font-size: 0.78rem; }
+        .eval-score-value { font-weight: 700; font-size: 0.95rem; }
+        .eval-score-value.pass { color: var(--success); }
+        .eval-score-value.fail { color: var(--warning); }
+        .eval-score-label { color: var(--text-secondary); font-size: 0.72rem; }
+        .eval-status { margin-left: auto; font-size: 0.72rem; font-weight: 600; }
+        .eval-status.pass { color: var(--success); }
+        .eval-status.refining { color: var(--warning); }
+
+        /* ═══════════════════════════════════════════════════
+           TAB 2: ANALYSIS (LangChain4J) — Report + Scope
+           ═══════════════════════════════════════════════════ */
+        .analysis-container {
+            flex: 1; display: grid; grid-template-columns: 1fr 360px;
+            gap: 1rem; padding: 0.75rem 1.5rem; overflow: hidden;
+            max-width: 1600px; margin: 0 auto; width: 100%;
+        }
+        .report-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+        }
+        .query-input { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border-color); }
+        .query-input textarea {
+            width: 100%; background: var(--bg-dark); color: var(--text-primary);
+            border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 0.5rem; font-family: inherit; font-size: 0.82rem; resize: none; outline: none;
+        }
+        .query-input textarea:focus { border-color: var(--redis-red); }
+        .report-content { flex: 1; overflow-y: auto; padding: 1rem; }
+        .report-content .placeholder { color: var(--text-muted); font-style: italic; text-align: center; padding: 1.5rem; }
+        .report-content .report-text { line-height: 1.6; font-size: 0.85rem; }
+        .report-content .report-text h1,.report-content .report-text h2,.report-content .report-text h3 { margin-top: 0.75rem; margin-bottom: 0.4rem; }
+        .report-content .report-text p { margin-bottom: 0.6rem; }
+        .report-content .report-text ul,.report-content .report-text ol { padding-left: 1.3rem; margin-bottom: 0.6rem; }
+
+        .scope-panel {
+            display: flex; flex-direction: column; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+        }
+        .scope-table { padding: 0.75rem; flex: 1; overflow-y: auto; }
+        .scope-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border-color); font-size: 0.8rem;
+        }
+        .scope-key { color: var(--text-secondary); font-family: monospace; }
+        .scope-status { font-weight: 600; }
+        .scope-status.pending { color: var(--text-muted); }
+        .scope-status.running { color: var(--warning); }
+        .scope-status.done { color: var(--success); }
+        .scope-status.skipped { color: var(--text-muted); font-style: italic; }
+        .metrics { padding: 0.75rem; border-top: 1px solid var(--border-color); }
+        .metric-row { display: flex; justify-content: space-between; padding: 0.25rem 0; font-size: 0.8rem; }
+        .metric-label { color: var(--text-muted); }
+        .metric-value { color: var(--text-primary); font-weight: 600; font-family: monospace; }
+        .spinner {
+            display: inline-block; width: 12px; height: 12px;
+            border: 2px solid var(--border-color); border-top-color: var(--warning);
+            border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ═══════════════════════════════════════════════════
+           TAB 3: INTERVENTION (Embabel) — Plan + Events + Result
+           ═══════════════════════════════════════════════════ */
+        .intervention-container {
+            flex: 1; display: grid; grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 0.75rem; padding: 0.75rem 1.5rem; overflow: hidden;
+            max-width: 1600px; margin: 0 auto; width: 100%;
+        }
+        .embabel-panel {
+            background: var(--embabel-surface); border-radius: 8px;
+            border: 1px solid var(--embabel-surface2); display: flex;
+            flex-direction: column; overflow: hidden;
+        }
+        .embabel-panel .panel-header {
+            background: transparent; border-bottom: 1px solid var(--embabel-surface2);
+            padding: 0.6rem 1rem; font-weight: bold; font-size: 0.78rem;
+            text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);
+        }
+        .embabel-panel .panel-body { flex: 1; overflow-y: auto; padding: 0.75rem 1rem; }
+
+        /* GOAP Action Steps */
+        .action-step {
+            display: flex; align-items: center; gap: 8px; padding: 6px 10px; margin-bottom: 4px;
+            background: var(--bg-dark); border-radius: 5px; border-left: 3px solid var(--text-muted);
+            font-size: 0.78rem; transition: all 0.3s;
+        }
+        .action-step.pending { border-left-color: var(--text-muted); }
+        .action-step.running { border-left-color: var(--info); background: rgba(33,150,243,0.1); animation: pulse 1.5s infinite; }
+        .action-step.completed { border-left-color: var(--success); background: rgba(76,175,80,0.1); }
+        .action-step.failed { border-left-color: var(--error); background: rgba(244,67,54,0.1); }
+        .action-cost { color: var(--text-muted); font-size: 0.72rem; margin-left: auto; }
+        .action-icon { width: 18px; text-align: center; }
+        .action-arrow { text-align: center; color: var(--text-muted); font-size: 0.65rem; margin: 1px 0; }
+
+        /* Event log */
+        .event-entry {
+            padding: 4px 8px; margin-bottom: 3px; border-radius: 4px;
+            font-size: 0.72rem; background: var(--bg-dark); line-height: 1.4;
+        }
+        .event-entry .event-type { color: var(--embabel-accent); font-weight: bold; margin-right: 6px; }
+        .event-entry .event-time { color: var(--text-muted); font-size: 0.72rem; float: right; }
+        .replan-event {
+            background: rgba(255,152,0,0.15); border: 1px solid var(--warning);
+            padding: 6px 10px; border-radius: 5px; margin: 6px 0; font-size: 0.75rem;
+        }
+        .replan-event .event-type { color: var(--warning); }
+
+        /* Result panel */
+        .result-content { font-size: 0.78rem; line-height: 1.4; }
+        .result-content h1,.result-content h2,.result-content h3 { margin-top: 10px; margin-bottom: 4px; color: var(--embabel-accent); }
+        .result-content p { margin-bottom: 6px; }
+        .result-content ul,.result-content ol { padding-left: 18px; margin-bottom: 6px; }
+        .result-field { margin-bottom: 10px; }
+        .result-field .field-label { color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 3px; }
+        .result-field .field-value { padding: 6px; background: var(--bg-dark); border-radius: 4px; font-size: 0.78rem; line-height: 1.4; }
+
+        /* Status bar */
+        .status-bar {
+            display: flex; align-items: center; gap: 12px;
+            padding: 5px 12px; border-top: 1px solid var(--embabel-surface2);
+            font-size: 0.72rem; color: var(--text-muted);
+        }
+        .status-indicator { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); }
+        .status-indicator.running { background: var(--info); animation: pulse 1s infinite; }
+        .status-indicator.completed { background: var(--success); }
+        .status-indicator.error { background: var(--error); }
+
+        /* ═══════════════════════════════════════════════════
+           SCENARIO DRAWER
+           ═══════════════════════════════════════════════════ */
+        .scenario-toggle {
+            position: fixed; top: 8px; right: 12px; z-index: 200;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            color: var(--text-secondary); padding: 0.35rem 0.65rem; border-radius: 6px;
+            font-size: 0.72rem; cursor: pointer; font-family: inherit; font-weight: 500;
+            transition: all 0.2s;
+        }
+        .scenario-toggle:hover { border-color: var(--redis-red); color: var(--text-primary); }
+        .scenario-drawer {
+            position: fixed; top: 0; right: -280px; width: 270px; height: 100vh;
+            background: rgba(18,18,26,0.97); border-left: 1px solid var(--border-color);
+            z-index: 150; transition: right 0.25s ease; padding: 0.75rem;
+            display: flex; flex-direction: column; overflow-y: auto;
+        }
+        .scenario-drawer.open { right: 0; }
+        .scenario-drawer-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);
+        }
+        .scenario-drawer-title { font-weight: 600; font-size: 0.88rem; color: var(--text-primary); }
+        .scenario-drawer-close {
+            background: none; border: none; color: var(--text-muted); cursor: pointer;
+            font-size: 1.1rem; padding: 0.2rem; line-height: 1;
+        }
+        .scenario-drawer-close:hover { color: var(--text-primary); }
+        .scenario-group { margin-bottom: 0.75rem; }
+        .scenario-group-label {
+            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.8px;
+            color: var(--text-muted); margin-bottom: 0.35rem; padding-left: 0.2rem;
+        }
+        .scenario-btn {
+            display: flex; align-items: center; gap: 0.5rem; width: 100%;
+            padding: 0.45rem 0.6rem; margin-bottom: 0.25rem; background: var(--bg-dark);
+            border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer;
+            font-size: 0.75rem; color: var(--text-secondary); font-family: inherit;
+            transition: all 0.15s; text-align: left;
+        }
+        .scenario-btn:hover { border-color: var(--redis-red); color: var(--text-primary); }
+        .scenario-btn.active { border-color: var(--redis-red); color: var(--redis-red); background: rgba(220,56,44,0.08); }
+        .scenario-key {
+            display: inline-block; width: 18px; height: 18px; line-height: 18px;
+            text-align: center; background: var(--bg-card-hover); border-radius: 3px;
+            font-size: 0.65rem; font-weight: 600; color: var(--text-muted); flex-shrink: 0;
+        }
+        .scenario-btn-reset {
+            display: block; width: 100%; padding: 0.4rem; margin-top: 0.5rem;
+            background: transparent; border: 1px dashed var(--border-color);
+            border-radius: 6px; color: var(--text-muted); font-size: 0.72rem;
+            cursor: pointer; font-family: inherit; text-align: center;
+        }
+        .scenario-btn-reset:hover { border-color: var(--error); color: var(--error); }
+
+        /* ═══════════════════════════════════════════════════
+           ENTITY LINKS
+           ═══════════════════════════════════════════════════ */
+        .entity-link {
+            color: var(--redis-red); cursor: pointer; text-decoration: none;
+            border-bottom: 1px dotted var(--redis-red); font-family: monospace;
+            font-size: 0.85em; font-weight: 500;
+        }
+        .entity-link:hover { color: var(--redis-red-light); border-bottom-style: solid; }
+
+        /* ═══════════════════════════════════════════════════
+           SHARED ANIMATIONS + SCROLLBAR
+           ═══════════════════════════════════════════════════ */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        @media (max-width: 1024px) {
+            .data-container { grid-template-columns: 1fr; }
+            .data-sidebar { flex-direction: row; flex-wrap: wrap; }
+            .intake-container, .analysis-container { grid-template-columns: 1fr; }
+            .intervention-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ════════════════════════════════════════════════════
+         HEADER
+         ════════════════════════════════════════════════════ -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.3828 15.4672C24.4542 17.8972 22.3713 20.6743 18.2056 20.6743C14.4847 20.6743 13.0985 17.3923 13.001 14.7261C13.8163 16.45 15.4102 17.8461 17.8971 17.7815C22.6799 17.6272 25.9585 13.3072 25.9585 9.37292C25.9585 4.66722 22.4485 1.27295 16.3542 1.27295C11.9957 1.27295 6.59569 2.93151 3.04713 5.55436C3.00856 8.25435 4.51284 11.7643 5.05284 11.3786C8.1292 9.16673 10.5686 7.74287 12.9347 7.02892C9.43226 10.9346 1.02888 20.0035 0 21.6C0.115714 23.0657 1.92856 27 2.8157 27C3.0857 27 3.31713 26.8457 3.58713 26.5757C6.12056 23.7292 8.18578 21.1771 10.0227 18.7172C10.2807 22.3225 12.0535 26.73 17.0099 26.73C21.4456 26.73 25.8428 23.5286 27.8485 16.3158C28.0799 15.4286 26.9999 14.7343 26.3828 15.4672ZM21.3299 9.64292C21.3299 11.9186 19.0928 13.0372 17.0485 13.0372C15.9558 13.0372 15.1164 12.7503 14.4525 12.3774C15.674 10.5278 16.8831 8.63125 18.1822 6.60095C20.4728 6.98865 21.3299 8.26187 21.3299 9.64292Z" fill="#FF4438"/>
+                </svg>
+                <span class="logo-text">E-Commerce Ops Intelligence</span>
+            </div>
+
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="data" onclick="switchTab('data')">
+                    <span>&#9450; Data</span> <small>Olist</small>
+                </button>
+                <button class="tab-btn" data-tab="intake" onclick="switchTab('intake')">
+                    <span>&#9312; Intake</span> <small>Spring AI</small>
+                </button>
+                <button class="tab-btn" data-tab="analysis" onclick="switchTab('analysis')">
+                    <span>&#9313; Analysis</span> <small>LangChain4J</small>
+                </button>
+                <button class="tab-btn" data-tab="intervention" onclick="switchTab('intervention')">
+                    <span>&#9314; Intervention</span> <small>Embabel</small>
+                </button>
+            </nav>
+
+            <div class="header-actions" id="header-actions">
+                <!-- Populated by switchTab() -->
+            </div>
+        </div>
+    </header>
+
+    <!-- ════════════════════════════════════════════════════
+         SCENARIO DRAWER (toggle button)
+         ════════════════════════════════════════════════════ -->
+    <button class="scenario-toggle" onclick="toggleScenarioDrawer()" title="Scenarios (?)">Scenarios</button>
+
+    <div class="scenario-drawer" id="scenario-drawer">
+        <div class="scenario-drawer-header">
+            <span class="scenario-drawer-title">Scenarios</span>
+            <button class="scenario-drawer-close" onclick="toggleScenarioDrawer()">&times;</button>
+        </div>
+
+        <div class="scenario-group">
+            <div class="scenario-group-label">Intake (Spring AI)</div>
+            <button class="scenario-btn" data-tab="intake" data-scenario="0" onclick="drawerRunScenario('intake',0)">
+                <span class="scenario-key">1</span> Late Delivery
+            </button>
+            <button class="scenario-btn" data-tab="intake" data-scenario="1" onclick="drawerRunScenario('intake',1)">
+                <span class="scenario-key">2</span> Product Quality
+            </button>
+            <button class="scenario-btn" data-tab="intake" data-scenario="2" onclick="drawerRunScenario('intake',2)">
+                <span class="scenario-key">3</span> Multi-Issue
+            </button>
+        </div>
+
+        <div class="scenario-group">
+            <div class="scenario-group-label">Analysis (LangChain4J)</div>
+            <button class="scenario-btn" data-tab="analysis" data-scenario="sequential" onclick="drawerRunScenario('analysis','sequential')">
+                <span class="scenario-key">1</span> Sequential
+            </button>
+            <button class="scenario-btn" data-tab="analysis" data-scenario="parallel" onclick="drawerRunScenario('analysis','parallel')">
+                <span class="scenario-key">2</span> Parallel
+            </button>
+            <button class="scenario-btn" data-tab="analysis" data-scenario="supervisor" onclick="drawerRunScenario('analysis','supervisor')">
+                <span class="scenario-key">3</span> Supervisor
+            </button>
+        </div>
+
+        <div class="scenario-group">
+            <div class="scenario-group-label">Intervention (Embabel)</div>
+            <button class="scenario-btn" data-tab="intervention" data-scenario="0" onclick="drawerRunScenario('intervention',0)">
+                <span class="scenario-key">1</span> GOAP Plan
+            </button>
+            <button class="scenario-btn" data-tab="intervention" data-scenario="1" onclick="drawerRunScenario('intervention',1)">
+                <span class="scenario-key">2</span> OODA Replan
+            </button>
+            <button class="scenario-btn" data-tab="intervention" data-scenario="2" onclick="drawerRunScenario('intervention',2)">
+                <span class="scenario-key">3</span> Open Mode
+            </button>
+        </div>
+
+        <button class="scenario-btn-reset" onclick="resetActiveTab()">Reset Active Tab</button>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         TAB 0: DATA EXPLORER (Olist)
+         ════════════════════════════════════════════════════ -->
+    <div id="tab-data" class="tab-content active">
+        <div class="data-container">
+            <div class="data-sidebar">
+                <button class="data-type-btn active" data-type="orders" onclick="dataSelectType('orders')">
+                    Orders <span class="data-type-count" id="count-orders">--</span>
+                </button>
+                <button class="data-type-btn" data-type="sellers" onclick="dataSelectType('sellers')">
+                    Sellers <span class="data-type-count" id="count-sellers">--</span>
+                </button>
+                <button class="data-type-btn" data-type="customers" onclick="dataSelectType('customers')">
+                    Customers <span class="data-type-count" id="count-customers">--</span>
+                </button>
+                <button class="data-type-btn" data-type="products" onclick="dataSelectType('products')">
+                    Products <span class="data-type-count" id="count-products">--</span>
+                </button>
+                <input class="data-filter" id="data-filter" placeholder="Filter..." oninput="dataApplyFilter()">
+            </div>
+            <div class="data-list-panel">
+                <div class="panel-header">
+                    <span class="panel-title" id="data-list-title">Orders</span>
+                    <span class="panel-badge" id="data-list-count">--</span>
+                </div>
+                <div class="data-list" id="data-list">
+                    <p class="log-placeholder">Loading data...</p>
+                </div>
+            </div>
+            <div class="data-detail-panel">
+                <div class="panel-header">
+                    <span class="panel-title">Detail</span>
+                </div>
+                <div class="data-detail-body" id="data-detail">
+                    <p class="log-placeholder">Click an entity to view details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         TAB 1: INTAKE (Spring AI)
+         ════════════════════════════════════════════════════ -->
+    <div id="tab-intake" class="tab-content">
+        <div class="intake-container">
+            <div class="chat-panel">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:0.6rem;">
+                        <span class="panel-title">Customer Issue</span>
+                        <span class="panel-badge">Spring AI</span>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" onclick="intakeClearChat()">Clear</button>
+                </div>
+                <div class="chat-messages" id="intake-chat">
+                    <div class="system-message"><div class="message-content">
+                        Welcome to Customer Intake. Use the scenario drawer or type a customer complaint below.
+                    </div></div>
+                </div>
+                <div class="chat-input-form">
+                    <div class="chat-input-wrapper">
+                        <textarea id="intake-input" placeholder="Enter a customer complaint..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();intakeSendFromInput();}"></textarea>
+                        <button class="btn btn-primary send-btn" id="intake-send-btn" onclick="intakeSendFromInput()">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pipeline-panel">
+                <div class="panel-header">
+                    <span class="panel-title">Pipeline Log</span>
+                    <button class="btn btn-secondary btn-sm" onclick="intakeClearLog()">Clear</button>
+                </div>
+                <div class="pipeline-log" id="intake-pipeline">
+                    <p class="log-placeholder">Pipeline events will appear here as queries are processed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         TAB 2: ANALYSIS (LangChain4J)
+         ════════════════════════════════════════════════════ -->
+    <div id="tab-analysis" class="tab-content">
+        <div class="analysis-container">
+            <div class="report-panel">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:0.6rem;">
+                        <span class="panel-title">Operations Report</span>
+                        <span class="panel-badge">LangChain4J</span>
+                    </div>
+                </div>
+                <div class="query-input">
+                    <textarea id="analysis-query" rows="2" placeholder="Enter analysis query...">Analyze Q4 2017 S&#227;o Paulo operations and flag issues</textarea>
+                </div>
+                <div class="report-content" id="analysis-report">
+                    <p class="placeholder">Select a mode from the scenario drawer or type a query above.</p>
+                </div>
+            </div>
+            <div class="scope-panel">
+                <div class="panel-header">
+                    <span class="panel-title">AgenticScope</span>
+                    <span class="panel-badge" id="analysis-mode-badge">&mdash;</span>
+                </div>
+                <div class="scope-table" id="analysis-scope">
+                    <div class="scope-row"><span class="scope-key">query</span><span class="scope-status pending">&mdash;</span></div>
+                    <div class="scope-row"><span class="scope-key">order_analysis</span><span class="scope-status pending" id="scope-order">pending</span></div>
+                    <div class="scope-row"><span class="scope-key">delivery_analysis</span><span class="scope-status pending" id="scope-delivery">pending</span></div>
+                    <div class="scope-row"><span class="scope-key">review_analysis</span><span class="scope-status pending" id="scope-review">pending</span></div>
+                    <div class="scope-row"><span class="scope-key">seller_scores</span><span class="scope-status pending" id="scope-seller">pending</span></div>
+                    <div class="scope-row"><span class="scope-key">ops_report</span><span class="scope-status pending" id="scope-report">pending</span></div>
+                </div>
+                <div class="metrics">
+                    <div class="metric-row"><span class="metric-label">Mode</span><span class="metric-value" id="metric-mode">&mdash;</span></div>
+                    <div class="metric-row"><span class="metric-label">Agents Run</span><span class="metric-value" id="metric-agents">&mdash;</span></div>
+                    <div class="metric-row"><span class="metric-label">Duration</span><span class="metric-value" id="metric-duration">&mdash;</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         TAB 3: INTERVENTION (Embabel)
+         ════════════════════════════════════════════════════ -->
+    <div id="tab-intervention" class="tab-content">
+        <div class="intervention-container">
+            <div class="embabel-panel">
+                <div class="panel-header">GOAP Plan Trace</div>
+                <div class="panel-body">
+                    <div id="plan-steps"></div>
+                    <div id="plan-summary" style="margin-top:12px;padding:6px;display:none;">
+                        <div style="color:var(--text-muted);font-size:0.7rem;text-transform:uppercase;margin-bottom:3px;">Plan Summary</div>
+                        <div id="plan-total-cost" style="font-size:0.78rem;"></div>
+                    </div>
+                </div>
+                <div class="status-bar">
+                    <div class="status-indicator" id="emb-status-dot"></div>
+                    <span id="emb-status-text">Ready</span>
+                    <span style="margin-left:auto;" id="emb-duration-text"></span>
+                </div>
+            </div>
+            <div class="embabel-panel">
+                <div class="panel-header">Event Stream</div>
+                <div class="panel-body" id="emb-event-log">
+                    <div class="event-entry" style="color:var(--text-muted);">Open the scenario drawer to start.</div>
+                </div>
+            </div>
+            <div class="embabel-panel">
+                <div class="panel-header">Result</div>
+                <div class="panel-body">
+                    <div class="result-content" id="emb-result" style="color:var(--text-muted);">
+                        Results will appear here after the agent completes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         FOOTER
+         ════════════════════════════════════════════════════ -->
+    <footer class="footer" id="footer-text">
+        Olist Brazilian E-Commerce Dataset &mdash; curated from 99K real orders (Kaggle)
+    </footer>
+
+    <!-- ════════════════════════════════════════════════════
+         ALL JAVASCRIPT
+         ════════════════════════════════════════════════════ -->
+    <script>
+    // ═══════════════════════════════════════════════════════
+    // TAB MANAGEMENT
+    // ═══════════════════════════════════════════════════════
+    var activeTab = 'data';
+
+    var HOTKEYS_HTML = {
+        data: '',
+        intake: '<button class="btn btn-hotkey" onclick="intakeRunScenario(0)">1 Late Delivery</button>' +
+                '<button class="btn btn-hotkey" onclick="intakeRunScenario(1)">2 Product Quality</button>' +
+                '<button class="btn btn-hotkey" onclick="intakeRunScenario(2)">3 Multi-Issue</button>' +
+                '<button class="btn btn-primary btn-sm" onclick="intakeRunDemo()" id="intake-demo-btn">Run Demo</button>',
+        analysis: '<button class="btn btn-hotkey" id="btn-seq" onclick="analysisRun(\'sequential\')">1 Sequential</button>' +
+                  '<button class="btn btn-hotkey" id="btn-par" onclick="analysisRun(\'parallel\')">2 Parallel</button>' +
+                  '<button class="btn btn-hotkey" id="btn-sup" onclick="analysisRun(\'supervisor\')">3 Supervisor</button>' +
+                  '<button class="btn btn-primary btn-sm" onclick="analysisRunDemo()">Run Demo</button>',
+        intervention: '<button class="btn btn-hotkey" onclick="embabelRunScenario(0)">1 Seller Crisis</button>' +
+                      '<button class="btn btn-hotkey" onclick="embabelRunScenario(1)">2 Category Returns</button>' +
+                      '<button class="btn btn-hotkey" onclick="embabelRunScenario(2)">3 Escalation</button>'
+    };
+
+    var FOOTER_TEXT = {
+        data: 'Olist Brazilian E-Commerce Dataset &mdash; curated from 99K real orders (Kaggle)',
+        intake: 'Patterns: Routing &rarr; Tool Use (@Tool + MCP) &rarr; Evaluator-Optimizer',
+        analysis: 'Patterns: Sequential Chain &rarr; Parallel Fan-Out &rarr; Supervisor (Hierarchical Delegation)',
+        intervention: 'Patterns: Deliberative Planning (GOAP) + Reflection (OODA) + Swarm/Emergent (Open Mode)'
+    };
+
+    function switchTab(tab) {
+        activeTab = tab;
+        document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
+        document.getElementById('tab-' + tab).classList.add('active');
+        document.querySelector('.tab-btn[data-tab="' + tab + '"]').classList.add('active');
+        document.getElementById('header-actions').innerHTML = HOTKEYS_HTML[tab] || '';
+        document.getElementById('footer-text').innerHTML = FOOTER_TEXT[tab] || '';
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // SCENARIO DRAWER
+    // ═══════════════════════════════════════════════════════
+    var scenarioDrawerOpen = false;
+    function toggleScenarioDrawer() {
+        scenarioDrawerOpen = !scenarioDrawerOpen;
+        document.getElementById('scenario-drawer').classList.toggle('open', scenarioDrawerOpen);
+    }
+    function drawerRunScenario(tab, scenario) {
+        // Highlight active scenario button
+        document.querySelectorAll('.scenario-btn').forEach(function(b) { b.classList.remove('active'); });
+        var btn = document.querySelector('.scenario-btn[data-tab="'+tab+'"][data-scenario="'+scenario+'"]');
+        if (btn) btn.classList.add('active');
+        // Switch tab and fire
+        switchTab(tab);
+        if (tab === 'intake') intakeRunScenario(Number(scenario));
+        else if (tab === 'analysis') analysisRun(String(scenario));
+        else if (tab === 'intervention') embabelRunScenario(Number(scenario));
+    }
+    function resetActiveTab() {
+        if (activeTab === 'intake') { intakeClearChat(); intakeClearLog(); }
+        else if (activeTab === 'analysis') { analysisResetScope(); document.getElementById('analysis-report').innerHTML = '<p class="placeholder">Reset. Select a mode to begin.</p>'; }
+        else if (activeTab === 'intervention') { embResetUI(); }
+    }
+
+    // Keyboard shortcuts: Ctrl+0/1/2/3 switch tabs, number keys run scenarios, ? toggles drawer
+    document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+        // ? or Ctrl+S toggles drawer
+        if (e.key === '?') { e.preventDefault(); toggleScenarioDrawer(); return; }
+        // Ctrl+number switches tabs
+        if (e.ctrlKey || e.metaKey) {
+            if (e.key === '0') { e.preventDefault(); switchTab('data'); return; }
+            if (e.key === '1') { e.preventDefault(); switchTab('intake'); return; }
+            if (e.key === '2') { e.preventDefault(); switchTab('analysis'); return; }
+            if (e.key === '3') { e.preventDefault(); switchTab('intervention'); return; }
+        }
+        // Esc closes detail panel in data tab or closes drawer
+        if (e.key === 'Escape') {
+            if (scenarioDrawerOpen) { toggleScenarioDrawer(); return; }
+            if (activeTab === 'data') { document.getElementById('data-detail').innerHTML = '<p class="log-placeholder">Click an entity to view details.</p>'; return; }
+        }
+        // In data tab: 1-4 select entity types
+        if (activeTab === 'data') {
+            if (e.key === '1') dataSelectType('orders');
+            if (e.key === '2') dataSelectType('sellers');
+            if (e.key === '3') dataSelectType('customers');
+            if (e.key === '4') dataSelectType('products');
+            return;
+        }
+        // Plain number runs scenario in active tab
+        if (activeTab === 'intake' && !intakeProcessing) {
+            if (e.key === '1') intakeRunScenario(0);
+            if (e.key === '2') intakeRunScenario(1);
+            if (e.key === '3') intakeRunScenario(2);
+            if (e.key === 'r' || e.key === 'R') intakeRunDemo();
+        }
+        if (activeTab === 'analysis' && !analysisProcessing) {
+            if (e.key === '1') analysisRun('sequential');
+            if (e.key === '2') analysisRun('parallel');
+            if (e.key === '3') analysisRun('supervisor');
+            if (e.key === 'r' || e.key === 'R') analysisRunDemo();
+        }
+        if (activeTab === 'intervention') {
+            if (e.key === '1') embabelRunScenario(0);
+            if (e.key === '2') embabelRunScenario(1);
+            if (e.key === '3') embabelRunScenario(2);
+        }
+    });
+
+    // Initialize for default tab
+    switchTab('data');
+
+    // ═══════════════════════════════════════════════════════
+    // SHARED UTILITIES
+    // ═══════════════════════════════════════════════════════
+    function escapeHtml(text) {
+        if (!text) return '';
+        var div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    function renderMarkdown(text) {
+        if (!text) return '';
+        try { return marked.parse(text); } catch (e) { return escapeHtml(text); }
+    }
+    function scrollToBottom(el) { requestAnimationFrame(function() { el.scrollTop = el.scrollHeight; }); }
+    function removePlaceholder(container) {
+        var p = container.querySelector('.log-placeholder, .placeholder');
+        if (p) p.remove();
+    }
+    function formatCategory(cat) {
+        if (!cat) return '';
+        return cat.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+    }
+    function fetchSSE(url, method, body, handlers) {
+        var opts = { method: method, headers: {} };
+        if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+        fetch(url, opts).then(function(resp) {
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            var reader = resp.body.getReader();
+            var decoder = new TextDecoder();
+            var buffer = '';
+            function read() {
+                reader.read().then(function(result) {
+                    if (result.done) { if (handlers._done) handlers._done(); return; }
+                    buffer += decoder.decode(result.value, { stream: true });
+                    var lines = buffer.split('\n');
+                    buffer = lines.pop();
+                    var currentEvent = null;
+                    for (var i = 0; i < lines.length; i++) {
+                        var line = lines[i];
+                        if (line.startsWith('event:')) currentEvent = line.substring(6).trim();
+                        else if (line.startsWith('data:') && currentEvent) {
+                            try {
+                                var data = JSON.parse(line.substring(5).trim());
+                                if (handlers[currentEvent]) handlers[currentEvent](data);
+                            } catch (e) {}
+                            currentEvent = null;
+                        } else if (line === '') currentEvent = null;
+                    }
+                    read();
+                }).catch(function(err) { if (handlers._error) handlers._error(err); });
+            }
+            read();
+        }).catch(function(err) { if (handlers._error) handlers._error(err); });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // ENTITY HYPERLINKING
+    // ═══════════════════════════════════════════════════════
+    var ENTITY_PATTERNS = [
+        { re: /\b(ORD_[A-Z0-9_]+)\b/g, type: 'orders' },
+        { re: /\b(seller_\d+)\b/g, type: 'sellers' },
+        { re: /\b(cust_\d+)\b/g, type: 'customers' },
+        { re: /\b(prod_[a-z_]+\d+)\b/g, type: 'products' }
+    ];
+    function linkifyEntities(html) {
+        if (!html) return html;
+        // Split on HTML tags to only transform text nodes
+        var parts = html.split(/(<[^>]+>)/);
+        for (var i = 0; i < parts.length; i++) {
+            // Skip HTML tags
+            if (parts[i].charAt(0) === '<') continue;
+            for (var p = 0; p < ENTITY_PATTERNS.length; p++) {
+                var pat = ENTITY_PATTERNS[p];
+                parts[i] = parts[i].replace(pat.re, function(match) {
+                    return '<a class="entity-link" onclick="navigateToEntity(\'' + pat.type + '\',\'' + match + '\')">' + match + '</a>';
+                });
+            }
+        }
+        return parts.join('');
+    }
+    function navigateToEntity(type, id) {
+        switchTab('data');
+        dataSelectType(type);
+        // Wait for render, then scroll to and highlight the card
+        setTimeout(function() {
+            var card = document.querySelector('.data-card[data-id="' + id + '"]');
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.classList.add('highlight');
+                card.click();
+                setTimeout(function() { card.classList.remove('highlight'); }, 3500);
+            }
+        }, 100);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // TAB 0: DATA EXPLORER
+    // ═══════════════════════════════════════════════════════
+    var dataStore = { orders: [], sellers: [], customers: [], products: [] };
+    var dataActiveType = 'orders';
+    var dataSelectedId = null;
+
+    function dataLoadAll() {
+        fetch('/api/data/all').then(function(r) { return r.json(); }).then(function(d) {
+            dataStore.orders = d.orders || [];
+            dataStore.sellers = d.sellers || [];
+            dataStore.customers = d.customers || [];
+            dataStore.products = d.products || [];
+            var counts = d.counts || {};
+            document.getElementById('count-orders').textContent = counts.orders || dataStore.orders.length;
+            document.getElementById('count-sellers').textContent = counts.sellers || dataStore.sellers.length;
+            document.getElementById('count-customers').textContent = counts.customers || dataStore.customers.length;
+            document.getElementById('count-products').textContent = counts.products || dataStore.products.length;
+            dataRenderList();
+        }).catch(function(err) {
+            document.getElementById('data-list').innerHTML = '<p class="log-placeholder">Failed to load data: ' + escapeHtml(err.message) + '</p>';
+        });
+    }
+    function dataSelectType(type) {
+        dataActiveType = type;
+        document.querySelectorAll('.data-type-btn').forEach(function(b) { b.classList.remove('active'); });
+        var btn = document.querySelector('.data-type-btn[data-type="' + type + '"]');
+        if (btn) btn.classList.add('active');
+        document.getElementById('data-filter').value = '';
+        dataRenderList();
+    }
+    function dataApplyFilter() {
+        dataRenderList();
+    }
+    function dataGetIdField(type) {
+        if (type === 'orders') return 'orderId';
+        if (type === 'sellers') return 'sellerId';
+        if (type === 'customers') return 'customerId';
+        if (type === 'products') return 'productId';
+        return 'id';
+    }
+    function dataRenderList() {
+        var items = dataStore[dataActiveType] || [];
+        var filter = (document.getElementById('data-filter').value || '').toLowerCase();
+        var idField = dataGetIdField(dataActiveType);
+        var titleMap = { orders: 'Orders', sellers: 'Sellers', customers: 'Customers', products: 'Products' };
+        document.getElementById('data-list-title').textContent = titleMap[dataActiveType] || dataActiveType;
+
+        if (filter) {
+            items = items.filter(function(item) {
+                return JSON.stringify(item).toLowerCase().indexOf(filter) >= 0;
+            });
+        }
+
+        document.getElementById('data-list-count').textContent = items.length;
+        var list = document.getElementById('data-list');
+        list.innerHTML = '';
+
+        if (!items.length) {
+            list.innerHTML = '<p class="log-placeholder">No items found.</p>';
+            return;
+        }
+
+        items.forEach(function(item) {
+            var card = document.createElement('div');
+            card.className = 'data-card';
+            card.setAttribute('data-id', item[idField]);
+            card.onclick = function() { dataShowDetail(item); dataSelectedId = item[idField]; document.querySelectorAll('.data-card').forEach(function(c){c.classList.remove('selected');}); card.classList.add('selected'); };
+
+            var id = item[idField];
+            var meta = '';
+            var badges = '';
+            if (dataActiveType === 'orders') {
+                meta = (item.customerId || '') + ' &middot; R$' + (item.orderValue||0).toFixed(2);
+                if (item.status === 'shipped') badges = '<span class="data-card-badge badge-shipped">SHIPPED</span>';
+                else if (item.deliveredTimestamp && item.estimatedDelivery && item.deliveredTimestamp > item.estimatedDelivery) badges = '<span class="data-card-badge badge-late">LATE</span>';
+                else badges = '<span class="data-card-badge badge-ontime">ON TIME</span>';
+                if (item.review && item.review.score) meta += ' &middot; <span class="star-score">' + '\u2605'.repeat(item.review.score) + '</span>';
+            } else if (dataActiveType === 'sellers') {
+                meta = item.city + ', ' + item.state + ' &middot; ' + item.totalOrders + ' orders';
+                if (item.avgRating < 3) badges = '<span class="data-card-badge badge-poor">\u2605 ' + item.avgRating + '</span>';
+                else if (item.avgRating >= 4) badges = '<span class="data-card-badge badge-good">\u2605 ' + item.avgRating + '</span>';
+                else badges = '<span class="data-card-badge" style="background:rgba(243,156,18,0.2);color:var(--warning);">\u2605 ' + item.avgRating + '</span>';
+            } else if (dataActiveType === 'customers') {
+                meta = item.city + ', ' + item.state + ' &middot; ' + item.orderCount + ' orders';
+                if (item.avgReviewScore) meta += ' &middot; avg ' + item.avgReviewScore + '\u2605';
+            } else if (dataActiveType === 'products') {
+                meta = formatCategory(item.category) + ' &middot; ' + (item.weightG||0) + 'g';
+                if (item.avgReviewScore) meta += ' &middot; ' + item.avgReviewScore + '\u2605';
+            }
+
+            card.innerHTML = '<div><span class="data-card-id">' + escapeHtml(id) + '</span>' + badges + '</div><div class="data-card-meta">' + meta + '</div>';
+            list.appendChild(card);
+        });
+    }
+    function dataShowDetail(item) {
+        var panel = document.getElementById('data-detail');
+        var html = '';
+
+        if (dataActiveType === 'orders') {
+            html += dataDetailSection('Order', [
+                ['Order ID', item.orderId],
+                ['Customer', '<a class="entity-link" onclick="navigateToEntity(\'customers\',\'' + item.customerId + '\')">' + item.customerId + '</a>'],
+                ['Status', item.status],
+                ['Value', 'R$ ' + (item.orderValue||0).toFixed(2)],
+            ]);
+            html += dataDetailSection('Dates', [
+                ['Purchased', fmtDate(item.purchaseTimestamp)],
+                ['Estimated', fmtDate(item.estimatedDelivery)],
+                ['Delivered', item.deliveredTimestamp ? fmtDate(item.deliveredTimestamp) : '<span style="color:var(--warning)">In transit</span>'],
+                ['Delay', computeDelay(item)],
+            ]);
+            if (item.items && item.items.length) {
+                var itemRows = item.items.map(function(it) {
+                    return ['Item', '<a class="entity-link" onclick="navigateToEntity(\'products\',\'' + it.productId + '\')">' + it.productId + '</a>' +
+                        ' via <a class="entity-link" onclick="navigateToEntity(\'sellers\',\'' + it.sellerId + '\')">' + it.sellerId + '</a>' +
+                        ' &mdash; R$' + it.price.toFixed(2)];
+                });
+                html += dataDetailSection('Items', itemRows);
+            }
+            if (item.payment) {
+                html += dataDetailSection('Payment', [
+                    ['Type', formatCategory(item.payment.type)],
+                    ['Installments', item.payment.installments],
+                    ['Value', 'R$ ' + (item.payment.value||0).toFixed(2)],
+                ]);
+            }
+            if (item.review) {
+                html += dataDetailSection('Review', [
+                    ['Score', '\u2605'.repeat(item.review.score) + ' (' + item.review.score + '/5)'],
+                    ['Comment', item.review.comment || '<span style="color:var(--text-muted)">No comment</span>'],
+                ]);
+            }
+        } else if (dataActiveType === 'sellers') {
+            html += dataDetailSection('Seller', [
+                ['Seller ID', item.sellerId],
+                ['Location', item.city + ', ' + item.state],
+                ['Categories', (item.categories||[]).map(formatCategory).join(', ')],
+            ]);
+            html += dataDetailSection('Performance', [
+                ['Avg Rating', '\u2605 ' + item.avgRating + '/5'],
+                ['On-Time %', item.onTimePct + '%'],
+                ['Avg Delay', item.delayAvgDays + ' days'],
+                ['Return Rate', item.returnRate + '%'],
+                ['Total Orders', item.totalOrders],
+                ['Revenue', 'R$ ' + (item.revenueTotal||0).toLocaleString()],
+            ]);
+            // Show related orders
+            var sellerOrders = dataStore.orders.filter(function(o) {
+                return o.items && o.items.some(function(it) { return it.sellerId === item.sellerId; });
+            }).slice(0, 10);
+            if (sellerOrders.length) {
+                var orderLinks = sellerOrders.map(function(o) {
+                    return ['', '<a class="entity-link" onclick="navigateToEntity(\'orders\',\'' + o.orderId + '\')">' + o.orderId + '</a>' +
+                        (o.review ? ' \u2605' + o.review.score : '')];
+                });
+                html += dataDetailSection('Recent Orders (' + sellerOrders.length + ')', orderLinks);
+            }
+        } else if (dataActiveType === 'customers') {
+            html += dataDetailSection('Customer', [
+                ['Customer ID', item.customerId],
+                ['Location', item.city + ', ' + item.state],
+                ['Order Count', item.orderCount],
+                ['Avg Review', '\u2605 ' + (item.avgReviewScore||0)],
+                ['Total Spent', 'R$ ' + (item.totalSpent||0).toFixed(2)],
+            ]);
+            var custOrders = dataStore.orders.filter(function(o) { return o.customerId === item.customerId; }).slice(0, 10);
+            if (custOrders.length) {
+                var cOrderLinks = custOrders.map(function(o) {
+                    return ['', '<a class="entity-link" onclick="navigateToEntity(\'orders\',\'' + o.orderId + '\')">' + o.orderId + '</a>' +
+                        ' R$' + (o.orderValue||0).toFixed(2) + (o.review ? ' \u2605' + o.review.score : '')];
+                });
+                html += dataDetailSection('Orders (' + custOrders.length + ')', cOrderLinks);
+            }
+        } else if (dataActiveType === 'products') {
+            html += dataDetailSection('Product', [
+                ['Product ID', item.productId],
+                ['Category', formatCategory(item.category)],
+                ['Weight', (item.weightG||0) + 'g'],
+                ['Avg Review', '\u2605 ' + (item.avgReviewScore||0)],
+            ]);
+        }
+
+        panel.innerHTML = html;
+    }
+    function dataDetailSection(title, rows) {
+        var h = '<div class="detail-section"><div class="detail-section-title">' + title + '</div>';
+        rows.forEach(function(r) {
+            if (r[0]) h += '<div class="detail-row"><span class="detail-key">' + r[0] + '</span><span class="detail-value">' + r[1] + '</span></div>';
+            else h += '<div class="detail-row"><span class="detail-value" style="max-width:100%">' + r[1] + '</span></div>';
+        });
+        return h + '</div>';
+    }
+    function fmtDate(d) {
+        if (!d) return '--';
+        return d.replace('T', ' ').substring(0, 16);
+    }
+    function computeDelay(order) {
+        if (!order.deliveredTimestamp || !order.estimatedDelivery) return '--';
+        var del = new Date(order.deliveredTimestamp);
+        var est = new Date(order.estimatedDelivery);
+        var diff = Math.round((del - est) / 86400000);
+        if (diff > 0) return '<span style="color:var(--error)">' + diff + ' days late</span>';
+        if (diff < 0) return '<span style="color:var(--success)">' + Math.abs(diff) + ' days early</span>';
+        return 'On time';
+    }
+
+    // Load data on startup
+    dataLoadAll();
+
+    // ═══════════════════════════════════════════════════════
+    // TAB 1: INTAKE (Spring AI)
+    // ═══════════════════════════════════════════════════════
+    var intakeProcessing = false;
+    var INTAKE_SCENARIOS = [
+        "My order ORD_A1B2C3 was supposed to arrive 5 days ago and still nothing! This is the third time seller_42 has let me down.",
+        "The product doesn't match the description at all. Seller seller_42 has terrible reviews and I want answers. My customer ID is cust_1234.",
+        "Order ORD_X7Y8Z9 is late, the product I already received from the same seller was broken, AND I want a refund for both!"
+    ];
+    function intakeRunScenario(i) {
+        if (intakeProcessing) return;
+        intakeSendMessage(INTAKE_SCENARIOS[i]);
+    }
+    function intakeSendFromInput() {
+        var text = document.getElementById('intake-input').value.trim();
+        if (!text || intakeProcessing) return;
+        document.getElementById('intake-input').value = '';
+        intakeSendMessage(text);
+    }
+    function intakeSendMessage(text) {
+        if (intakeProcessing) return;
+        intakeProcessing = true;
+        intakeAddMessage('user', text);
+        intakeShowTyping();
+        intakeAddQueryMarker(text);
+        var url = '/api/chat?query=' + encodeURIComponent(text);
+        var es = new EventSource(url);
+        es.addEventListener('routing', function(e) { intakeAddRouting(JSON.parse(e.data)); });
+        es.addEventListener('handling', function(e) { intakeAddHandling(JSON.parse(e.data)); });
+        es.addEventListener('tool_call', function(e) { intakeAddToolCall(JSON.parse(e.data)); });
+        es.addEventListener('draft', function(e) { intakeAddDraft(JSON.parse(e.data)); });
+        es.addEventListener('evaluation', function(e) { intakeAddEvaluation(JSON.parse(e.data)); });
+        es.addEventListener('refinement', function(e) { intakeAddRefinement(JSON.parse(e.data)); });
+        es.addEventListener('status', function(e) { intakeAddStatus(JSON.parse(e.data)); });
+        es.addEventListener('complete', function(e) {
+            var data = JSON.parse(e.data);
+            intakeHideTyping(); intakeAddMessage('assistant', data.finalResponse);
+            intakeAddComplete(); es.close(); intakeProcessing = false;
+        });
+        es.addEventListener('error', function(e) {
+            if (e.data) intakeAddMessage('system', 'Error: ' + JSON.parse(e.data).message);
+            intakeHideTyping(); es.close(); intakeProcessing = false;
+        });
+        es.onerror = function() { intakeHideTyping(); es.close(); intakeProcessing = false; };
+    }
+    function intakeRunDemo() {
+        if (intakeProcessing) return;
+        intakeProcessing = true;
+        intakeAddMessage('system', 'Starting auto-demo: 3 scenarios');
+        fetchSSE('/api/demo/stream', 'GET', null, {
+            query: function(d) { intakeAddMessage('user', d.text); intakeShowTyping(); intakeAddQueryMarker(d.text); },
+            routing: function(d) { intakeAddRouting(d); },
+            handling: function(d) { intakeAddHandling(d); },
+            tool_call: function(d) { intakeAddToolCall(d); },
+            draft: function(d) { intakeAddDraft(d); },
+            evaluation: function(d) { intakeAddEvaluation(d); },
+            refinement: function(d) { intakeAddRefinement(d); },
+            status: function(d) { intakeAddStatus(d); },
+            complete: function(d) { intakeHideTyping(); intakeAddMessage('assistant', d.finalResponse); intakeAddComplete(); },
+            error: function(d) { intakeHideTyping(); intakeAddMessage('system', 'Error: ' + escapeHtml(d.message)); },
+            _done: function() { intakeHideTyping(); intakeAddMessage('system', 'Demo complete!'); intakeProcessing = false; },
+            _error: function() { intakeHideTyping(); intakeProcessing = false; }
+        });
+    }
+    function intakeAddMessage(role, content) {
+        var chat = document.getElementById('intake-chat');
+        removePlaceholder(chat);
+        var w = document.createElement('div');
+        if (role === 'user') {
+            w.className = 'message user-message';
+            w.innerHTML = '<div class="message-avatar">U</div><div class="message-content">' + linkifyEntities(escapeHtml(content)) + '</div>';
+        } else if (role === 'assistant') {
+            w.className = 'message assistant-message';
+            w.innerHTML = '<div class="message-avatar">AI</div><div class="message-content">' + linkifyEntities(renderMarkdown(content)) + '</div>';
+        } else {
+            w.className = 'system-message';
+            w.innerHTML = '<div class="message-content">' + linkifyEntities(content) + '</div>';
+        }
+        chat.appendChild(w); scrollToBottom(chat);
+    }
+    function intakeShowTyping() {
+        if (document.getElementById('intake-typing')) return;
+        var w = document.createElement('div');
+        w.className = 'message assistant-message'; w.id = 'intake-typing';
+        w.innerHTML = '<div class="message-avatar">AI</div><div class="message-content"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+        document.getElementById('intake-chat').appendChild(w);
+        scrollToBottom(document.getElementById('intake-chat'));
+    }
+    function intakeHideTyping() { var t = document.getElementById('intake-typing'); if (t) t.remove(); }
+
+    // Pipeline log helpers
+    var intakePipeline = function() { return document.getElementById('intake-pipeline'); };
+    function intakeAddQueryMarker(text) {
+        removePlaceholder(intakePipeline());
+        var e = document.createElement('div'); e.className = 'log-entry query-marker';
+        var trunc = text.length > 70 ? text.substring(0,70)+'...' : text;
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#9654;</span><span class="log-label">Customer Issue</span></div><div class="log-entry-body">' + linkifyEntities(escapeHtml(trunc)) + '</div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddRouting(data) {
+        removePlaceholder(intakePipeline());
+        var scoresHtml = '';
+        if (data.scores && data.scores.length) {
+            scoresHtml = '<div class="score-list">';
+            data.scores.forEach(function(s) {
+                var sel = s.category === data.route;
+                var pct = Math.round(s.confidence * 100);
+                scoresHtml += '<div class="score-item"><span class="score-category">' + formatCategory(s.category) + '</span>' +
+                    '<div class="score-bar-container"><div class="score-bar' + (sel?' selected':'') + '" style="width:'+pct+'%"></div></div>' +
+                    '<span class="score-value">' + s.confidence.toFixed(2) + '</span>' + (sel?'<span class="score-marker">&#9668;</span>':'') + '</div>';
+            });
+            scoresHtml += '</div>';
+        }
+        var e = document.createElement('div'); e.className = 'log-entry routing';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#128268;</span><span class="log-label">Routing</span><span class="log-meta">' + formatCategory(data.route) + '</span></div>' + scoresHtml;
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddHandling(data) {
+        var e = document.createElement('div'); e.className = 'log-entry handling';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#128295;</span><span class="log-label">Expert</span><span class="log-meta">' + linkifyEntities(escapeHtml(data.handler)) + '</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddToolCall(data) {
+        var icons = {lookupOrder:'&#128230;',checkDeliveryStatus:'&#128666;',getCustomerHistory:'&#128100;',getSellerRating:'&#11088;',getProductInfo:'&#128722;'};
+        var e = document.createElement('div'); e.className = 'log-entry tool-call';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">' + (icons[data.tool]||'&#128295;') + '</span><span class="log-label">@Tool</span><span class="log-meta">' + linkifyEntities(escapeHtml(data.tool)) + '</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddDraft() {
+        var e = document.createElement('div'); e.className = 'log-entry draft';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#128196;</span><span class="log-label">Draft Generated</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddEvaluation(data) {
+        var pass = data.score >= 3;
+        var e = document.createElement('div'); e.className = 'log-entry evaluation';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">' + (pass?'&#9989;':'&#128260;') + '</span><span class="log-label">Evaluator-Optimizer</span><span class="log-meta">iteration ' + data.iteration + '</span></div>' +
+            '<div class="eval-score"><span class="eval-score-value ' + (pass?'pass':'fail') + '">' + data.score + '/4</span><span class="eval-score-label">quality score</span><span class="eval-status ' + (pass?'pass':'refining') + '">' + (pass?'PASS':'refining...') + '</span></div>' +
+            (data.feedback ? '<details><summary>Feedback</summary><div class="detail-content">' + escapeHtml(data.feedback) + '</div></details>' : '');
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddRefinement() {
+        var e = document.createElement('div'); e.className = 'log-entry evaluation';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#128260;</span><span class="log-label">Refinement</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddStatus(data) {
+        var e = document.createElement('div'); e.className = 'log-entry status';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#128308;</span><span class="log-label">' + escapeHtml(data.phase) + '</span><span class="log-meta">' + escapeHtml(data.detail) + '</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeAddComplete() {
+        var e = document.createElement('div'); e.className = 'log-entry complete';
+        e.innerHTML = '<div class="log-entry-header"><span class="log-icon">&#10004;</span><span class="log-label">Complete</span></div>';
+        intakePipeline().appendChild(e); scrollToBottom(intakePipeline());
+    }
+    function intakeClearChat() {
+        document.getElementById('intake-chat').innerHTML = '<div class="system-message"><div class="message-content">Chat cleared. Use the scenario drawer or type a complaint below.</div></div>';
+    }
+    function intakeClearLog() {
+        document.getElementById('intake-pipeline').innerHTML = '<p class="log-placeholder">Pipeline events will appear here as queries are processed.</p>';
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // TAB 2: ANALYSIS (LangChain4J)
+    // ═══════════════════════════════════════════════════════
+    var analysisProcessing = false;
+    var ANALYSIS_QUERIES = {
+        sequential: "Analyze Q4 2017 S\u00e3o Paulo operations and flag issues",
+        parallel: "Analyze Q4 2017 S\u00e3o Paulo operations and flag issues",
+        supervisor: "What's causing delivery delays in S\u00e3o Paulo?"
+    };
+
+    function analysisRun(mode) {
+        if (analysisProcessing) return;
+        analysisProcessing = true;
+        analysisResetScope();
+        var query = document.getElementById('analysis-query').value.trim() || ANALYSIS_QUERIES[mode];
+        document.getElementById('analysis-query').value = query;
+        document.getElementById('analysis-mode-badge').textContent = mode;
+        document.getElementById('metric-mode').textContent = mode;
+        document.getElementById('analysis-report').innerHTML = '<p class="placeholder"><span class="spinner"></span> Running ' + mode + ' analysis...</p>';
+        analysisSimulateScope(mode);
+
+        var url = '/demo2/api/analyze?mode=' + mode + '&query=' + encodeURIComponent(query);
+        var es = new EventSource(url);
+        es.addEventListener('complete', function(e) {
+            var data = JSON.parse(e.data);
+            analysisShowResult(data); es.close(); analysisProcessing = false;
+        });
+        es.addEventListener('error', function(e) {
+            if (e.data) {
+                var data = JSON.parse(e.data);
+                document.getElementById('analysis-report').innerHTML = '<p style="color:var(--error)">Error: ' + escapeHtml(data.message) + '</p>';
+            }
+            es.close(); analysisProcessing = false;
+        });
+        es.onerror = function() { es.close(); analysisProcessing = false; };
+    }
+    function analysisRunDemo() {
+        if (analysisProcessing) return;
+        analysisProcessing = true;
+        analysisResetScope();
+        document.getElementById('analysis-report').innerHTML = '<p class="placeholder"><span class="spinner"></span> Running all 3 modes...</p>';
+        var query = document.getElementById('analysis-query').value.trim() || ANALYSIS_QUERIES.sequential;
+        var url = '/demo2/api/demo/stream?query=' + encodeURIComponent(query);
+        var results = [];
+        var es = new EventSource(url);
+        es.addEventListener('start', function(e) {
+            var data = JSON.parse(e.data);
+            document.getElementById('analysis-mode-badge').textContent = data.mode;
+            analysisSimulateScope(data.mode);
+        });
+        es.addEventListener('complete', function(e) {
+            var data = JSON.parse(e.data);
+            results.push(data);
+            analysisShowMultiResult(results);
+        });
+        es.addEventListener('error', function(e) {
+            if (e.data) document.getElementById('analysis-report').innerHTML += '<p style="color:var(--error)">Error</p>';
+            es.close(); analysisProcessing = false;
+        });
+        es.onerror = function() { es.close(); analysisProcessing = false; };
+        var doneTimer;
+        es.addEventListener('complete', function() {
+            clearTimeout(doneTimer);
+            doneTimer = setTimeout(function() { es.close(); analysisProcessing = false; }, 5000);
+        });
+    }
+    function analysisShowResult(data) {
+        var html = '<div class="report-text">';
+        html += data.report ? linkifyEntities(renderMarkdown(data.report)) : '<p>No report generated.</p>';
+        html += '</div>';
+        document.getElementById('analysis-report').innerHTML = html;
+        document.getElementById('metric-mode').textContent = data.mode;
+        document.getElementById('metric-agents').textContent = data.agentsRun >= 0 ? data.agentsRun : 'dynamic';
+        document.getElementById('metric-duration').textContent = (data.durationMs / 1000).toFixed(1) + 's';
+        analysisFinishScope(data.mode);
+    }
+    function analysisShowMultiResult(results) {
+        var html = '';
+        results.forEach(function(r) {
+            html += '<div class="report-text" style="margin-bottom:1rem;border-bottom:1px solid var(--border-color);padding-bottom:0.75rem;">';
+            html += '<h3 style="color:var(--warning);">' + r.mode.toUpperCase() + ' (' + (r.durationMs/1000).toFixed(1) + 's)</h3>';
+            if (r.report) html += linkifyEntities(renderMarkdown(r.report));
+            html += '</div>';
+        });
+        document.getElementById('analysis-report').innerHTML = html;
+        if (results.length) {
+            document.getElementById('metric-mode').textContent = results.map(function(r){return r.mode;}).join(', ');
+            document.getElementById('metric-agents').textContent = results.map(function(r){return r.agentsRun>=0?r.agentsRun:'?';}).join(', ');
+            document.getElementById('metric-duration').textContent = results.map(function(r){return (r.durationMs/1000).toFixed(1)+'s';}).join(' / ');
+        }
+    }
+    function analysisResetScope() {
+        ['order','delivery','review','seller','report'].forEach(function(k) {
+            var el = document.getElementById('scope-'+k);
+            el.textContent = 'pending'; el.className = 'scope-status pending';
+        });
+    }
+    function analysisSimulateScope(mode) {
+        var keys = ['order','delivery','review','seller'];
+        if (mode === 'supervisor') {
+            ['order','review'].forEach(function(k) {
+                var el = document.getElementById('scope-'+k);
+                el.textContent = 'skipped'; el.className = 'scope-status skipped';
+            });
+            ['delivery','seller'].forEach(function(k,i) {
+                setTimeout(function() {
+                    var el = document.getElementById('scope-'+k);
+                    el.innerHTML = '<span class="spinner"></span> running'; el.className = 'scope-status running';
+                }, 500 + i*800);
+            });
+        } else if (mode === 'parallel') {
+            keys.forEach(function(k) {
+                setTimeout(function() {
+                    var el = document.getElementById('scope-'+k);
+                    el.innerHTML = '<span class="spinner"></span> running'; el.className = 'scope-status running';
+                }, 300);
+            });
+        } else {
+            // Sequential: show one at a time — start next only after previous finishes
+            keys.forEach(function(k,i) {
+                setTimeout(function() {
+                    // Mark previous as done
+                    if (i > 0) {
+                        var prev = document.getElementById('scope-'+keys[i-1]);
+                        prev.textContent = 'done'; prev.className = 'scope-status done';
+                    }
+                    var el = document.getElementById('scope-'+k);
+                    el.innerHTML = '<span class="spinner"></span> running'; el.className = 'scope-status running';
+                }, i*8000);
+            });
+        }
+    }
+    function analysisFinishScope(mode) {
+        ['order','delivery','review','seller','report'].forEach(function(k) {
+            var el = document.getElementById('scope-'+k);
+            if (el.textContent !== 'skipped') { el.textContent = 'done'; el.className = 'scope-status done'; }
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // TAB 3: INTERVENTION (Embabel)
+    // ═══════════════════════════════════════════════════════
+    var EMB_SCENARIOS = [
+        { label: "Seller Crisis (GOAP)", input: "Seller seller_42 in S\u00e3o Paulo has 40% late deliveries affecting 200+ orders in Q4 2017. Customer complaints are rising and review scores are dropping below 2.5. We need an intervention plan." },
+        { label: "Category Returns (OODA)", input: "Multiple sellers in the electronics category showing increased return rates and 1-star reviews across S\u00e3o Paulo and Rio de Janeiro. This appears to be a systemic quality issue, not isolated to one seller." },
+        { label: "Escalation + Portuguese Report (Open Mode)", input: "Seller seller_42 delivery crisis in S\u00e3o Paulo is affecting customer retention. We need both an intervention plan AND a management escalation report in Portuguese for the Brazil operations team." }
+    ];
+    var EMB_ACTIONS = [
+        { name: "parseIssue", cost: 0.05, output: "OperationalIssue" },
+        { name: "classifyIssue", cost: 0.05, output: "IssueClassification" },
+        { name: "assessImpact", cost: 0.10, output: "ImpactAssessment" },
+        { name: "generateOptions", cost: 0.15, output: "InterventionOptions" },
+        { name: "planIntervention", cost: 0.15, output: "InterventionPlan" },
+        { name: "validatePlan", cost: 0.20, output: "ValidatedPlan" },
+        { name: "escalate", cost: 0.10, output: "EscalationReport" }
+    ];
+    var embEventSource = null;
+    var embStartTime = null;
+    var embDurationInterval = null;
+    var embActionStates = {};
+
+    function embabelRunScenario(index) {
+        var scenario = EMB_SCENARIOS[index];
+        embResetUI();
+        embStartTime = Date.now();
+        embUpdateDuration();
+        embDurationInterval = setInterval(embUpdateDuration, 100);
+        embSetStatus("running", "Starting...");
+        embAddEvent("START", scenario.label);
+        var planActions = index === 2 ? EMB_ACTIONS : EMB_ACTIONS.slice(0, 6);
+        embRenderPlanSteps(planActions);
+        fetch("/demo3/api/intervention/run", {
+            method: "POST", headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({input: scenario.input})
+        })
+        .then(function(r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function(data) {
+            embAddEvent("PROCESS", "ID: " + data.processId.substring(0,8) + "...");
+            embConnectSSE(data.processId);
+        })
+        .catch(function(err) {
+            embSetStatus("error", "Failed: " + err.message);
+            embAddEvent("ERROR", err.message);
+            embStopDuration();
+        });
+    }
+    function embConnectSSE(processId) {
+        if (embEventSource) embEventSource.close();
+        embEventSource = new EventSource("/demo3/events/process/" + processId);
+        embEventSource.addEventListener("agent-process-event", function(e) {
+            try { embHandleEvent(JSON.parse(e.data)); } catch(err) { embAddEvent("RAW", e.data); }
+        });
+        embEventSource.addEventListener("connected", function() { embAddEvent("CONNECTED", "SSE stream established"); });
+        embEventSource.onerror = function() {
+            if (embEventSource.readyState === EventSource.CLOSED) embCheckFinalStatus(processId);
+        };
+    }
+    function embHandleEvent(event) {
+        var type = event.type || event["@type"] || embGuessType(event);
+        switch (type) {
+            case "AgentProcessCreationEvent": embAddEvent("CREATED","Agent process initialized"); embSetStatus("running","Planning..."); break;
+            case "AgentProcessReadyToPlanEvent": embAddEvent("PLANNING","A* planner searching..."); break;
+            case "AgentProcessPlanFormulatedEvent":
+                var pi = event.plan||event;
+                embAddEvent("PLAN","Plan formulated" + (pi.totalCost?" (cost: "+pi.totalCost.toFixed(2)+")":""));
+                embShowPlanSummary(pi); break;
+            case "ReplanRequestedEvent":
+                embAddEvent("REPLAN","Replanning: " + (event.reason||"conditions changed"), true);
+                embSetStatus("running","Replanning (OODA)..."); break;
+            case "ActionExecutionStartEvent":
+                var an = embExtractAction(event);
+                embSetActionState(an,"running"); embAddEvent("ACTION",an+" started"); embSetStatus("running","Running: "+an); break;
+            case "ActionExecutionResultEvent":
+                var ca = embExtractAction(event);
+                var as2 = event.status||"completed";
+                embSetActionState(ca, as2==="FAILED"?"failed":"completed");
+                embAddEvent("RESULT",ca+" "+(as2==="FAILED"?"FAILED":"done")); break;
+            case "ToolCallRequestEvent": embAddEvent("TOOL","Calling: "+(event.toolName||"tool")); break;
+            case "LlmRequestEvent": embAddEvent("LLM","Calling LLM..."); break;
+            case "LlmResponseEvent": embAddEvent("LLM","LLM response received"); break;
+            case "GoalAchievedEvent": embAddEvent("GOAL","Goal achieved!"); embSetStatus("completed","Goal achieved"); break;
+            case "AgentProcessCompletedEvent": embHandleCompletion(event); break;
+            case "AgentProcessFailedEvent": embSetStatus("error","Process failed"); embAddEvent("ERROR",event.message||"Failed"); embStopDuration(); break;
+            case "AgentProcessStuckEvent": embSetStatus("error","Stuck"); embAddEvent("STUCK","Cannot find path to goal"); embStopDuration(); break;
+            default: embAddEvent("INFO", event.message||event.description||type||"event"); break;
+        }
+    }
+    function embGuessType(e) {
+        if (e.plan) return "AgentProcessPlanFormulatedEvent";
+        if (e.action && e.status) return "ActionExecutionResultEvent";
+        if (e.action) return "ActionExecutionStartEvent";
+        if (e.reason) return "ReplanRequestedEvent";
+        if (e.result !== undefined) return "AgentProcessCompletedEvent";
+        return e.type || "unknown";
+    }
+    function embExtractAction(e) {
+        if (e.action) return typeof e.action === "string" ? e.action : (e.action.name||String(e.action));
+        return e.actionName || "unknown";
+    }
+    function embHandleCompletion(event) {
+        embStopDuration(); embSetStatus("completed","Completed"); embAddEvent("COMPLETE","Process completed");
+        embDisplayResult(event.result||event);
+        if (embEventSource) { embEventSource.close(); embEventSource = null; }
+    }
+    function embCheckFinalStatus(processId) {
+        fetch("/demo3/api/v1/process/"+processId).then(function(r){return r.json();}).then(function(data) {
+            if (data.status==="COMPLETED") { embStopDuration(); embSetStatus("completed","Completed"); if(data.result)embDisplayResult(data.result); }
+            else if (data.status==="FAILED"||data.status==="STUCK") { embStopDuration(); embSetStatus("error",data.status); }
+        }).catch(function(){});
+    }
+    function embDisplayResult(result) {
+        var panel = document.getElementById("emb-result");
+        if (!result) { panel.innerHTML = '<span style="color:var(--text-muted)">No result data</span>'; return; }
+        if (typeof result === "string") { try { result = JSON.parse(result); } catch(e) { panel.innerHTML = linkifyEntities(renderMarkdown(result)); return; } }
+        var html = "";
+        var fields = [["Plan Summary",result.planSummary||result.content],["Approved",result.approved!==undefined?(result.approved?"Yes":"No"):null],
+            ["Risks",result.risks],["Metrics to Track",result.metricsToTrack],["Executive Summary",result.executiveSummary],
+            ["Recommended Actions",result.recommendedActions],["Timeline",result.timeline],["Risk Assessment",result.riskAssessment]];
+        for (var i=0;i<fields.length;i++) {
+            if (fields[i][1]) {
+                html += '<div class="result-field"><div class="field-label">'+fields[i][0]+'</div><div class="field-value">'+linkifyEntities(renderMarkdown(String(fields[i][1])))+'</div></div>';
+            }
+        }
+        if (!html) html = '<pre style="white-space:pre-wrap;font-size:0.78em;">'+JSON.stringify(result,null,2)+'</pre>';
+        panel.innerHTML = html;
+    }
+    function embRenderPlanSteps(actions) {
+        var c = document.getElementById("plan-steps"); c.innerHTML = ""; embActionStates = {};
+        actions.forEach(function(a,i) {
+            if (i>0) { var ar = document.createElement("div"); ar.className="action-arrow"; ar.textContent="\u25BC"; c.appendChild(ar); }
+            var s = document.createElement("div"); s.className="action-step pending"; s.id="step-"+a.name;
+            s.innerHTML = '<span class="action-icon">\u25CB</span><span>'+a.name+'</span><span class="action-cost">cost: '+a.cost.toFixed(2)+' \u2192 '+a.output+'</span>';
+            c.appendChild(s); embActionStates[a.name] = "pending";
+        });
+    }
+    function embSetActionState(name, state) {
+        var norm = name.split(".").pop().replace(/Action$/,"");
+        var key = Object.keys(embActionStates).find(function(k) {
+            return norm.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(norm.toLowerCase());
+        }) || name;
+        embActionStates[key] = state;
+        var step = document.getElementById("step-"+key);
+        if (step) {
+            step.className = "action-step "+state;
+            var icon = step.querySelector(".action-icon");
+            if (state==="running") icon.textContent="\u25D4";
+            else if (state==="completed") icon.textContent="\u25CF";
+            else if (state==="failed") icon.textContent="\u2717";
+        }
+    }
+    function embShowPlanSummary(pi) {
+        document.getElementById("plan-summary").style.display = "block";
+        var t = "";
+        if (pi.totalCost) t += "Total cost: "+pi.totalCost.toFixed(2);
+        if (pi.actionCount) t += " | Actions: "+pi.actionCount;
+        document.getElementById("plan-total-cost").textContent = t||"Plan ready";
+    }
+    function embAddEvent(type, msg, isReplan) {
+        var log = document.getElementById("emb-event-log");
+        if (log.children.length===1 && log.children[0].style.color) log.innerHTML = "";
+        var e = document.createElement("div"); e.className = isReplan?"replan-event":"event-entry";
+        var elapsed = embStartTime ? ((Date.now()-embStartTime)/1000).toFixed(1)+"s" : "";
+        e.innerHTML = '<span class="event-type">'+type+'</span><span class="event-time">'+elapsed+'</span><span>'+linkifyEntities(escapeHtml(msg))+'</span>';
+        log.appendChild(e); log.scrollTop = log.scrollHeight;
+    }
+    function embSetStatus(state, text) {
+        document.getElementById("emb-status-dot").className = "status-indicator "+state;
+        document.getElementById("emb-status-text").textContent = text;
+    }
+    function embUpdateDuration() {
+        if (!embStartTime) return;
+        document.getElementById("emb-duration-text").textContent = ((Date.now()-embStartTime)/1000).toFixed(1)+"s";
+    }
+    function embStopDuration() { if (embDurationInterval) { clearInterval(embDurationInterval); embDurationInterval = null; } embUpdateDuration(); }
+    function embResetUI() {
+        document.getElementById("plan-steps").innerHTML = "";
+        document.getElementById("plan-summary").style.display = "none";
+        document.getElementById("emb-event-log").innerHTML = "";
+        document.getElementById("emb-result").innerHTML = '<span style="color:var(--text-muted)">Results will appear here after the agent completes.</span>';
+        document.getElementById("emb-duration-text").textContent = "";
+        embSetStatus("","Ready");
+        if (embEventSource) { embEventSource.close(); embEventSource = null; }
+        embStopDuration();
+    }
+    </script>
+</body>
+</html>

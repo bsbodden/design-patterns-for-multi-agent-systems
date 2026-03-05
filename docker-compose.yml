@@ -1,0 +1,99 @@
+services:
+  # ── Infrastructure ─────────────────────────────────────────────────
+
+  redis:
+    image: redis/redis-stack:latest
+    ports:
+      - "16379:6379"
+      - "18001:8001"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - devnexus
+
+  memory-server:
+    build:
+      context: ../repos/redis-spring-ai-memory-server
+      dockerfile: Dockerfile
+    ports:
+      - "18080:8080"
+    env_file: .env
+    environment:
+      SPRING_DATA_REDIS_HOST: redis
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - devnexus
+
+  # ── Demo Apps ──────────────────────────────────────────────────────
+
+  # Demo 1: Spring AI — Customer Intake & Triage
+  # Hosts the unified UI; proxies to Demo 2 and Demo 3 backends
+  demo1-spring-ai:
+    build:
+      context: demo1-spring-ai-smart-triage
+      dockerfile: Dockerfile
+    ports:
+      - "18881:8881"
+    env_file: .env
+    environment:
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      MCP_SERVER_URL: http://memory-server:8080
+      DEMO2_URL: http://demo2-langchain4j:8882
+      DEMO3_URL: http://demo3-embabel:8883
+    depends_on:
+      memory-server:
+        condition: service_healthy
+    networks:
+      - devnexus
+
+  # Demo 2: LangChain4J — Operations Analysis Team
+  # Backend only — Redis OM Spring for OlistDataTools
+  demo2-langchain4j:
+    build:
+      context: demo2-langchain4j-doc-insight
+      dockerfile: Dockerfile
+    ports:
+      - "18882:8882"
+    env_file: .env
+    environment:
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - devnexus
+
+  # Demo 3: Embabel — Intervention Planning
+  # Backend only — embabel-agent-starter-webmvc (REST + SSE)
+  demo3-embabel:
+    build:
+      context: demo3-embabel-research-planner
+      dockerfile: Dockerfile
+    ports:
+      - "18883:8883"
+    env_file: .env
+    environment:
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - devnexus
+
+networks:
+  devnexus:
+    driver: bridge

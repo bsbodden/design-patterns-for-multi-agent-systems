@@ -1,0 +1,37 @@
+[
+  {
+    "text": "## DELIVERY DELAY RESOLUTION PROCEDURE\n1. Look up order and verify delivery delay (actual vs estimated delivery date)\n2. Check seller delivery history (on_time_pct, delay patterns, total complaints)\n3. Search for similar past resolutions in this region\n4. Decision matrix:\n   - Delay <3 days: Apologize + provide tracking update\n   - Delay 3-7 days: Apologize + 5% credit on next purchase\n   - Delay >7 days: 15% refund + free shipping on next order\n   - Delay >7 days AND repeat seller offender: Full refund option + escalate seller\n5. Log resolution for future reference via memory_store",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["delivery_delay", "resolution_procedure"],
+    "entities": []
+  },
+  {
+    "text": "## PRODUCT QUALITY COMPLAINT PROCEDURE\n1. Look up order and product details\n2. Check seller rating and quality complaint history\n3. Search for similar product quality complaints\n4. Decision matrix:\n   - Description mismatch: Full refund + return label, report seller to quality team\n   - Defective/damaged: Replacement with expedited shipping OR full refund\n   - Quality below expectation (subjective): Partial refund (10-20%) based on severity\n5. If seller has >5 quality complaints, flag for marketplace review\n6. Log resolution",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["product_quality", "resolution_procedure"],
+    "entities": []
+  },
+  {
+    "text": "## PAYMENT & REFUND PROCEDURE\n1. Verify payment details (type, amount, installments)\n2. Check order status and delivery confirmation\n3. Decision matrix:\n   - Order not delivered + >15 days past estimate: Auto-approve full refund\n   - Order delivered but damaged: Process refund after return confirmation\n   - Installment dispute: Coordinate with payment processor\n   - Double charge: Immediate reversal + apology credit\n4. Refund timeline: Credit card 5-10 business days, Boleto 3-5 business days, Debit card 1-3 business days\n5. Log resolution",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["payment", "refund", "resolution_procedure"],
+    "entities": []
+  },
+  {
+    "text": "## MULTI-ISSUE COMPLAINT PROCEDURE\n1. Identify all distinct issues in the complaint (delivery, quality, payment, communication)\n2. Prioritize: Safety/defect first, then financial, then service issues\n3. Look up ALL relevant data for each issue\n4. Search memory for similar multi-issue cases\n5. Create unified response that addresses EACH issue explicitly\n6. Compensation should reflect the TOTAL impact, not just the worst issue\n7. For 3+ issues from same seller: automatic seller escalation\n8. Follow up within 24 hours to confirm all issues resolved",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["multi_issue", "resolution_procedure", "escalation"],
+    "entities": []
+  },
+  {
+    "text": "## RESPONSE QUALITY EVALUATION RUBRIC\nScore each customer response on 4 criteria (1 point each, pass threshold = 3/4):\n1. EMPATHY: Does the response acknowledge the customer's frustration and show understanding?\n2. SPECIFICITY: Does it reference specific order details, dates, amounts (not generic)?\n3. RESOLUTION: Does it offer a concrete resolution with clear next steps and timeline?\n4. COMPLETENESS: For multi-issue complaints, does it address ALL stated concerns?\nIf score <3, refine the response focusing on missing criteria before sending.",
+    "memoryType": "procedural",
+    "userId": "system",
+    "topics": ["response_quality", "evaluation", "critic_rubric"],
+    "entities": []
+  }
+]

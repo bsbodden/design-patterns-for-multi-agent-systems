@@ -1,0 +1,37 @@
+[
+  {
+    "text": "SELLER PROFILE — seller_42: Chronic late delivery issues. Average rating 2.3/5. On-time delivery rate 58%. Currently under quality review. Has received 3 formal warnings this quarter (2 for late delivery, 1 for listing inaccuracy). 12 customer complaints in last 30 days. Located in Rio de Janeiro, RJ. Categories: electronics, accessories. Action: Apply stricter resolution policies — customers dealing with this seller should receive proactive compensation.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller-profile", "low-performance", "under-review"],
+    "entities": ["seller_42"]
+  },
+  {
+    "text": "SELLER PROFILE — seller_7: Gold-standard seller. Average rating 4.8/5. On-time delivery rate 98%. Zero complaints in last 90 days. Part of the Seller Excellence Program. Located in São Paulo, SP. Categories: home & garden, furniture. Consistently positive customer feedback. Preferred seller for promotional placements.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["seller-profile", "high-performance", "excellence-program"],
+    "entities": ["seller_7"]
+  },
+  {
+    "text": "CUSTOMER PROFILE — cust_1234: Repeat complainer. 9 total orders, 3 complaints filed (33% complaint rate). Average order value R$236. Total spent R$2,126.32. Average review score 2.9/5. Located in São Paulo, SP. Has been offered retention credit once. At risk of churn — next complaint should trigger supervisor review and potential premium support assignment.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["customer-profile", "high-complaint-rate", "churn-risk"],
+    "entities": ["cust_1234"]
+  },
+  {
+    "text": "REGION PROFILE — São Paulo: Largest market by order volume (34% of all orders). Common logistics challenges: traffic congestion causes last-mile delays, flooding during rainy season (Nov-Mar) affects warehouse operations. Primary logistics partners: Transportadora Rápida, Correios SP. Average delivery time: 4.2 days (national average: 5.8 days). Regional delay events occur ~2x per quarter.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["region-profile", "logistics", "sao-paulo"],
+    "entities": ["sao-paulo"]
+  },
+  {
+    "text": "CATEGORY PROFILE — Electronics: Highest return rate across all categories (8.7% vs platform average 3.2%). Most common issues: product description mismatches (42%), cosmetic damage during shipping (28%), defective units (18%), wrong item sent (12%). Requires sellers to provide detailed specs and multiple photos. Sellers with return rate > 12% in electronics are flagged for automatic review.",
+    "memoryType": "entity",
+    "userId": "system",
+    "topics": ["category-profile", "electronics", "high-return-rate"],
+    "entities": ["electronics"]
+  }
+]

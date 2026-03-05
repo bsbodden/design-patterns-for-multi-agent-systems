@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ops-analysis-demo
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:16379}
+
+demo:
+  auto-run: false
+
+server:
+  port: 8882
+  servlet:
+    async:
+      timeout: 300000
+
+spring.mvc.async.request-timeout: 300000

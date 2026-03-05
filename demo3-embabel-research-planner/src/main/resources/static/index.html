@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intervention Planner / Embabel</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --surface: #16213e;
+            --surface2: #0f3460;
+            --accent: #e94560;
+            --accent2: #533483;
+            --text: #eee;
+            --text-dim: #8892b0;
+            --green: #4caf50;
+            --blue: #2196f3;
+            --orange: #ff9800;
+            --red: #f44336;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        header {
+            background: var(--surface);
+            border-bottom: 2px solid var(--accent);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { font-size: 1.2em; }
+        header h1 span { color: var(--accent); }
+        .badge {
+            background: var(--accent2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+        }
+
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 12px;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .panel {
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--surface2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .panel-header {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--surface2);
+            font-weight: bold;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+        }
+        .panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 16px;
+        }
+
+        /* GOAP Plan Trace */
+        .action-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: var(--bg);
+            border-radius: 6px;
+            border-left: 3px solid var(--text-dim);
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+        .action-step.pending { border-left-color: var(--text-dim); }
+        .action-step.running {
+            border-left-color: var(--blue);
+            background: rgba(33, 150, 243, 0.1);
+            animation: pulse 1.5s infinite;
+        }
+        .action-step.completed {
+            border-left-color: var(--green);
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .action-step.failed {
+            border-left-color: var(--red);
+            background: rgba(244, 67, 54, 0.1);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .action-cost {
+            color: var(--text-dim);
+            font-size: 0.8em;
+            margin-left: auto;
+        }
+        .action-icon { width: 20px; text-align: center; }
+        .action-arrow {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.7em;
+            margin: 2px 0;
+        }
+
+        /* Event log */
+        .event-entry {
+            padding: 6px 10px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            font-size: 0.78em;
+            background: var(--bg);
+            line-height: 1.4;
+        }
+        .event-entry .event-type {
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .event-entry .event-time {
+            color: var(--text-dim);
+            font-size: 0.85em;
+            float: right;
+        }
+
+        /* Result panel */
+        .result-content {
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        .result-content h1, .result-content h2, .result-content h3 {
+            margin-top: 12px;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+        .result-content p { margin-bottom: 8px; }
+        .result-content ul, .result-content ol { padding-left: 20px; margin-bottom: 8px; }
+        .result-field {
+            margin-bottom: 12px;
+        }
+        .result-field .field-label {
+            color: var(--text-dim);
+            font-size: 0.78em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .result-field .field-value {
+            padding: 8px;
+            background: var(--bg);
+            border-radius: 4px;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        /* Status bar */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 6px 16px;
+            border-top: 1px solid var(--surface2);
+            font-size: 0.78em;
+            color: var(--text-dim);
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-dim);
+        }
+        .status-indicator.running { background: var(--blue); animation: pulse 1s infinite; }
+        .status-indicator.completed { background: var(--green); }
+        .status-indicator.error { background: var(--red); }
+
+        /* Hotkeys */
+        footer {
+            background: var(--surface);
+            border-top: 2px solid var(--accent);
+            padding: 10px 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .hotkey-btn {
+            background: var(--surface2);
+            border: 1px solid var(--accent2);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.82em;
+            transition: all 0.2s;
+        }
+        .hotkey-btn:hover {
+            background: var(--accent2);
+            border-color: var(--accent);
+        }
+        .hotkey-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .hotkey-btn kbd {
+            background: var(--accent);
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 6px;
+            font-size: 0.9em;
+        }
+        .hotkey-label { flex: 1; text-align: right; color: var(--text-dim); font-size: 0.75em; }
+
+        /* Replan highlight */
+        .replan-event {
+            background: rgba(255, 152, 0, 0.15);
+            border: 1px solid var(--orange);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-size: 0.82em;
+        }
+        .replan-event .event-type { color: var(--orange); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span>Intervention Planner</span> / Embabel</h1>
+        <span class="badge">GOAP + OODA + Open Mode</span>
+    </header>
+
+    <div class="main">
+        <!-- Left Panel: GOAP Plan Trace -->
+        <div class="panel">
+            <div class="panel-header">GOAP Plan Trace</div>
+            <div class="panel-body" id="plan-trace">
+                <div id="plan-steps"></div>
+                <div id="plan-summary" style="margin-top: 16px; padding: 8px; display: none;">
+                    <div style="color: var(--text-dim); font-size: 0.78em; text-transform: uppercase; margin-bottom: 4px;">Plan Summary</div>
+                    <div id="plan-total-cost" style="font-size: 0.85em;"></div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-indicator" id="status-dot"></div>
+                <span id="status-text">Ready</span>
+                <span style="margin-left: auto;" id="duration-text"></span>
+            </div>
+        </div>
+
+        <!-- Center Panel: Event Stream -->
+        <div class="panel">
+            <div class="panel-header">Event Stream</div>
+            <div class="panel-body" id="event-log">
+                <div class="event-entry" style="color: var(--text-dim);">
+                    Press a hotkey or click a scenario below to start an intervention plan.
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Result -->
+        <div class="panel">
+            <div class="panel-header">Result</div>
+            <div class="panel-body" id="result-panel">
+                <div class="result-content" id="result-content" style="color: var(--text-dim);">
+                    Results will appear here after the agent completes.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="hotkey-btn" onclick="runScenario(0)" id="btn-1"><kbd>1</kbd> Seller Crisis (GOAP)</button>
+        <button class="hotkey-btn" onclick="runScenario(1)" id="btn-2"><kbd>2</kbd> Category Returns (OODA)</button>
+        <button class="hotkey-btn" onclick="runScenario(2)" id="btn-3"><kbd>3</kbd> Escalation (Open Mode)</button>
+        <span class="hotkey-label">Patterns: Deliberative Planning + Reflection + Swarm/Emergent</span>
+    </footer>
+
+    <script>
+    const SCENARIOS = [
+        {
+            label: "Seller Crisis (GOAP)",
+            input: "Seller seller_42 in São Paulo has 40% late deliveries affecting 200+ orders in Q4 2017. Customer complaints are rising and review scores are dropping below 2.5. We need an intervention plan."
+        },
+        {
+            label: "Category Returns (OODA)",
+            input: "Multiple sellers in the electronics category showing increased return rates and 1-star reviews across São Paulo and Rio de Janeiro. This appears to be a systemic quality issue, not isolated to one seller."
+        },
+        {
+            label: "Escalation + Portuguese Report (Open Mode)",
+            input: "Seller seller_42 delivery crisis in São Paulo is affecting customer retention. We need both an intervention plan AND a management escalation report in Portuguese for the Brazil operations team."
+        }
+    ];
+
+    // Known action sequence for the InterventionPlanner
+    const ACTIONS = [
+        { name: "parseIssue", cost: 0.05, output: "OperationalIssue" },
+        { name: "classifyIssue", cost: 0.05, output: "IssueClassification" },
+        { name: "assessImpact", cost: 0.10, output: "ImpactAssessment" },
+        { name: "generateOptions", cost: 0.15, output: "InterventionOptions" },
+        { name: "planIntervention", cost: 0.15, output: "InterventionPlan" },
+        { name: "validatePlan", cost: 0.20, output: "ValidatedPlan" },
+        { name: "escalate", cost: 0.10, output: "EscalationReport" }
+    ];
+
+    let currentProcessId = null;
+    let eventSource = null;
+    let startTime = null;
+    let durationInterval = null;
+    let actionStates = {};
+
+    function runScenario(index) {
+        const scenario = SCENARIOS[index];
+        resetUI();
+        startTime = Date.now();
+        updateDuration();
+        durationInterval = setInterval(updateDuration, 100);
+
+        setStatus("running", "Starting...");
+        addEvent("START", scenario.label);
+
+        // Render the plan steps (without escalation for scenarios 0,1; with for scenario 2)
+        const planActions = index === 2 ? ACTIONS : ACTIONS.slice(0, 6);
+        renderPlanSteps(planActions);
+
+        // Start the intervention
+        fetch("/api/intervention/run", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: scenario.input })
+        })
+        .then(r => {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+        })
+        .then(data => {
+            currentProcessId = data.processId;
+            addEvent("PROCESS", "ID: " + data.processId.substring(0, 8) + "...");
+            connectSSE(data.processId);
+        })
+        .catch(err => {
+            setStatus("error", "Failed: " + err.message);
+            addEvent("ERROR", err.message);
+            stopDuration();
+        });
+    }
+
+    function connectSSE(processId) {
+        if (eventSource) eventSource.close();
+        eventSource = new EventSource("/events/process/" + processId);
+
+        eventSource.addEventListener("agent-process-event", function(e) {
+            try {
+                const event = JSON.parse(e.data);
+                handleAgentEvent(event);
+            } catch (err) {
+                // Sometimes events are raw strings
+                addEvent("RAW", e.data);
+            }
+        });
+
+        eventSource.addEventListener("connected", function(e) {
+            addEvent("CONNECTED", "SSE stream established");
+        });
+
+        eventSource.onerror = function() {
+            // SSE closed — check final status
+            if (eventSource.readyState === EventSource.CLOSED) {
+                checkFinalStatus(processId);
+            }
+        };
+    }
+
+    function handleAgentEvent(event) {
+        const type = event.type || event["@type"] || guessEventType(event);
+
+        switch (type) {
+            case "AgentProcessCreationEvent":
+                addEvent("CREATED", "Agent process initialized");
+                setStatus("running", "Planning...");
+                break;
+
+            case "AgentProcessReadyToPlanEvent":
+                addEvent("PLANNING", "A* planner searching for optimal path...");
+                break;
+
+            case "AgentProcessPlanFormulatedEvent":
+                const planInfo = event.plan || event;
+                addEvent("PLAN", "Plan formulated" + (planInfo.totalCost ? " (cost: " + planInfo.totalCost.toFixed(2) + ")" : ""));
+                showPlanSummary(planInfo);
+                break;
+
+            case "ReplanRequestedEvent":
+                addEvent("REPLAN", "Replanning: " + (event.reason || "conditions changed"), true);
+                setStatus("running", "Replanning (OODA)...");
+                break;
+
+            case "ActionExecutionStartEvent":
+                const actionName = extractActionName(event);
+                setActionState(actionName, "running");
+                addEvent("ACTION", actionName + " started");
+                setStatus("running", "Running: " + actionName);
+                break;
+
+            case "ActionExecutionResultEvent":
+                const completedAction = extractActionName(event);
+                const actionStatus = event.status || "completed";
+                setActionState(completedAction, actionStatus === "FAILED" ? "failed" : "completed");
+                addEvent("RESULT", completedAction + " " + (actionStatus === "FAILED" ? "FAILED" : "done"));
+                break;
+
+            case "ToolCallRequestEvent":
+                addEvent("TOOL", "Calling: " + (event.toolName || "tool"));
+                break;
+
+            case "LlmRequestEvent":
+                addEvent("LLM", "Calling LLM...");
+                break;
+
+            case "LlmResponseEvent":
+                addEvent("LLM", "LLM response received");
+                break;
+
+            case "GoalAchievedEvent":
+                addEvent("GOAL", "Goal achieved!");
+                setStatus("completed", "Goal achieved");
+                break;
+
+            case "AgentProcessCompletedEvent":
+                handleCompletion(event);
+                break;
+
+            case "AgentProcessFailedEvent":
+                setStatus("error", "Process failed");
+                addEvent("ERROR", event.message || "Process failed");
+                stopDuration();
+                break;
+
+            case "AgentProcessStuckEvent":
+                setStatus("error", "Stuck — cannot plan");
+                addEvent("STUCK", "Planner cannot find a path to goal");
+                stopDuration();
+                break;
+
+            default:
+                // Log other events with whatever info we have
+                const summary = event.message || event.description || type || "event";
+                addEvent("INFO", summary);
+                break;
+        }
+    }
+
+    function guessEventType(event) {
+        // Try to determine event type from its properties
+        if (event.plan) return "AgentProcessPlanFormulatedEvent";
+        if (event.action && event.status) return "ActionExecutionResultEvent";
+        if (event.action) return "ActionExecutionStartEvent";
+        if (event.reason) return "ReplanRequestedEvent";
+        if (event.result !== undefined) return "AgentProcessCompletedEvent";
+        return event.type || "unknown";
+    }
+
+    function extractActionName(event) {
+        if (event.action) {
+            if (typeof event.action === "string") return event.action;
+            return event.action.name || event.action.toString();
+        }
+        return event.actionName || "unknown";
+    }
+
+    function handleCompletion(event) {
+        stopDuration();
+        setStatus("completed", "Completed");
+        addEvent("COMPLETE", "Process completed successfully");
+
+        // Try to display the result
+        const result = event.result || event;
+        displayResult(result);
+
+        // Close SSE
+        if (eventSource) {
+            eventSource.close();
+            eventSource = null;
+        }
+    }
+
+    function checkFinalStatus(processId) {
+        fetch("/api/v1/process/" + processId)
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === "COMPLETED") {
+                    stopDuration();
+                    setStatus("completed", "Completed");
+                    if (data.result) displayResult(data.result);
+                } else if (data.status === "FAILED" || data.status === "STUCK") {
+                    stopDuration();
+                    setStatus("error", data.status);
+                }
+            })
+            .catch(() => {});
+    }
+
+    function displayResult(result) {
+        const panel = document.getElementById("result-content");
+        if (!result) {
+            panel.innerHTML = '<span style="color: var(--text-dim);">No result data</span>';
+            return;
+        }
+
+        let html = "";
+        if (typeof result === "string") {
+            try {
+                result = JSON.parse(result);
+            } catch {
+                html = marked.parse(result);
+                panel.innerHTML = html;
+                return;
+            }
+        }
+
+        // Display structured result fields
+        const fields = [
+            ["Plan Summary", result.planSummary || result.content],
+            ["Approved", result.approved !== undefined ? (result.approved ? "Yes" : "No") : null],
+            ["Risks", result.risks],
+            ["Metrics to Track", result.metricsToTrack],
+            ["Executive Summary", result.executiveSummary],
+            ["Recommended Actions", result.recommendedActions],
+            ["Timeline", result.timeline],
+            ["Risk Assessment", result.riskAssessment]
+        ];
+
+        for (const [label, value] of fields) {
+            if (value) {
+                html += '<div class="result-field">';
+                html += '<div class="field-label">' + label + '</div>';
+                html += '<div class="field-value">' + marked.parse(String(value)) + '</div>';
+                html += '</div>';
+            }
+        }
+
+        if (!html) {
+            html = '<pre style="white-space: pre-wrap; font-size: 0.85em;">' +
+                   JSON.stringify(result, null, 2) + '</pre>';
+        }
+
+        panel.innerHTML = html;
+    }
+
+    // Plan step rendering
+    function renderPlanSteps(actions) {
+        const container = document.getElementById("plan-steps");
+        container.innerHTML = "";
+        actionStates = {};
+
+        actions.forEach((action, i) => {
+            if (i > 0) {
+                const arrow = document.createElement("div");
+                arrow.className = "action-arrow";
+                arrow.textContent = "\u25BC";
+                container.appendChild(arrow);
+            }
+            const step = document.createElement("div");
+            step.className = "action-step pending";
+            step.id = "step-" + action.name;
+            step.innerHTML =
+                '<span class="action-icon">\u25CB</span>' +
+                '<span>' + action.name + '</span>' +
+                '<span class="action-cost">cost: ' + action.cost.toFixed(2) +
+                ' \u2192 ' + action.output + '</span>';
+            container.appendChild(step);
+            actionStates[action.name] = "pending";
+        });
+    }
+
+    function setActionState(name, state) {
+        // Normalize action name — Embabel may send full qualified names
+        const normalizedName = name.split(".").pop().replace(/Action$/, "");
+        const matchingKey = Object.keys(actionStates).find(k =>
+            normalizedName.toLowerCase().includes(k.toLowerCase()) ||
+            k.toLowerCase().includes(normalizedName.toLowerCase())
+        );
+
+        const key = matchingKey || name;
+        actionStates[key] = state;
+
+        const step = document.getElementById("step-" + key);
+        if (step) {
+            step.className = "action-step " + state;
+            const icon = step.querySelector(".action-icon");
+            if (state === "running") icon.textContent = "\u25D4";
+            else if (state === "completed") icon.textContent = "\u25CF";
+            else if (state === "failed") icon.textContent = "\u2717";
+        }
+    }
+
+    function showPlanSummary(planInfo) {
+        const summary = document.getElementById("plan-summary");
+        const costEl = document.getElementById("plan-total-cost");
+        summary.style.display = "block";
+
+        let text = "";
+        if (planInfo.totalCost) text += "Total cost: " + planInfo.totalCost.toFixed(2);
+        if (planInfo.actionCount) text += " | Actions: " + planInfo.actionCount;
+        if (planInfo.actions) text += " | Steps: " + planInfo.actions.length;
+        costEl.textContent = text || "Plan ready";
+    }
+
+    // Event log
+    function addEvent(type, message, isReplan) {
+        const log = document.getElementById("event-log");
+        // Remove the placeholder
+        if (log.children.length === 1 && log.children[0].style.color) {
+            log.innerHTML = "";
+        }
+
+        const entry = document.createElement("div");
+        entry.className = isReplan ? "replan-event" : "event-entry";
+
+        const elapsed = startTime ? ((Date.now() - startTime) / 1000).toFixed(1) + "s" : "";
+        entry.innerHTML =
+            '<span class="event-type">' + type + '</span>' +
+            '<span class="event-time">' + elapsed + '</span>' +
+            '<span>' + message + '</span>';
+
+        log.appendChild(entry);
+        log.scrollTop = log.scrollHeight;
+    }
+
+    // Status management
+    function setStatus(state, text) {
+        const dot = document.getElementById("status-dot");
+        const statusText = document.getElementById("status-text");
+        dot.className = "status-indicator " + state;
+        statusText.textContent = text;
+    }
+
+    function updateDuration() {
+        if (!startTime) return;
+        const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+        document.getElementById("duration-text").textContent = elapsed + "s";
+    }
+
+    function stopDuration() {
+        if (durationInterval) {
+            clearInterval(durationInterval);
+            durationInterval = null;
+        }
+        updateDuration();
+    }
+
+    function resetUI() {
+        document.getElementById("plan-steps").innerHTML = "";
+        document.getElementById("plan-summary").style.display = "none";
+        document.getElementById("event-log").innerHTML = "";
+        document.getElementById("result-content").innerHTML =
+            '<span style="color: var(--text-dim);">Results will appear here after the agent completes.</span>';
+        document.getElementById("duration-text").textContent = "";
+        setStatus("", "Ready");
+        if (eventSource) { eventSource.close(); eventSource = null; }
+        stopDuration();
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", function(e) {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+        if (e.key === "1") runScenario(0);
+        else if (e.key === "2") runScenario(1);
+        else if (e.key === "3") runScenario(2);
+    });
+    </script>
+</body>
+</html>
